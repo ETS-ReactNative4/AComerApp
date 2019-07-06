@@ -53,7 +53,7 @@ const RootStack = createBottomTabNavigator(
         tabBarLabel: "Inicio",
         tabBarIcon: ({ tintColor }) => (
           <Icon
-            name="compass-outline"
+            name="home"
             type="material-community"
             size={30}
             color={tintColor}
@@ -92,7 +92,7 @@ const RootStack = createBottomTabNavigator(
     MyAccount: {
       screen: MyAccountScreenStack,
       navigationOptions: ({ navigation }) => ({
-        tabBarLabel: "Buscar",
+        tabBarLabel: "Mi Cuenta",
         tabBarIcon: ({ tintColor }) => (
           <Icon
             name="account"
@@ -107,7 +107,7 @@ const RootStack = createBottomTabNavigator(
   {
     tabBarOptions: {
       inactiveTintColor: "#646464",
-      activeTintColor: "#00a680"
+      activeTintColor: "#ffc107"
     }
   }
 );
