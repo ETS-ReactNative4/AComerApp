@@ -5,10 +5,13 @@ import {
   createAppContainer,
   createBottomTabNavigator
 } from "react-navigation";
+
 import HomeScreen from "../screens/Home";
-import MyAccountScreen from "../screens/MyAccount/MyAccount";
-import SearchScreen from "../screens/Search";
 import TopFive from "../screens/TopFive";
+import SearchScreen from "../screens/Search";
+
+import MyAccountScreen from "../screens/MyAccount/MyAccount";
+import RegisterScreen from "../screens/MyAccount/Register";
 
 const HomeScreenStack = createStackNavigator({
   Home: {
@@ -41,6 +44,12 @@ const MyAccountScreenStack = createStackNavigator({
     screen: MyAccountScreen,
     navigationOptions: ({ navigation }) => ({
       title: "Mi Cuenta"
+    })
+  },
+  Register: {
+    screen: RegisterScreen,
+    navigationOptions: ({ navigation }) => ({
+      title: "Registro"
     })
   }
 });

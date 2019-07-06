@@ -1,16 +1,10 @@
 import React from "react";
 import { StyleSheet, View, Text } from "react-native";
-import { Button } from "react-native-elements";
 
-const MyAccount = ({ navigation }) => {
-  goToScreen = nameScreen => {
-    navigation.navigate(nameScreen);
-  };
-
+const Register = () => {
   return (
     <View style={styles.viewBody}>
-      <Text>MyAccount Screen</Text>
-      <Button title="Registro" onPress={() => goToScreen("Register")} />
+      <Text>Register Screen</Text>
     </View>
   );
 };
@@ -24,4 +18,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default MyAccount;
+export default Register;
