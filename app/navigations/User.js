@@ -60,6 +60,20 @@ const RootStack = createBottomTabNavigator(
           />
         )
       })
+    },
+    TopFive: {
+      screen: TopFiveScreenStack,
+      navigationOptions: ({ navigation }) => ({
+        tabBarLabel: "Top 5",
+        tabBarIcon: ({ tintColor }) => (
+          <Icon
+            name="star-outline"
+            type="material-community"
+            size={30}
+            color={tintColor}
+          />
+        )
+      })
     }
   },
   {
