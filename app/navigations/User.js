@@ -1,4 +1,5 @@
 import React from "react";
+import { Icon } from "react-native-elements";
 import {
   createStackNavigator,
   createAppContainer,
@@ -48,7 +49,8 @@ const RootStack = createBottomTabNavigator({
   Home: {
     screen: HomeScreenStack,
     navigationOptions: ({ navigation }) => ({
-      tabBarLabel: "Inicio"
+      tabBarLabel: "Inicio",
+      tabBarIcon: ({ tintColor }) => <Icon name="home" />
     })
   }
 });
