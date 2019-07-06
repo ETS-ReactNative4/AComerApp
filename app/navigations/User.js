@@ -45,14 +45,29 @@ const MyAccountScreenStack = createStackNavigator({
   }
 });
 
-const RootStack = createBottomTabNavigator({
-  Home: {
-    screen: HomeScreenStack,
-    navigationOptions: ({ navigation }) => ({
-      tabBarLabel: "Inicio",
-      tabBarIcon: ({ tintColor }) => <Icon name="home" />
-    })
+const RootStack = createBottomTabNavigator(
+  {
+    Home: {
+      screen: HomeScreenStack,
+      navigationOptions: ({ navigation }) => ({
+        tabBarLabel: "Inicio",
+        tabBarIcon: ({ tintColor }) => (
+          <Icon
+            name="compass-outline"
+            type="material-community"
+            size={30}
+            color={tintColor}
+          />
+        )
+      })
+    }
+  },
+  {
+    tabBarOptions: {
+      inactiveTintColor: "#646464",
+      activeTintColor: "#00a680"
+    }
   }
-});
+);
 
 export default createAppContainer(RootStack);
