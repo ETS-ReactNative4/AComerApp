@@ -74,6 +74,34 @@ const RootStack = createBottomTabNavigator(
           />
         )
       })
+    },
+    Search: {
+      screen: SearchScreenStack,
+      navigationOptions: ({ navigation }) => ({
+        tabBarLabel: "Buscar",
+        tabBarIcon: ({ tintColor }) => (
+          <Icon
+            name="magnify"
+            type="material-community"
+            size={30}
+            color={tintColor}
+          />
+        )
+      })
+    },
+    MyAccount: {
+      screen: MyAccountScreenStack,
+      navigationOptions: ({ navigation }) => ({
+        tabBarLabel: "Buscar",
+        tabBarIcon: ({ tintColor }) => (
+          <Icon
+            name="account"
+            type="material-community"
+            size={30}
+            color={tintColor}
+          />
+        )
+      })
     }
   },
   {
