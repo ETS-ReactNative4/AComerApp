@@ -6,7 +6,7 @@ import {
   createBottomTabNavigator
 } from "react-navigation";
 import HomeScreen from "../screens/Home";
-import MyAccountScreen from "../screens/MyAccount";
+import MyAccountScreen from "../screens/MyAccount/MyAccount";
 import SearchScreen from "../screens/Search";
 import TopFive from "../screens/TopFive";
 
@@ -105,7 +105,7 @@ const RootStack = createBottomTabNavigator(
     }
   },
   {
-    initialRouteName: "Home",
+    initialRouteName: "MyAccount",
     order: ["Home", "TopFive", "Search", "MyAccount"],
     tabBarOptions: {
       inactiveTintColor: "#646464",
