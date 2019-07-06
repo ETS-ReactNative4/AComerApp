@@ -46,7 +46,10 @@ const MyAccountScreenStack = createStackNavigator({
 
 const RootStack = createBottomTabNavigator({
   Home: {
-    screen: HomeScreenStack
+    screen: HomeScreenStack,
+    navigationOptions: ({ navigation }) => ({
+      tabBarLabel: "Inicio"
+    })
   }
 });
 
