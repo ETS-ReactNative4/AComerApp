@@ -53,7 +53,7 @@ const RootStack = createBottomTabNavigator(
         tabBarLabel: "Inicio",
         tabBarIcon: ({ tintColor }) => (
           <Icon
-            name="home"
+            name="home-outline"
             type="material-community"
             size={30}
             color={tintColor}
@@ -95,7 +95,7 @@ const RootStack = createBottomTabNavigator(
         tabBarLabel: "Mi Cuenta",
         tabBarIcon: ({ tintColor }) => (
           <Icon
-            name="account"
+            name="account-outline"
             type="material-community"
             size={30}
             color={tintColor}
