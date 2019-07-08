@@ -9,7 +9,7 @@ const Register = () => {
   return (
     <View style={styles.viewBody}>
       <Text>Register Screen</Text>
-      <Form ref="registerForm" type={RegisterStruct} />
+      <Form type={RegisterStruct} options={RegisterOptions} />
     </View>
   );
 };
