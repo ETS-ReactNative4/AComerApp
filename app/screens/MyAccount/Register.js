@@ -22,15 +22,12 @@ const Register = () => {
 
   const onChange = formData => setUser(formData);
 
-  const onSubmit = e => {
-    e.preventDefault();
+  const onSubmit = () => {
     if (password !== passwordConfirmation) {
-      console.log("Tus contraseñas no coinciden.");
+      setError("Tus contraseñas no coinciden.");
     } else {
-      //register({ name, email, password })
       const validate = registerForm.current.getValue();
       if (validate) {
-        console.log("Form succes");
       } else {
         setError("Formulario Inválido");
       }

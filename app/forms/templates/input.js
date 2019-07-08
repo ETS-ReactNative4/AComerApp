@@ -2,7 +2,7 @@ import React from "react";
 import { StyleSheet, View } from "react-native";
 import { Input, Icon } from "react-native-elements";
 
-const InputTemplate = ({ config }) => {
+const InputTemplate = ({ config, onChange }) => {
   const { placeholder, password, secureTextEntry, icontype, iconName } = config;
 
   return (
@@ -14,6 +14,7 @@ const InputTemplate = ({ config }) => {
         rightIcon={
           <Icon type={icontype} name={iconName} size={24} color="#b3b3b3" />
         }
+        onChangeText={onChange}
       />
     </View>
   );
