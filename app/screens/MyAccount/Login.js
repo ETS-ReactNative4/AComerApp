@@ -1,6 +1,6 @@
 import React, { useRef, useState, useContext } from "react";
 import { StyleSheet, View, Text, ActivityIndicator } from "react-native";
-import { Image, Button } from "react-native-elements";
+import { Image, Button, SocialIcon, Divider } from "react-native-elements";
 import Toast, { DURATION } from "react-native-easy-toast";
 import AuthContext from "../../context/auth/authContext";
 
@@ -76,12 +76,14 @@ const Login = ({ navigation }) => {
         <Toast
           ref={toast}
           position="top"
-          positionValue={250}
+          positionValue={350}
           fadeInDuration={750}
           fadeOutDuration={1000}
           opacity={0.8}
           textStyle={{ color: "#fff" }}
         />
+        <Divider style={styles.divider} />
+        <SocialIcon title="Acceder con Facebook" button type="facebook" />
       </View>
     </View>
   );
@@ -97,7 +99,7 @@ const styles = StyleSheet.create({
     alignItems: "center"
   },
   viewForm: {
-    marginTop: 100
+    marginTop: 40
   },
   logo: {
     width: 200,
@@ -113,6 +115,10 @@ const styles = StyleSheet.create({
     color: "#f00",
     textAlign: "center",
     marginTop: 30
+  },
+  divider: {
+    backgroundColor: "#ffc107",
+    marginBottom: 20
   }
 });
 
