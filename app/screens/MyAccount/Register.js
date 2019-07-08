@@ -1,6 +1,7 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useContext } from "react";
 import { StyleSheet, View } from "react-native";
-import { Button } from "react-native-elements";
+import { Button, Text } from "react-native-elements";
+import AuthContext from "../../context/auth/authContext";
 
 import t from "tcomb-form-native";
 const Form = t.form.Form;
@@ -8,6 +9,8 @@ import { RegisterStruct, RegisterOptions } from "../../forms/Register";
 
 const Register = () => {
   const registerForm = useRef(null);
+  const authContext = useContext(AuthContext);
+  const { error } = authContext;
   const [user, setUser] = useState({
     name: "",
     email: "",
@@ -30,6 +33,7 @@ const Register = () => {
         console.log("Form succes");
       } else {
         console.log("Form Error");
+        console.log(authContext);
       }
     }
   };

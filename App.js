@@ -2,11 +2,14 @@ import React from "react";
 import { StyleSheet, View } from "react-native";
 
 import UserNavigation from "./app/navigations/User";
+import AuthState from "./app/context/auth/AuthState";
 
 const App = () => {
   return (
     <View style={styles.container}>
-      <UserNavigation />
+      <AuthState>
+        <UserNavigation />
+      </AuthState>
     </View>
   );
 };
