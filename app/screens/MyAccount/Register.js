@@ -1,14 +1,20 @@
 import React from "react";
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View } from "react-native";
+import { Button } from "react-native-elements";
 
 import t from "tcomb-form-native";
 const Form = t.form.Form;
 import { RegisterStruct, RegisterOptions } from "../../forms/Register";
 
 const Register = () => {
+  onSubmit = () => {
+    console.log("Register");
+  };
+
   return (
     <View style={styles.viewBody}>
       <Form type={RegisterStruct} options={RegisterOptions} />
+      <Button title="¡Unirse!" onPress={onSubmit} />
     </View>
   );
 };
