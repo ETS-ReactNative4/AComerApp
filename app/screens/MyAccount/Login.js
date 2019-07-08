@@ -30,6 +30,13 @@ const Login = () => {
     } else {
       const validate = loginForm.current.getValue();
       if (validate) {
+        firebase
+          .auth()
+          .signInWithEmailAndPassword(validate.email, validate.password)
+          .then(res => console.log(res))
+          .catch(() =>
+            toast.current.show("Ocurrió un error al acceder a tu cuenta.", 1500)
+          );
       } else {
         setError("Formulario Inválido");
       }
@@ -61,7 +68,7 @@ const Login = () => {
         <Text style={styles.formErrorMessage}>{error}</Text>
         <Toast
           ref={toast}
-          position="bottom"
+          position="top"
           positionValue={250}
           fadeInDuration={750}
           fadeOutDuration={1000}

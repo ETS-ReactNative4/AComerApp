@@ -35,12 +35,12 @@ const Register = ({ navigation }) => {
         firebase
           .auth()
           .createUserWithEmailAndPassword(validate.email, validate.password)
-          .then(resolve => {
+          .then(() => {
             toast.current.show("Registro correcto.", 100, () => {
               navigation.navigate("MyAccount");
             });
           })
-          .catch(err => {
+          .catch(() => {
             toast.current.show("Error al registrar tu cuenta.", 1500);
           });
       } else {
