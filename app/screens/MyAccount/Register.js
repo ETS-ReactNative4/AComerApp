@@ -10,7 +10,7 @@ import { RegisterStruct, RegisterOptions } from "../../forms/Register";
 const Register = () => {
   const registerForm = useRef(null);
   const authContext = useContext(AuthContext);
-  const { error } = authContext;
+  const { setError, error } = authContext;
   const [user, setUser] = useState({
     name: "",
     email: "",
@@ -32,8 +32,7 @@ const Register = () => {
       if (validate) {
         console.log("Form succes");
       } else {
-        console.log("Form Error");
-        console.log(authContext);
+        setError("Formulario Inválido");
       }
     }
   };
@@ -52,6 +51,7 @@ const Register = () => {
         title="¡Unirse!"
         onPress={onSubmit}
       />
+      <Text style={styles.formErrorMessage}>{error}</Text>
     </View>
   );
 };
@@ -68,6 +68,11 @@ const styles = StyleSheet.create({
     marginTop: 20,
     marginLeft: 10,
     marginRight: 10
+  },
+  formErrorMessage: {
+    color: "#f00",
+    textAlign: "center",
+    marginTop: 30
   }
 });
 

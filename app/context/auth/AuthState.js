@@ -1,6 +1,7 @@
 import React, { useReducer } from "react";
 import AuthContext from "./authContext";
 import authReducer from "./authReducer";
+import { SET_ERROR, REMOVE_ERROR } from "../types";
 
 const AuthState = props => {
   const initialState = {
@@ -9,10 +10,17 @@ const AuthState = props => {
 
   const [state, dispatch] = useReducer(authReducer, initialState);
 
+  // SET ERROR
+  const setError = msg => {
+    dispatch({ type: SET_ERROR, msg });
+    setTimeout(() => dispatch({ type: REMOVE_ERROR }), 2000);
+  };
+
   return (
     <AuthContext.Provider
       value={{
-        error: state.error
+        error: state.error,
+        setError
       }}
     >
       {props.children}
