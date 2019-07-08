@@ -32,7 +32,7 @@ const MyAccount = ({ navigation }) => {
       {login ? (
         <Button title="Cerrar Sesión" onPress={() => logout()} />
       ) : (
-        <MyAccountGuest />
+        <MyAccountGuest goToScreen={goToScreen} />
       )}
     </View>
   );
