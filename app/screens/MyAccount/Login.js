@@ -10,7 +10,7 @@ import { LoginStruct, LoginOptions } from "../../forms/Login";
 
 import * as firebase from "firebase";
 
-const Login = () => {
+const Login = ({ navigation }) => {
   const loginForm = useRef(null);
   const toast = useRef(null);
   const authContext = useContext(AuthContext);
@@ -33,9 +33,16 @@ const Login = () => {
         firebase
           .auth()
           .signInWithEmailAndPassword(validate.email, validate.password)
-          .then(res => console.log(res))
+          .then(() =>
+            toast.current.show("¡Bienvenido!", 100, () => {
+              navigation.navigate("MyAccount");
+            })
+          )
           .catch(() =>
-            toast.current.show("Ocurrió un error al acceder a tu cuenta.", 1500)
+            toast.current.show(
+              "Credenciales incorrectas, revise sus datos.",
+              1500
+            )
           );
       } else {
         setError("Formulario Inválido");
