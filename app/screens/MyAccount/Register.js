@@ -1,10 +1,15 @@
 import React from "react";
 import { StyleSheet, View, Text } from "react-native";
 
+import t from "tcomb-form-native";
+const Form = t.form.Form;
+import { RegisterStruct, RegisterOptions } from "../../forms/Register";
+
 const Register = () => {
   return (
     <View style={styles.viewBody}>
       <Text>Register Screen</Text>
+      <Form ref="registerForm" type={RegisterStruct} />
     </View>
   );
 };
