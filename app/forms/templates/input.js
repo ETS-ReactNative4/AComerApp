@@ -2,10 +2,16 @@ import React from "react";
 import { StyleSheet, View } from "react-native";
 import { Input, Icon } from "react-native-elements";
 
-const InputTemplate = props => {
+const InputTemplate = ({ config }) => {
+  const { label, placeholder, error, password, secureTextEntry } = config;
+
   return (
     <View>
-      <Input placeholder="Test ..." />
+      <Input
+        placeholder={placeholder}
+        password={password}
+        secureTextEntry={secureTextEntry}
+      />
     </View>
   );
 };
