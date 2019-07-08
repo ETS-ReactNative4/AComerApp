@@ -1,3 +1,9 @@
+### Setup
+
+1. Clone Repo
+2. yarn install
+3. yarn start
+
 ### Dependencies
 
 - [React Native Elements](https://react-native-training.github.io/react-native-elements/)
