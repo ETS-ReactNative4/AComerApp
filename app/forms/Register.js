@@ -16,7 +16,9 @@ export const RegisterOptions = {
       config: {
         label: "Nombre (*)",
         placeholder: "Ingresa tu nombre y apellido ...",
-        error: "Nombre inválido."
+        error: "Nombre inválido.",
+        icontype: "material-community",
+        iconName: "account-outline"
       }
     },
     email: {

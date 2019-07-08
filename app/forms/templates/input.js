@@ -3,7 +3,15 @@ import { StyleSheet, View } from "react-native";
 import { Input, Icon } from "react-native-elements";
 
 const InputTemplate = ({ config }) => {
-  const { label, placeholder, error, password, secureTextEntry } = config;
+  const {
+    label,
+    placeholder,
+    error,
+    password,
+    secureTextEntry,
+    icontype,
+    iconName
+  } = config;
 
   return (
     <View style={styles.viewContainer}>
@@ -11,6 +19,9 @@ const InputTemplate = ({ config }) => {
         placeholder={placeholder}
         password={password}
         secureTextEntry={secureTextEntry}
+        rightIcon={
+          <Icon type={icontype} name={iconName} size={24} color="black" />
+        }
       />
     </View>
   );
