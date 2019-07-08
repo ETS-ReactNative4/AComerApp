@@ -3,6 +3,8 @@ import { StyleSheet, View, Text } from "react-native";
 import { Button } from "react-native-elements";
 import * as firebase from "firebase";
 
+import MyAccountGuest from "../../components/MyAccount/MyAccountGuest";
+
 const MyAccount = ({ navigation }) => {
   useEffect(() => {
     firebase.auth().onAuthStateChanged(user => {
@@ -27,14 +29,10 @@ const MyAccount = ({ navigation }) => {
 
   return (
     <View style={styles.viewBody}>
-      <Text>MyAccount Screen</Text>
       {login ? (
         <Button title="Cerrar Sesión" onPress={() => logout()} />
       ) : (
-        <Fragment>
-          <Button title="Login" onPress={() => goToScreen("Login")} />
-          <Button title="Register" onPress={() => goToScreen("Register")} />
-        </Fragment>
+        <MyAccountGuest />
       )}
     </View>
   );
