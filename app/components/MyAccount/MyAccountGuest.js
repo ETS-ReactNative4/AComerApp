@@ -4,14 +4,12 @@ import { Button, Image } from "react-native-elements";
 
 const MyAccountGuest = () => {
   return (
-    <View style={styles.viewBody}>
+    <View>
       <Text>My Account Guest</Text>
     </View>
   );
 };
 
-const styles = StyleSheet.create({
-  viewBody: {}
-});
+const styles = StyleSheet.create({});
 
 export default MyAccountGuest;
