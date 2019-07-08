@@ -58,7 +58,25 @@ const Login = ({ navigation }) => {
       { permissions: FacebookApi.permissions }
     );
 
-    console.log(type, token);
+    if (type == "success") {
+      const credentials = firebase.auth.FacebookAuthProvider.credential(token);
+
+      firebase
+        .auth()
+        .signInWithCredential(credentials)
+        .then(() => {
+          toast.current.show("¡Bienvenido!", 100, () => {
+            navigation.navigate("MyAccount");
+          });
+        })
+        .catch(() =>
+          toast.current.show("Error accediendo con Facebook.", 1500)
+        );
+    } else if (type === "cancel") {
+      toast.current.show("Inicio de sesión cancelada.", 1500);
+    } else {
+      toast.current.show("Error desconocido.", 1500);
+    }
   };
 
   return (
