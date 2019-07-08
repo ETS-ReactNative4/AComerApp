@@ -1,8 +1,13 @@
-import React from "react";
+import React, { useRef, useState, useContext } from "react";
 import { StyleSheet, View, Text, ActivityIndicator } from "react-native";
 import { Image } from "react-native-elements";
 
+import t from "tcomb-form-native";
+const Form = t.form.Form;
+import { LoginStruct, LoginOptions } from "../../forms/Login";
+
 const Login = () => {
+  const loginForm = useRef(null);
   return (
     <View style={styles.viewBody}>
       <Image
@@ -11,6 +16,7 @@ const Login = () => {
         PlaceholderContent={<ActivityIndicator />}
         resizeMode="contain"
       />
+      <Form ref={loginForm} type={LoginStruct} options={LoginOptions} />
     </View>
   );
 };

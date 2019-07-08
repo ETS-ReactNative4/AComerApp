@@ -30,7 +30,7 @@ export const RegisterOptions = {
     password: {
       template: inputTemplate,
       config: {
-        placeholder: "Escribe tu contraseña ...",
+        placeholder: "Ingresa tu contraseña ...",
         password: true,
         secureTextEntry: true,
         icontype: "material-community",
