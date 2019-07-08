@@ -6,7 +6,7 @@ const InputTemplate = ({ config }) => {
   const { label, placeholder, error, password, secureTextEntry } = config;
 
   return (
-    <View>
+    <View style={styles.viewContainer}>
       <Input
         placeholder={placeholder}
         password={password}
@@ -16,6 +16,11 @@ const InputTemplate = ({ config }) => {
   );
 };
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  viewContainer: {
+    marginTop: 12,
+    marginBottom: 12
+  }
+});
 
 export default InputTemplate;
