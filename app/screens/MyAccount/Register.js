@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { StyleSheet, View } from "react-native";
 import { Button } from "react-native-elements";
 
@@ -7,13 +7,19 @@ const Form = t.form.Form;
 import { RegisterStruct, RegisterOptions } from "../../forms/Register";
 
 const Register = () => {
+  const registerForm = useRef(null);
+
   onSubmit = () => {
-    console.log("Register");
+    const validate = registerForm.current.getValue();
   };
 
   return (
     <View style={styles.viewBody}>
-      <Form type={RegisterStruct} options={RegisterOptions} />
+      <Form
+        ref={registerForm}
+        type={RegisterStruct}
+        options={RegisterOptions}
+      />
       <Button title="¡Unirse!" onPress={onSubmit} />
     </View>
   );
