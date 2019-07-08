@@ -1,9 +1,10 @@
-import React, { Fragment, useEffect, useState } from "react";
-import { StyleSheet, View, Text } from "react-native";
+import React, { useEffect, useState } from "react";
+import { StyleSheet, View } from "react-native";
 import { Button } from "react-native-elements";
 import * as firebase from "firebase";
 
 import MyAccountGuest from "../../components/MyAccount/MyAccountGuest";
+import MyAccountUser from "../../components/MyAccount/MyAccountUser";
 
 const MyAccount = ({ navigation }) => {
   useEffect(() => {
@@ -20,20 +21,17 @@ const MyAccount = ({ navigation }) => {
     navigation.navigate(nameScreen);
   };
 
-  const logout = () => {
-    firebase
-      .auth()
-      .signOut()
-      .then(() => setLogin(false));
-  };
+  // const logout = () => {
+  //   firebase
+  //     .auth()
+  //     .signOut()
+  //     .then(() => setLogin(false));
+  // };
+  // <Button title="Cerrar Sesión" onPress={() => logout()} />
 
   return (
     <View style={styles.viewBody}>
-      {login ? (
-        <Button title="Cerrar Sesión" onPress={() => logout()} />
-      ) : (
-        <MyAccountGuest goToScreen={goToScreen} />
-      )}
+      {login ? <MyAccountUser /> : <MyAccountGuest goToScreen={goToScreen} />}
     </View>
   );
 };
