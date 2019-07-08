@@ -14,7 +14,6 @@ const styles = StyleSheet.create({
   viewBody: {
     flex: 1,
     alignItems: "center",
-    justifyContent: "center",
     paddingLeft: 30,
     paddingRight: 30
   }
