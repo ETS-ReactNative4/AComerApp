@@ -43,7 +43,11 @@ const Register = () => {
         value={user}
         onChange={onChange}
       />
-      <Button title="¡Unirse!" onPress={onSubmit} />
+      <Button
+        buttonStyle={styles.buttonRegisterContainer}
+        title="¡Unirse!"
+        onPress={onSubmit}
+      />
     </View>
   );
 };
@@ -54,6 +58,12 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     marginLeft: 40,
     marginRight: 40
+  },
+  buttonRegisterContainer: {
+    backgroundColor: "#ffc107",
+    marginTop: 20,
+    marginLeft: 10,
+    marginRight: 10
   }
 });
 
