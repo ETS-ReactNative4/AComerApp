@@ -14,9 +14,7 @@ export const RegisterOptions = {
     name: {
       template: inputTemplate,
       config: {
-        label: "Nombre (*)",
         placeholder: "Ingresa tu nombre y apellido ...",
-        error: "Nombre inválido.",
         icontype: "material-community",
         iconName: "account-outline"
       }
@@ -24,29 +22,29 @@ export const RegisterOptions = {
     email: {
       template: inputTemplate,
       config: {
-        label: "Email (*)",
         placeholder: "Ingresa tu email ...",
-        error: "Email inválido."
+        icontype: "material-community",
+        iconName: "at"
       }
     },
     password: {
       template: inputTemplate,
       config: {
-        label: "Contraseña (*)",
         placeholder: "Escribe tu contraseña ...",
-        error: "Contraseña inválida.",
         password: true,
-        secureTextEntry: true
+        secureTextEntry: true,
+        icontype: "material-community",
+        iconName: "lock-outline"
       }
     },
     passwordConfirmation: {
       template: inputTemplate,
       config: {
-        label: "Confirmar contraseña",
         placeholder: "Repite tu contraseña",
-        error: "Contraseña inválida.",
         password: true,
-        secureTextEntry: true
+        secureTextEntry: true,
+        icontype: "material-community",
+        iconName: "lock-reset"
       }
     }
   }
