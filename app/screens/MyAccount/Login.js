@@ -3,12 +3,14 @@ import { StyleSheet, View, Text, ActivityIndicator } from "react-native";
 import { Image, Button, SocialIcon, Divider } from "react-native-elements";
 import Toast, { DURATION } from "react-native-easy-toast";
 import AuthContext from "../../context/auth/authContext";
+import * as Facebook from "expo-facebook";
 
 import t from "tcomb-form-native";
 const Form = t.form.Form;
 import { LoginStruct, LoginOptions } from "../../forms/Login";
 
 import * as firebase from "firebase";
+import { FacebookApi } from "../../utils/Social";
 
 const Login = ({ navigation }) => {
   const loginForm = useRef(null);
@@ -50,6 +52,15 @@ const Login = ({ navigation }) => {
     }
   };
 
+  const loginFacebook = async () => {
+    const { type, token } = await Facebook.logInWithReadPermissionsAsync(
+      FacebookApi.application_id,
+      { permissions: FacebookApi.permissions }
+    );
+
+    console.log(type, token);
+  };
+
   return (
     <View style={styles.viewBody}>
       <Image
@@ -83,7 +94,12 @@ const Login = ({ navigation }) => {
           textStyle={{ color: "#fff" }}
         />
         <Divider style={styles.divider} />
-        <SocialIcon title="Acceder con Facebook" button type="facebook" />
+        <SocialIcon
+          title="Acceder con Facebook"
+          button
+          type="facebook"
+          onPress={() => loginFacebook()}
+        />
       </View>
     </View>
   );
