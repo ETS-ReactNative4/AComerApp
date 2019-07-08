@@ -1,7 +1,7 @@
 import React, { useRef, useState, useContext } from "react";
 import { StyleSheet, View, Text, ActivityIndicator } from "react-native";
 import { Image, Button, SocialIcon, Divider } from "react-native-elements";
-import Toast, { DURATION } from "react-native-easy-toast";
+import Toast from "react-native-easy-toast";
 import AuthContext from "../../context/auth/authContext";
 import * as Facebook from "expo-facebook";
 

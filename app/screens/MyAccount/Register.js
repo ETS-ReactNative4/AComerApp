@@ -1,7 +1,7 @@
 import React, { useRef, useState, useContext } from "react";
-import { StyleSheet, View } from "react-native";
-import { Button, Text } from "react-native-elements";
-import Toast, { DURATION } from "react-native-easy-toast";
+import { StyleSheet, View, ActivityIndicator } from "react-native";
+import { Button, Text, Image } from "react-native-elements";
+import Toast from "react-native-easy-toast";
 import AuthContext from "../../context/auth/authContext";
 
 import t from "tcomb-form-native";
@@ -51,28 +51,37 @@ const Register = ({ navigation }) => {
 
   return (
     <View style={styles.viewBody}>
-      <Form
-        ref={registerForm}
-        type={RegisterStruct}
-        options={RegisterOptions}
-        value={user}
-        onChange={onChange}
+      <Image
+        source={require("../../../assets/img/logo.png")}
+        style={styles.logo}
+        containerStyle={styles.containerLogo}
+        PlaceholderContent={<ActivityIndicator />}
+        resizeMode="contain"
       />
-      <Button
-        buttonStyle={styles.buttonRegisterContainer}
-        title="¡Unirse!"
-        onPress={onSubmit}
-      />
-      <Text style={styles.formErrorMessage}>{error}</Text>
-      <Toast
-        ref={toast}
-        position="bottom"
-        positionValue={250}
-        fadeInDuration={750}
-        fadeOutDuration={1000}
-        opacity={0.8}
-        textStyle={{ color: "#fff" }}
-      />
+      <View style={styles.viewForm}>
+        <Form
+          ref={registerForm}
+          type={RegisterStruct}
+          options={RegisterOptions}
+          value={user}
+          onChange={onChange}
+        />
+        <Button
+          buttonStyle={styles.buttonRegisterContainer}
+          title="¡Unirse!"
+          onPress={onSubmit}
+        />
+        <Text style={styles.formErrorMessage}>{error}</Text>
+        <Toast
+          ref={toast}
+          position="bottom"
+          positionValue={250}
+          fadeInDuration={750}
+          fadeOutDuration={1000}
+          opacity={0.8}
+          textStyle={{ color: "#fff" }}
+        />
+      </View>
     </View>
   );
 };
@@ -80,9 +89,18 @@ const Register = ({ navigation }) => {
 const styles = StyleSheet.create({
   viewBody: {
     flex: 1,
-    justifyContent: "center",
-    marginLeft: 40,
-    marginRight: 40
+    marginLeft: 30,
+    marginRight: 30
+  },
+  logo: {
+    width: 200,
+    height: 100
+  },
+  containerLogo: {
+    alignItems: "center"
+  },
+  viewForm: {
+    marginTop: 40
   },
   buttonRegisterContainer: {
     backgroundColor: "#ffc107",
