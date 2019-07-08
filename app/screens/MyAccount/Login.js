@@ -1,10 +1,16 @@
 import React from "react";
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View, Text, ActivityIndicator } from "react-native";
+import { Image } from "react-native-elements";
 
 const Login = () => {
   return (
     <View style={styles.viewBody}>
-      <Text>Login Screen</Text>
+      <Image
+        source={require("../../../assets/img/logo.png")}
+        style={styles.logo}
+        PlaceholderContent={<ActivityIndicator />}
+        resizeMode="contain"
+      />
     </View>
   );
 };
@@ -12,10 +18,13 @@ const Login = () => {
 const styles = StyleSheet.create({
   viewBody: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
     marginLeft: 40,
-    marginRight: 40
+    marginRight: 40,
+    alignItems: "center"
+  },
+  logo: {
+    width: 200,
+    height: 100
   }
 });
 
