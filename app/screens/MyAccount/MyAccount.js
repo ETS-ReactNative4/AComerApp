@@ -11,6 +11,7 @@ const MyAccount = ({ navigation }) => {
     <View style={styles.viewBody}>
       <Text>MyAccount Screen</Text>
       <Button title="Registro" onPress={() => goToScreen("Register")} />
+      <Button title="Login" onPress={() => goToScreen("Login")} />
     </View>
   );
 };
