@@ -1,10 +1,11 @@
 import React from "react";
 import { StyleSheet, View, Text } from "react-native";
+import UserInfo from "./UserInfo";
 
 const MyAccountUser = () => {
   return (
     <View style={styles.viewBody}>
-      <Text>My Account User</Text>
+      <UserInfo />
     </View>
   );
 };
