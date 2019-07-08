@@ -1,6 +1,7 @@
 import React, { useRef, useState, useContext } from "react";
 import { StyleSheet, View } from "react-native";
 import { Button, Text } from "react-native-elements";
+import Toast, { DURATION } from "react-native-easy-toast";
 import AuthContext from "../../context/auth/authContext";
 
 import t from "tcomb-form-native";
@@ -9,8 +10,9 @@ import { RegisterStruct, RegisterOptions } from "../../forms/Register";
 
 import * as firebase from "firebase";
 
-const Register = () => {
+const Register = ({ navigation }) => {
   const registerForm = useRef(null);
+  const toast = useRef(null);
   const authContext = useContext(AuthContext);
   const { setError, error } = authContext;
   const [user, setUser] = useState({
@@ -34,10 +36,12 @@ const Register = () => {
           .auth()
           .createUserWithEmailAndPassword(validate.email, validate.password)
           .then(resolve => {
-            console.log("Registro correcto");
+            toast.current.show("Registro correcto.", 100, () => {
+              navigation.navigate("MyAccount");
+            });
           })
           .catch(err => {
-            console.log(err);
+            toast.current.show("Error al registrar tu cuenta.", 1500);
           });
       } else {
         setError("Formulario Inválido");
@@ -60,6 +64,15 @@ const Register = () => {
         onPress={onSubmit}
       />
       <Text style={styles.formErrorMessage}>{error}</Text>
+      <Toast
+        ref={toast}
+        position="bottom"
+        positionValue={250}
+        fadeInDuration={750}
+        fadeOutDuration={1000}
+        opacity={0.8}
+        textStyle={{ color: "#fff" }}
+      />
     </View>
   );
 };
