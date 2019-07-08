@@ -1,5 +1,6 @@
 import t from "tcomb-form-native";
 import formValidation from "../utils/Validations";
+import inputTemplate from "./templates/input";
 
 export const RegisterStruct = t.struct({
   name: t.String,
@@ -13,7 +14,8 @@ export const RegisterOptions = {
     name: {
       label: "Nombre (*)",
       placeholder: "Ingresa tu nombre y apellido ...",
-      error: "Nombre inválido."
+      error: "Nombre inválido.",
+      template: inputTemplate
     },
     email: {
       label: "Email (*)",
