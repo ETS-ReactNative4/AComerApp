@@ -7,6 +7,8 @@ import t from "tcomb-form-native";
 const Form = t.form.Form;
 import { RegisterStruct, RegisterOptions } from "../../forms/Register";
 
+import * as firebase from "firebase";
+
 const Register = () => {
   const registerForm = useRef(null);
   const authContext = useContext(AuthContext);
@@ -18,7 +20,7 @@ const Register = () => {
     passwordConfirmation: ""
   });
 
-  const { name, email, password, passwordConfirmation } = user;
+  const { password, passwordConfirmation } = user;
 
   const onChange = formData => setUser(formData);
 
@@ -28,6 +30,15 @@ const Register = () => {
     } else {
       const validate = registerForm.current.getValue();
       if (validate) {
+        firebase
+          .auth()
+          .createUserWithEmailAndPassword(validate.email, validate.password)
+          .then(resolve => {
+            console.log("Registro correcto");
+          })
+          .catch(err => {
+            console.log(err);
+          });
       } else {
         setError("Formulario Inválido");
       }
