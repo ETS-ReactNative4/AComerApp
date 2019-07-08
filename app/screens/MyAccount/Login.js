@@ -101,6 +101,15 @@ const Login = ({ navigation }) => {
           buttonStyle={styles.buttonLoginContainer}
           onPress={onSubmit}
         />
+        <Text style={styles.textRegister}>
+          ¿Aún no tienes una cuenta?{" "}
+          <Text
+            style={styles.buttonRegister}
+            onPress={() => navigation.navigate("Register")}
+          >
+            ¡Registrate!
+          </Text>
+        </Text>
         <Text style={styles.formErrorMessage}>{error}</Text>
         <Toast
           ref={toast}
@@ -126,8 +135,8 @@ const Login = ({ navigation }) => {
 const styles = StyleSheet.create({
   viewBody: {
     flex: 1,
-    marginLeft: 40,
-    marginRight: 40
+    marginLeft: 30,
+    marginRight: 30
   },
   containerLogo: {
     alignItems: "center"
@@ -148,11 +157,21 @@ const styles = StyleSheet.create({
   formErrorMessage: {
     color: "#f00",
     textAlign: "center",
-    marginTop: 30
+    marginTop: 30,
+    marginBottom: 30
   },
   divider: {
     backgroundColor: "#ffc107",
     marginBottom: 20
+  },
+  textRegister: {
+    marginTop: 15,
+    marginLeft: 10,
+    marginRight: 10
+  },
+  buttonRegister: {
+    color: "#ffc107",
+    fontWeight: "bold"
   }
 });
 
