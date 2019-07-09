@@ -31,7 +31,7 @@ const AuthState = props => {
 
     try {
       const res = await api.get("/api/auth");
-      dispatch({ type: USER_LOADED, payload: res.data });
+      dispatch({ type: USER_LOADED, user: res.data });
     } catch (err) {
       dispatch({ type: AUTH_ERROR });
       setError(err.response.data.msg);
