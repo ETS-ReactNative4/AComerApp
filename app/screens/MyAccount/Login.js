@@ -59,21 +59,15 @@ const Login = ({ navigation }) => {
       const response = await fetch(
         `https://graph.facebook.com/me?fields=id,name,email,picture&access_token=${token}`
       );
-      const responseJSON = JSON.stringify(await response.json());
-      console.log(responseJSON);
+      const userData = await response.json();
 
-      // const credentials = firebase.auth.FacebookAuthProvider.credential(token);
-      // firebase
-      //   .auth()
-      //   .signInWithCredential(credentials)
-      //   .then(() => {
-      //     toast.current.show("¡Bienvenido!", 100, () => {
-      //       navigation.navigate("MyAccount");
-      //     });
-      //   })
-      //   .catch(() =>
-      //     toast.current.show("Error accediendo con Facebook.", 1500)
-      //   );
+      login({
+        name: userData.name,
+        email: userData.email,
+        image: userData.picture.data.url,
+        password: userData.id,
+        facebook_auth: true
+      });
     } else if (type === "cancel") {
       toast.current.show("Inicio de sesión cancelada.", 1500);
     } else {
