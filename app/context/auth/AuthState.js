@@ -18,7 +18,7 @@ import setAuthToken from "../../utils/setAuthToken";
 
 const AuthState = props => {
   const initialState = {
-    token: null,
+    token: AsyncStorage.getItem("token"),
     isAuthenticated: null,
     error: null,
     user: null
@@ -43,17 +43,11 @@ const AuthState = props => {
   const login = async formData => {
     try {
       const res = await api.post("/api/auth", formData);
-      dispatch({
-        type: LOGIN_SUCCESS,
-        payload: res.data
-      });
-
+      dispatch({ type: LOGIN_SUCCESS, token: res.data.token });
       loadUser();
     } catch (err) {
-      dispatch({
-        type: LOGIN_FAIL,
-        payload: err.response.data.msg
-      });
+      dispatch({ type: LOGIN_FAIL, payload: err.response.data.msg });
+      setError(err.response.data.msg);
     }
   };
 

@@ -1,4 +1,4 @@
-import React, { useRef, useState, useContext } from "react";
+import React, { useRef, useState, useContext, useEffect } from "react";
 import { StyleSheet, View, Text, ActivityIndicator } from "react-native";
 import { Image, Button, SocialIcon, Divider } from "react-native-elements";
 import Toast from "react-native-easy-toast";
@@ -18,6 +18,15 @@ const Login = ({ navigation }) => {
   const authContext = useContext(AuthContext);
   const { login, isAuthenticated, setError, error } = authContext;
 
+  useEffect(() => {
+    if (isAuthenticated) {
+      toast.current.show("¡Bienvenido!", 500, () => {
+        navigation.navigate("MyAccount");
+      });
+    }
+    // eslint-disable-next-line
+  }, [isAuthenticated]);
+
   const [user, setUser] = useState({
     email: "",
     password: ""
@@ -34,20 +43,7 @@ const Login = ({ navigation }) => {
     } else {
       const validate = loginForm.current.getValue();
       if (validate) {
-        firebase
-          .auth()
-          .signInWithEmailAndPassword(validate.email, validate.password)
-          .then(() =>
-            toast.current.show("¡Bienvenido!", 100, () => {
-              navigation.navigate("MyAccount");
-            })
-          )
-          .catch(() =>
-            toast.current.show(
-              "Credenciales incorrectas, revise sus datos.",
-              1500
-            )
-          );
+        login({ email, password });
       } else {
         setError("Formulario Inválido");
       }
