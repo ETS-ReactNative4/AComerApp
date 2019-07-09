@@ -7,7 +7,6 @@ import {
   LOGIN_SUCCESS,
   LOGIN_FAIL,
   REGISTER_SUCCESS,
-  REGISTER_FAIL,
   SET_ERROR,
   REMOVE_ERROR
 } from "../types";
@@ -27,10 +26,12 @@ const AuthState = props => {
 
   // LOAD USER
   const loadUser = async () => {
-    if (AsyncStorage.token) {
-      setAuthToken(AsyncStorage.token);
-    }
-
+    AsyncStorage.getItem("token", (err, result) => {
+      if (!err) {
+        setAuthToken(result);
+      }
+    });
+    return;
     try {
       const res = await api.get("/api/auth");
       dispatch({
@@ -66,7 +67,7 @@ const AuthState = props => {
   const register = async formData => {
     try {
       const res = await api.post("/api/users/register", formData);
-      dispatch({ type: REGISTER_SUCCESS, payload: res.data });
+      dispatch({ type: REGISTER_SUCCESS, token: res.data.token });
       loadUser();
     } catch (err) {
       setError(err.response.data.msg);

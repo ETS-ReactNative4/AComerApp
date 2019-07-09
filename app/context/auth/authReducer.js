@@ -4,7 +4,6 @@ import {
   LOGIN_SUCCESS,
   LOGIN_FAIL,
   REGISTER_SUCCESS,
-  REGISTER_FAIL,
   SET_ERROR,
   REMOVE_ERROR
 } from "../types";
@@ -20,14 +19,15 @@ export default (state, action) => {
       };
     case LOGIN_SUCCESS:
     case REGISTER_SUCCESS:
-      AsyncStorage.setItem("token", action.payload.token);
-      return {
-        ...state,
-        ...action.payload,
-        isAuthenticated: true
-      };
+      AsyncStorage.setItem("token", action.token, err => {
+        if (!err) {
+          return {
+            ...state,
+            isAuthenticated: true
+          };
+        }
+      });
     case LOGIN_FAIL:
-    case REGISTER_FAIL:
     case AUTH_ERROR:
       AsyncStorage.removeItem("token");
       return {
