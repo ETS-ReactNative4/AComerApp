@@ -3,14 +3,13 @@ import { StyleSheet, View, Text, ActivityIndicator } from "react-native";
 import { Image, Button, SocialIcon, Divider } from "react-native-elements";
 import Toast from "react-native-easy-toast";
 import AuthContext from "../../context/auth/authContext";
+
 import * as Facebook from "expo-facebook";
+import { FacebookApi } from "../../utils/Social";
 
 import t from "tcomb-form-native";
 const Form = t.form.Form;
 import { LoginStruct, LoginOptions } from "../../forms/Login";
-
-import * as firebase from "firebase";
-import { FacebookApi } from "../../utils/Social";
 
 const Login = ({ navigation }) => {
   const loginForm = useRef(null);
@@ -57,19 +56,24 @@ const Login = ({ navigation }) => {
     );
 
     if (type == "success") {
-      const credentials = firebase.auth.FacebookAuthProvider.credential(token);
+      const response = await fetch(
+        `https://graph.facebook.com/me?fields=id,name,picture&access_token=${token}`
+      );
+      const responseJSON = JSON.stringify(await response.json());
+      console.log(responseJSON);
 
-      firebase
-        .auth()
-        .signInWithCredential(credentials)
-        .then(() => {
-          toast.current.show("¡Bienvenido!", 100, () => {
-            navigation.navigate("MyAccount");
-          });
-        })
-        .catch(() =>
-          toast.current.show("Error accediendo con Facebook.", 1500)
-        );
+      // const credentials = firebase.auth.FacebookAuthProvider.credential(token);
+      // firebase
+      //   .auth()
+      //   .signInWithCredential(credentials)
+      //   .then(() => {
+      //     toast.current.show("¡Bienvenido!", 100, () => {
+      //       navigation.navigate("MyAccount");
+      //     });
+      //   })
+      //   .catch(() =>
+      //     toast.current.show("Error accediendo con Facebook.", 1500)
+      //   );
     } else if (type === "cancel") {
       toast.current.show("Inicio de sesión cancelada.", 1500);
     } else {
