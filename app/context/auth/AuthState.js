@@ -19,7 +19,6 @@ const AuthState = props => {
   const initialState = {
     token: AsyncStorage.getItem("token"),
     isAuthenticated: null,
-    loading: true,
     error: null,
     user: null
   };
@@ -67,17 +66,10 @@ const AuthState = props => {
   const register = async formData => {
     try {
       const res = await api.post("/api/users/register", formData);
-      dispatch({
-        type: REGISTER_SUCCESS,
-        payload: res.data
-      });
-
+      dispatch({ type: REGISTER_SUCCESS, payload: res.data });
       loadUser();
     } catch (err) {
-      dispatch({
-        type: REGISTER_FAIL,
-        payload: err.response.data.msg
-      });
+      setError(err.response.data.msg);
     }
   };
 
@@ -92,7 +84,6 @@ const AuthState = props => {
       value={{
         token: state.token,
         isAuthenticated: state.isAuthenticated,
-        loading: state.loading,
         user: state.user,
         error: state.error,
         setError,

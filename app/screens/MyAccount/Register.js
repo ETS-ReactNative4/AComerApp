@@ -19,14 +19,8 @@ const Register = ({ navigation }) => {
     if (isAuthenticated) {
       navigation.navigate("MyAccount");
     }
-
-    if (error === "User already exists.") {
-      //setAlert(error, "red");
-      //clearErrors();
-      console.log(error);
-    }
     // eslint-disable-next-line
-  }, [error, isAuthenticated]);
+  }, []);
 
   const [user, setUser] = useState({
     name: "",
