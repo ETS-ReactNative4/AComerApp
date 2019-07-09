@@ -1,4 +1,4 @@
-import React, { Fragment, useContext } from "react";
+import React, { Fragment, useContext, useEffect } from "react";
 import { StyleSheet, View } from "react-native";
 import { Button } from "react-native-elements";
 import AuthContext from "../../context/auth/authContext";
@@ -8,7 +8,11 @@ import MyAccountUser from "../../components/MyAccount/MyAccountUser";
 
 const MyAccount = ({ navigation }) => {
   const authContext = useContext(AuthContext);
-  const { isAuthenticated, logout } = authContext;
+  const { isAuthenticated, logout, loadUser } = authContext;
+
+  useEffect(() => {
+    loadUser();
+  }, []);
 
   const goToScreen = nameScreen => {
     navigation.navigate(nameScreen);
