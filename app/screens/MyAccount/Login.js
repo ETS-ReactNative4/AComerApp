@@ -57,7 +57,7 @@ const Login = ({ navigation }) => {
 
     if (type == "success") {
       const response = await fetch(
-        `https://graph.facebook.com/me?fields=id,name,picture&access_token=${token}`
+        `https://graph.facebook.com/me?fields=id,name,email,picture&access_token=${token}`
       );
       const responseJSON = JSON.stringify(await response.json());
       console.log(responseJSON);
