@@ -13,16 +13,24 @@ import { AsyncStorage } from "react-native";
 export default (state, action) => {
   switch (action.type) {
     case USER_LOADED:
-      return console.log("USER LOADED REDUCER");
-    case AUTH_ERROR:
-      return console.log("AUTH ERROR REDUCER");
+      return {
+        ...state,
+        isAuthenticated: true,
+        loading: false,
+        user: action.payload
+      };
     case LOGIN_SUCCESS:
-      return console.log("LOGIN SUCCESS REDUCER");
-    case LOGIN_FAIL:
-      return console.log("LOGIN FAIL REDUCER");
     case REGISTER_SUCCESS:
-      return console.log("REGISTER SUCCESS REDUCER");
+      AsyncStorage.setItem("token", action.payload.token);
+      return {
+        ...state,
+        ...action.payload,
+        isAuthenticated: true,
+        loading: false
+      };
+    case LOGIN_FAIL:
     case REGISTER_FAIL:
+    case AUTH_ERROR:
       AsyncStorage.removeItem("token");
       return {
         ...state,

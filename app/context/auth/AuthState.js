@@ -13,6 +13,7 @@ import {
 } from "../types";
 import { AsyncStorage } from "react-native";
 import api from "../../utils/ApiConnection";
+import setAuthToken from "../../utils/setAuthToken";
 
 const AuthState = props => {
   const initialState = {
@@ -65,7 +66,7 @@ const AuthState = props => {
   // Register User
   const register = async formData => {
     try {
-      const res = await api.post("/api/users", formData);
+      const res = await api.post("/api/users/register", formData);
       dispatch({
         type: REGISTER_SUCCESS,
         payload: res.data
