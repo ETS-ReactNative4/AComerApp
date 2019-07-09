@@ -8,6 +8,7 @@ import {
   SET_ERROR,
   REMOVE_ERROR
 } from "../types";
+import { AsyncStorage } from "react-native";
 
 export default (state, action) => {
   switch (action.type) {
@@ -22,7 +23,15 @@ export default (state, action) => {
     case REGISTER_SUCCESS:
       return console.log("REGISTER SUCCESS REDUCER");
     case REGISTER_FAIL:
-      return console.log("REGISTER FAIL REDUCER");
+      AsyncStorage.removeItem("token");
+      return {
+        ...state,
+        token: null,
+        isAuthenticated: false,
+        loading: false,
+        user: null,
+        error: action.payload
+      };
     case SET_ERROR:
       return {
         ...state,

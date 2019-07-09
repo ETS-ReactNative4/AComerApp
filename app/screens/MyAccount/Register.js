@@ -8,8 +8,6 @@ import t from "tcomb-form-native";
 const Form = t.form.Form;
 import { RegisterStruct, RegisterOptions } from "../../forms/Register";
 
-import * as firebase from "firebase";
-
 const Register = ({ navigation }) => {
   const registerForm = useRef(null);
   const toast = useRef(null);
@@ -25,6 +23,7 @@ const Register = ({ navigation }) => {
     if (error === "User already exists.") {
       //setAlert(error, "red");
       //clearErrors();
+      console.log(error);
     }
     // eslint-disable-next-line
   }, [error, isAuthenticated]);
@@ -40,29 +39,6 @@ const Register = ({ navigation }) => {
 
   const onChange = formData => setUser(formData);
 
-  // const onSubmit = () => {
-  //   if (password !== passwordConfirmation) {
-  //     setError("Tus contraseñas no coinciden.");
-  //   } else {
-  //     const validate = registerForm.current.getValue();
-  //     if (validate) {
-  //       firebase
-  //         .auth()
-  //         .createUserWithEmailAndPassword(validate.email, validate.password)
-  //         .then(() => {
-  //           toast.current.show("Registro correcto.", 100, () => {
-  //             navigation.navigate("MyAccount");
-  //           });
-  //         })
-  //         .catch(() => {
-  //           toast.current.show("Error al registrar tu cuenta.", 1500);
-  //         });
-  //     } else {
-  //       setError("Formulario Inválido");
-  //     }
-  //   }
-  // };
-
   const onSubmit = e => {
     e.preventDefault();
     if (password !== passwordConfirmation) {
@@ -71,6 +47,7 @@ const Register = ({ navigation }) => {
       const validate = registerForm.current.getValue();
       if (validate) {
         register({ name, email, password });
+        console.log("VALIDADO");
       } else {
         setError("Formulario Inválido");
       }

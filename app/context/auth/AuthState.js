@@ -6,6 +6,8 @@ import {
   AUTH_ERROR,
   LOGIN_SUCCESS,
   LOGIN_FAIL,
+  REGISTER_SUCCESS,
+  REGISTER_FAIL,
   SET_ERROR,
   REMOVE_ERROR
 } from "../types";
