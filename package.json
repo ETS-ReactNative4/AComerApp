@@ -23,6 +23,5 @@
   "devDependencies": {
     "babel-preset-expo": "^5.1.1"
   },
-  "private": true,
-  "proxy": "http://localhost:5000"
+  "private": true
 }
