@@ -17,9 +17,10 @@ const Register = ({ navigation }) => {
 
   useEffect(() => {
     if (isAuthenticated) {
-      navigation.navigate("MyAccount");
+      toast.current.show("¡Bienvenido!", 100, () => {
+        navigation.navigate("MyAccount");
+      });
     }
-    console.log(isAuthenticated);
     // eslint-disable-next-line
   }, [isAuthenticated]);
 
@@ -74,7 +75,7 @@ const Register = ({ navigation }) => {
         <Toast
           ref={toast}
           position="bottom"
-          positionValue={250}
+          positionValue={450}
           fadeInDuration={750}
           fadeOutDuration={1000}
           opacity={0.8}
