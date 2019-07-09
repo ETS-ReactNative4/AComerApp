@@ -7,9 +7,7 @@ const TopFive = () => {
   const getFeaturedBranches = async () => {
     try {
       const res = await api.get("/api/featuredbranches/");
-    } catch (err) {
-      console.log(err);
-    }
+    } catch (err) {}
   };
 
   return (
