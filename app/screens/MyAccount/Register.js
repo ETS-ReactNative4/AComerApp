@@ -47,7 +47,6 @@ const Register = ({ navigation }) => {
       const validate = registerForm.current.getValue();
       if (validate) {
         register({ name, email, password });
-        console.log("VALIDADO");
       } else {
         setError("Formulario Inválido");
       }
