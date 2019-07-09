@@ -41,12 +41,15 @@ const AuthState = props => {
 
   // LOGIN USER
   const login = async formData => {
-    return console.log(formData);
     try {
       const res = await api.post("/api/auth", formData);
       dispatch({ type: LOGIN_SUCCESS, token: res.data.token });
       loadUser();
     } catch (err) {
+      if (formData.facebook_auth) {
+        return register(formData);
+      }
+
       dispatch({ type: LOGIN_FAIL, payload: err.response.data.msg });
       setError(err.response.data.msg);
     }
