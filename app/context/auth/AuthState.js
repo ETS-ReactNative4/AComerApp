@@ -27,7 +27,7 @@ const AuthState = props => {
 
   // LOAD USER
   const loadUser = async () => {
-    AsyncStorage.getItem("token", (err, result) => setAuthToken(result));
+    await AsyncStorage.getItem("token", (err, result) => setAuthToken(result));
 
     try {
       const res = await api.get("/api/auth");
