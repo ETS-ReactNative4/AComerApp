@@ -1,4 +1,4 @@
-import React, { useRef, useState, useContext } from "react";
+import React, { useRef, useState, useContext, useEffect } from "react";
 import { StyleSheet, View, ActivityIndicator } from "react-native";
 import { Button, Text, Image } from "react-native-elements";
 import Toast from "react-native-easy-toast";
@@ -13,8 +13,22 @@ import * as firebase from "firebase";
 const Register = ({ navigation }) => {
   const registerForm = useRef(null);
   const toast = useRef(null);
+
   const authContext = useContext(AuthContext);
-  const { setError, error } = authContext;
+  const { register, isAuthenticated, setError, error } = authContext;
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigation.navigate("MyAccount");
+    }
+
+    if (error === "User already exists.") {
+      //setAlert(error, "red");
+      //clearErrors();
+    }
+    // eslint-disable-next-line
+  }, [error, isAuthenticated]);
+
   const [user, setUser] = useState({
     name: "",
     email: "",
@@ -22,27 +36,41 @@ const Register = ({ navigation }) => {
     passwordConfirmation: ""
   });
 
-  const { password, passwordConfirmation } = user;
+  const { name, email, password, passwordConfirmation } = user;
 
   const onChange = formData => setUser(formData);
 
-  const onSubmit = () => {
+  // const onSubmit = () => {
+  //   if (password !== passwordConfirmation) {
+  //     setError("Tus contraseñas no coinciden.");
+  //   } else {
+  //     const validate = registerForm.current.getValue();
+  //     if (validate) {
+  //       firebase
+  //         .auth()
+  //         .createUserWithEmailAndPassword(validate.email, validate.password)
+  //         .then(() => {
+  //           toast.current.show("Registro correcto.", 100, () => {
+  //             navigation.navigate("MyAccount");
+  //           });
+  //         })
+  //         .catch(() => {
+  //           toast.current.show("Error al registrar tu cuenta.", 1500);
+  //         });
+  //     } else {
+  //       setError("Formulario Inválido");
+  //     }
+  //   }
+  // };
+
+  const onSubmit = e => {
+    e.preventDefault();
     if (password !== passwordConfirmation) {
       setError("Tus contraseñas no coinciden.");
     } else {
       const validate = registerForm.current.getValue();
       if (validate) {
-        firebase
-          .auth()
-          .createUserWithEmailAndPassword(validate.email, validate.password)
-          .then(() => {
-            toast.current.show("Registro correcto.", 100, () => {
-              navigation.navigate("MyAccount");
-            });
-          })
-          .catch(() => {
-            toast.current.show("Error al registrar tu cuenta.", 1500);
-          });
+        register({ name, email, password });
       } else {
         setError("Formulario Inválido");
       }

@@ -121,7 +121,7 @@ const RootStack = createBottomTabNavigator(
     }
   },
   {
-    initialRouteName: "TopFive",
+    initialRouteName: "MyAccount",
     order: ["Home", "TopFive", "Search", "MyAccount"],
     tabBarOptions: {
       inactiveTintColor: "#646464",
