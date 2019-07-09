@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { StyleSheet, View } from "react-native";
 import { Button } from "react-native-elements";
 import * as firebase from "firebase";
@@ -21,17 +21,23 @@ const MyAccount = ({ navigation }) => {
     navigation.navigate(nameScreen);
   };
 
-  // const logout = () => {
-  //   firebase
-  //     .auth()
-  //     .signOut()
-  //     .then(() => setLogin(false));
-  // };
-  // <Button title="Cerrar Sesión" onPress={() => logout()} />
+  const logout = () => {
+    firebase
+      .auth()
+      .signOut()
+      .then(() => setLogin(false));
+  };
 
   return (
     <View style={styles.viewBody}>
-      {login ? <MyAccountUser /> : <MyAccountGuest goToScreen={goToScreen} />}
+      {login ? (
+        <Fragment>
+          <MyAccountUser />
+          <Button title="Cerrar Sesión" onPress={() => logout()} />
+        </Fragment>
+      ) : (
+        <MyAccountGuest goToScreen={goToScreen} />
+      )}
     </View>
   );
 };

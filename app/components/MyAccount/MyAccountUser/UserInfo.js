@@ -5,11 +5,7 @@ import { Avatar, Button } from "react-native-elements";
 import * as firebase from "firebase";
 
 const UserInfo = () => {
-  const [user, setUser] = useState({
-    displayName: "",
-    email: "",
-    photoURL: ""
-  });
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
     getUserInfo();
@@ -22,8 +18,6 @@ const UserInfo = () => {
     });
   };
 
-  const test = () => console.log(user);
-
   return (
     <View style={styles.viewUserInfo}>
       <Avatar
@@ -34,8 +28,6 @@ const UserInfo = () => {
         }}
         containerStyle={styles.userInfoAvatar}
       />
-      <Text>{user.email}</Text>
-      <Button title="test" onPress={test} />
     </View>
   );
 };
