@@ -16,7 +16,8 @@ const Login = ({ navigation }) => {
   const loginForm = useRef(null);
   const toast = useRef(null);
   const authContext = useContext(AuthContext);
-  const { setError, error } = authContext;
+  const { login, isAuthenticated, setError, error } = authContext;
+
   const [user, setUser] = useState({
     email: "",
     password: ""
@@ -26,7 +27,8 @@ const Login = ({ navigation }) => {
 
   const onChange = formData => setUser(formData);
 
-  const onSubmit = () => {
+  const onSubmit = e => {
+    e.preventDefault();
     if (email === "" || password === "") {
       setError("Debes completar todos los campos");
     } else {

@@ -5,10 +5,14 @@ import { SET_ERROR, REMOVE_ERROR } from "../types";
 
 const AuthState = props => {
   const initialState = {
+    user: null,
+    isAuthenticated: null,
     error: null
   };
 
   const [state, dispatch] = useReducer(authReducer, initialState);
+
+  // LOGIN USER
 
   // SET ERROR
   const setError = msg => {
