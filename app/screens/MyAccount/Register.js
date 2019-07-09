@@ -17,7 +17,7 @@ const Register = ({ navigation }) => {
 
   useEffect(() => {
     if (isAuthenticated) {
-      toast.current.show("¡Bienvenido!", 100, () => {
+      toast.current.show("¡Bienvenido!", 500, () => {
         navigation.navigate("MyAccount");
       });
     }

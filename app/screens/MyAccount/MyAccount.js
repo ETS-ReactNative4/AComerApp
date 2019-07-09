@@ -1,19 +1,23 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { Fragment, useEffect, useState, useContext } from "react";
 import { StyleSheet, View } from "react-native";
 import { Button } from "react-native-elements";
+import AuthContext from "../../context/auth/authContext";
 import * as firebase from "firebase";
 
 import MyAccountGuest from "../../components/MyAccount/MyAccountGuest";
 import MyAccountUser from "../../components/MyAccount/MyAccountUser";
 
 const MyAccount = ({ navigation }) => {
-  useEffect(() => {
-    firebase.auth().onAuthStateChanged(user => {
-      if (user) {
-        setLogin(true);
-      }
-    });
-  });
+  const authContext = useContext(AuthContext);
+  const { isAuthenticated } = authContext;
+
+  // useEffect(() => {
+  //   firebase.auth().onAuthStateChanged(user => {
+  //     if (user) {
+  //       setLogin(true);
+  //     }
+  //   });
+  // });
 
   const [login, setLogin] = useState(false);
 
@@ -30,7 +34,7 @@ const MyAccount = ({ navigation }) => {
 
   return (
     <View style={styles.viewBody}>
-      {login ? (
+      {isAuthenticated ? (
         <Fragment>
           <MyAccountUser />
           <Button title="Cerrar Sesión" onPress={() => logout()} />

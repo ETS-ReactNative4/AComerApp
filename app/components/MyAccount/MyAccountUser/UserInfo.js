@@ -1,33 +1,29 @@
-import React, { useEffect, useState } from "react";
-import { StyleSheet, View, Text } from "react-native";
-import { Avatar, Button } from "react-native-elements";
-
-import * as firebase from "firebase";
+import React, { Fragment, useContext } from "react";
+import { StyleSheet, View, ActivityIndicator, Text } from "react-native";
+import { Avatar } from "react-native-elements";
+import AuthContext from "../../../context/auth/authContext";
 
 const UserInfo = () => {
-  const [user, setUser] = useState(null);
-
-  useEffect(() => {
-    getUserInfo();
-  }, {});
-
-  const getUserInfo = () => {
-    const user = firebase.auth().currentUser;
-    user.providerData.forEach(userInfo => {
-      setUser(userInfo);
-    });
-  };
+  const authContext = useContext(AuthContext);
+  const { user } = authContext;
 
   return (
     <View style={styles.viewUserInfo}>
-      <Avatar
-        rounded
-        size="large"
-        source={{
-          uri: "https://api.adorable.io/avatars/285/abott@adorable.pngCopy"
-        }}
-        containerStyle={styles.userInfoAvatar}
-      />
+      {!user ? (
+        <ActivityIndicator />
+      ) : (
+        <Fragment>
+          <Avatar
+            rounded
+            size="large"
+            source={{
+              uri: "https://api.adorable.io/avatars/285/abott@adorable.pngCopy"
+            }}
+            containerStyle={styles.userInfoAvatar}
+          />
+          <Text>{user.name}</Text>
+        </Fragment>
+      )}
     </View>
   );
 };
