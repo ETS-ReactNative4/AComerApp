@@ -19,8 +19,9 @@ const Register = ({ navigation }) => {
     if (isAuthenticated) {
       navigation.navigate("MyAccount");
     }
+    console.log(isAuthenticated);
     // eslint-disable-next-line
-  }, []);
+  }, [isAuthenticated]);
 
   const [user, setUser] = useState({
     name: "",
