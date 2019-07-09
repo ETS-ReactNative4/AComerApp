@@ -8,6 +8,7 @@ import {
   LOGIN_FAIL,
   REGISTER_SUCCESS,
   REGISTER_FAIL,
+  LOGOUT,
   SET_ERROR,
   REMOVE_ERROR
 } from "../types";
@@ -56,7 +57,7 @@ const AuthState = props => {
     }
   };
 
-  // Register User
+  // REGISTER USER
   const register = async formData => {
     try {
       const res = await api.post("/api/users/register", formData);
@@ -67,6 +68,9 @@ const AuthState = props => {
       setError(err.response.data.msg);
     }
   };
+
+  // LOGOUT USER
+  const logout = () => dispatch({ type: LOGOUT });
 
   // SET ERROR
   const setError = msg => {
@@ -84,7 +88,8 @@ const AuthState = props => {
         setError,
         loadUser,
         login,
-        register
+        register,
+        logout
       }}
     >
       {props.children}

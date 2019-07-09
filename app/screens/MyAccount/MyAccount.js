@@ -1,35 +1,17 @@
-import React, { Fragment, useEffect, useState, useContext } from "react";
+import React, { Fragment, useContext } from "react";
 import { StyleSheet, View } from "react-native";
 import { Button } from "react-native-elements";
 import AuthContext from "../../context/auth/authContext";
-import * as firebase from "firebase";
 
 import MyAccountGuest from "../../components/MyAccount/MyAccountGuest";
 import MyAccountUser from "../../components/MyAccount/MyAccountUser";
 
 const MyAccount = ({ navigation }) => {
   const authContext = useContext(AuthContext);
-  const { isAuthenticated } = authContext;
-
-  // useEffect(() => {
-  //   firebase.auth().onAuthStateChanged(user => {
-  //     if (user) {
-  //       setLogin(true);
-  //     }
-  //   });
-  // });
-
-  const [login, setLogin] = useState(false);
+  const { isAuthenticated, logout } = authContext;
 
   const goToScreen = nameScreen => {
     navigation.navigate(nameScreen);
-  };
-
-  const logout = () => {
-    firebase
-      .auth()
-      .signOut()
-      .then(() => setLogin(false));
   };
 
   return (

@@ -5,6 +5,7 @@ import {
   LOGIN_FAIL,
   REGISTER_SUCCESS,
   REGISTER_FAIL,
+  LOGOUT,
   SET_ERROR,
   REMOVE_ERROR
 } from "../types";
@@ -28,6 +29,7 @@ export default (state, action) => {
     case LOGIN_FAIL:
     case REGISTER_FAIL:
     case AUTH_ERROR:
+    case LOGOUT:
       AsyncStorage.removeItem("token");
       return {
         ...state,
