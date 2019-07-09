@@ -1,15 +1,12 @@
 import React from "react";
 import { StyleSheet, View, Text } from "react-native";
-import axios from "axios";
+import api from "../services/ApiConnection";
 import { Button } from "react-native-elements";
 
 const TopFive = () => {
   const getFeaturedBranches = async () => {
     try {
-      const res = await axios.get(
-        "http://localhost:5000/api/featuredbranches/"
-      );
-      console.log(res.data);
+      const res = await api.get("/api/featuredbranches/");
     } catch (err) {
       console.log(err);
     }
