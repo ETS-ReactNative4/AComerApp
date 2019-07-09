@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, View, Text } from "react-native";
-import api from "../services/ApiConnection";
+import api from "../utils/ApiConnection";
 import { Button } from "react-native-elements";
 
 const TopFive = () => {

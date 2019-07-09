@@ -10,7 +10,7 @@ import {
   REMOVE_ERROR
 } from "../types";
 import { AsyncStorage } from "react-native";
-import api from "../../services/ApiConnection";
+import api from "../../utils/ApiConnection";
 
 const AuthState = props => {
   const initialState = {
