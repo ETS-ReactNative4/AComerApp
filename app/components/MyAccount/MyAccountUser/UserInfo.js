@@ -26,8 +26,11 @@ const UserInfo = () => {
               }}
               containerStyle={styles.userInfoAvatar}
             />
-            <Text style={styles.name}>{name}</Text>
-            <Text>{email}</Text>
+            <Text>
+              <Text style={styles.name}>{name}</Text>
+              {"\n"}
+              <Text>{email}</Text>
+            </Text>
           </View>
           <UpdateUserInfo />
         </View>
