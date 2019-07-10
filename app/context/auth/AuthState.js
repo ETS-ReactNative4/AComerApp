@@ -10,7 +10,9 @@ import {
   REGISTER_FAIL,
   LOGOUT,
   SET_ERROR,
-  REMOVE_ERROR
+  REMOVE_ERROR,
+  UPDATE_USER,
+  UPDATE_USER_FAIL
 } from "../types";
 import { AsyncStorage } from "react-native";
 import api from "../../utils/ApiConnection";
@@ -76,6 +78,16 @@ const AuthState = props => {
     setTimeout(() => dispatch({ type: REMOVE_ERROR }), 2000);
   };
 
+  // UPDATE USER
+  const updateUser = async (data, id) => {
+    try {
+      const res = await api.put(`/api/users/${id}`, data);
+      dispatch({ type: UPDATE_USER, payload: res.data });
+    } catch (err) {
+      dispatch({ type: UPDATE_USER_FAIL, payload: err.response.data.msg });
+    }
+  };
+
   return (
     <AuthContext.Provider
       value={{
@@ -87,7 +99,8 @@ const AuthState = props => {
         loadUser,
         login,
         register,
-        logout
+        logout,
+        updateUser
       }}
     >
       {props.children}

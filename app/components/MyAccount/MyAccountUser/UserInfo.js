@@ -6,11 +6,10 @@ import UpdateUserInfo from "./UpdateUserInfo";
 
 const UserInfo = () => {
   const authContext = useContext(AuthContext);
-  const { user } = authContext;
+  const { user, updateUser } = authContext;
 
   const updateName = name => {
-    console.log(user.id);
-    console.log("Nuevo valor", name);
+    updateUser({ name }, user.id);
   };
 
   return (
