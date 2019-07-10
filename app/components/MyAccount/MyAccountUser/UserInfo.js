@@ -8,6 +8,10 @@ const UserInfo = () => {
   const authContext = useContext(AuthContext);
   const { user } = authContext;
 
+  const updateName = name => {
+    console.log(name);
+  };
+
   return (
     <View>
       {!user ? (
@@ -31,7 +35,7 @@ const UserInfo = () => {
               <Text>{user.email}</Text>
             </Text>
           </View>
-          <UpdateUserInfo />
+          <UpdateUserInfo user={user} updateName={updateName} />
         </View>
       )}
     </View>

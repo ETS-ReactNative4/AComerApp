@@ -1,9 +1,27 @@
-import React from "react";
-import { StyleSheet, View, Text } from "react-native";
+import React, { useState } from "react";
+import { StyleSheet, View } from "react-native";
 import { ListItem } from "react-native-elements";
 import OverlayOneInput from "../../Elements/OverlayOneInput";
 
-const UpdateUserInfo = () => {
+const UpdateUserInfo = ({ user, updateName }) => {
+  const [overlayComponent, setOverlayComponent] = useState(null);
+
+  const openOverlayComponent = (placeholder, updateFunction, inputValue) => {
+    setOverlayComponent(
+      <OverlayOneInput
+        isVisible={true}
+        placeholder={placeholder}
+        updateFunction={updateFunction}
+        value={inputValue}
+      />
+    );
+  };
+
+  const updateUserName = name => {
+    updateName(name);
+    setOverlayComponent(null);
+  };
+
   const menuItems = [
     {
       title: "Cambiar Nombre y Apellido",
@@ -12,7 +30,8 @@ const UpdateUserInfo = () => {
       iconColorRight: "#ccc",
       iconNameLeft: "account-circle",
       iconColorLeft: "#ccc",
-      onPress: () => console.log("Click en cambiar nombre y apellido")
+      onPress: () =>
+        openOverlayComponent("Nombre y Apellido", updateUserName, user.name)
     },
     {
       title: "Cambiar Email",
@@ -54,7 +73,7 @@ const UpdateUserInfo = () => {
           containerStyle={styles.contentContainerStyle}
         />
       ))}
-      <OverlayOneInput />
+      {overlayComponent}
     </View>
   );
 };

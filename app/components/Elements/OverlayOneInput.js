@@ -1,22 +1,35 @@
 import React from "react";
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { Overlay, Input, Button } from "react-native-elements";
 
-const OverlayOneInput = () => {
+const OverlayOneInput = ({ isVisible, placeholder, updateFunction, value }) => {
+  const onChangeInput = inputData => {
+    value = inputData;
+  };
+
+  const update = () => {
+    const newValue = value;
+    updateFunction(newValue);
+  };
+
   return (
     <Overlay
-      isVisible={true}
+      isVisible={isVisible}
       overlayBackgroundColor="transparent"
       overlayStyle={styles.overlayStyle}
     >
       <View style={styles.viewOverlay}>
         <Input
           containerStyle={styles.inputContainer}
-          placeholder="texto"
-          onChangeText={value => console.log(value)}
-          value=""
+          placeholder={placeholder}
+          onChangeText={value => onChangeInput(value)}
+          value={value}
         />
-        <Button title="Actualizar" buttonStyle={styles.buttonUpdate} />
+        <Button
+          title="Actualizar"
+          buttonStyle={styles.buttonUpdate}
+          onPress={update}
+        />
       </View>
     </Overlay>
   );
