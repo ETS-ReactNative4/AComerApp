@@ -15,6 +15,7 @@ const InputTemplate = ({ config, onChange }) => {
           <Icon type={icontype} name={iconName} size={24} color="#b3b3b3" />
         }
         onChangeText={onChange}
+        autoCapitalize="none"
       />
     </View>
   );
