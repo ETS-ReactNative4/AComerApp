@@ -9,6 +9,7 @@ const UserInfo = () => {
   const { user } = authContext;
 
   const updateName = name => {
+    console.log(user.id);
     console.log("Nuevo valor", name);
   };
 
