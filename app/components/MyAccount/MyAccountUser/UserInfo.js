@@ -7,7 +7,6 @@ import UpdateUserInfo from "./UpdateUserInfo";
 const UserInfo = () => {
   const authContext = useContext(AuthContext);
   const { user } = authContext;
-  const { name, image, email } = user;
 
   return (
     <View>
@@ -20,16 +19,16 @@ const UserInfo = () => {
               rounded
               size="large"
               source={{
-                uri: image
-                  ? image
+                uri: user.image
+                  ? user.image
                   : "https://api.adorable.io/avatars/285/abott@adorable.pngCopy"
               }}
               containerStyle={styles.userInfoAvatar}
             />
             <Text>
-              <Text style={styles.name}>{name}</Text>
+              <Text style={styles.name}>{user.name}</Text>
               {"\n"}
-              <Text>{email}</Text>
+              <Text>{user.email}</Text>
             </Text>
           </View>
           <UpdateUserInfo />
