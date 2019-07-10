@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
-import { Overlay, Input, Button } from "react-native-elements";
+import { Overlay, Input, Button, Icon } from "react-native-elements";
 
 const OverlayOneInput = ({ isVisible, placeholder, updateFunction, value }) => {
   const onChangeInput = inputData => {
@@ -29,6 +29,13 @@ const OverlayOneInput = ({ isVisible, placeholder, updateFunction, value }) => {
           buttonStyle={styles.buttonUpdate}
           onPress={update}
         />
+        <Icon
+          containerStyle={styles.containerIconClose}
+          type="material-community"
+          name="close-circle-outline"
+          size={30}
+          color="#ffc107"
+        />
       </View>
     </Overlay>
   );
@@ -55,6 +62,11 @@ const styles = StyleSheet.create({
   },
   buttonUpdate: {
     backgroundColor: "#ffc107"
+  },
+  containerIconClose: {
+    position: "absolute",
+    right: -15,
+    top: -16
   }
 });
 
