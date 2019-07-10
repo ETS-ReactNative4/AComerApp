@@ -18,7 +18,7 @@ const UpdateUserInfo = ({ user, updateName }) => {
   };
 
   const updateUserName = name => {
-    if (!(name === user.name)) {
+    if (!(name === user.name) || !name) {
       updateName(name);
     }
     setOverlayComponent(null);

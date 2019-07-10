@@ -12,6 +12,10 @@ const OverlayOneInput = ({ isVisible, placeholder, updateFunction, value }) => {
     updateFunction(newValue);
   };
 
+  const close = () => {
+    updateFunction(null);
+  };
+
   return (
     <Overlay
       isVisible={isVisible}
@@ -35,6 +39,7 @@ const OverlayOneInput = ({ isVisible, placeholder, updateFunction, value }) => {
           name="close-circle-outline"
           size={30}
           color="#ffc107"
+          onPress={close}
         />
       </View>
     </Overlay>
