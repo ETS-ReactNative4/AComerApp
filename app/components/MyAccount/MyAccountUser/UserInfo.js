@@ -12,8 +12,9 @@ const UserInfo = () => {
   const toast = useRef(null);
 
   const updateName = name => {
-    updateUser({ name }, user.id, toast.current, 500);
-    //toast.current.show("¡Bienvenido!", 500);
+    if (!(name === user.name)) {
+      updateUser({ name }, user.id, toast.current, 500);
+    }
   };
 
   return (
