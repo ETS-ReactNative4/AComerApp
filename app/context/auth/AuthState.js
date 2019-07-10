@@ -79,12 +79,13 @@ const AuthState = props => {
   };
 
   // UPDATE USER
-  const updateUser = async (data, id) => {
+  const updateUser = async (data, id, toast, timeout) => {
     try {
       const res = await api.put(`/api/users/${id}`, data);
       dispatch({ type: UPDATE_USER, payload: res.data });
+      toast.show("¡Actualizado con éxito!", timeout);
     } catch (err) {
-      setError(err.response.data.msg);
+      toast.show("Ocurrió un error al actualizar tus datos.", timeout);
     }
   };
 

@@ -1,15 +1,19 @@
-import React, { useContext } from "react";
+import React, { useContext, useRef } from "react";
 import { StyleSheet, View, ActivityIndicator, Text } from "react-native";
 import { Avatar } from "react-native-elements";
 import AuthContext from "../../../context/auth/authContext";
 import UpdateUserInfo from "./UpdateUserInfo";
+import Toast from "react-native-easy-toast";
 
 const UserInfo = () => {
   const authContext = useContext(AuthContext);
   const { user, updateUser } = authContext;
 
+  const toast = useRef(null);
+
   const updateName = name => {
-    updateUser({ name }, user.id);
+    updateUser({ name }, user.id, toast.current, 500);
+    //toast.current.show("¡Bienvenido!", 500);
   };
 
   return (
@@ -38,6 +42,15 @@ const UserInfo = () => {
           <UpdateUserInfo user={user} updateName={updateName} />
         </View>
       )}
+      <Toast
+        ref={toast}
+        position="bottom"
+        positionValue={450}
+        fadeInDuration={750}
+        fadeOutDuration={1000}
+        opacity={0.8}
+        textStyle={{ color: "#fff" }}
+      />
     </View>
   );
 };
