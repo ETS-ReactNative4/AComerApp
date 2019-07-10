@@ -23,7 +23,6 @@ const OverlayOneInput = ({ isVisible, placeholder, updateFunction, value }) => {
           containerStyle={styles.inputContainer}
           placeholder={placeholder}
           onChangeText={value => onChangeInput(value)}
-          value={value}
         />
         <Button
           title="Actualizar"
