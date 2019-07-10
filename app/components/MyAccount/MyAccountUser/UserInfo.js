@@ -6,6 +6,7 @@ import AuthContext from "../../../context/auth/authContext";
 const UserInfo = () => {
   const authContext = useContext(AuthContext);
   const { user } = authContext;
+  const { name, image, email } = user;
 
   return (
     <View style={styles.viewUserInfo}>
@@ -17,13 +18,14 @@ const UserInfo = () => {
             rounded
             size="large"
             source={{
-              uri: user.image
-                ? user.image
+              uri: image
+                ? image
                 : "https://api.adorable.io/avatars/285/abott@adorable.pngCopy"
             }}
             containerStyle={styles.userInfoAvatar}
           />
-          <Text>{user.name}</Text>
+          <Text style={styles.name}>{name}</Text>
+          <Text>{email}</Text>
         </Fragment>
       )}
     </View>
@@ -38,6 +40,9 @@ const styles = StyleSheet.create({
   },
   userInfoAvatar: {
     marginRight: 20
+  },
+  name: {
+    fontWeight: "bold"
   }
 });
 
