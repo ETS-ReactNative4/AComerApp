@@ -12,9 +12,7 @@ const UserInfo = () => {
   const toast = useRef(null);
 
   const updateName = name => {
-    if (!(name === user.name)) {
-      updateUser({ name }, user.id, toast.current, 500);
-    }
+    updateUser({ name }, user.id, toast.current, 500);
   };
 
   return (
