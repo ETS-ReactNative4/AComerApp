@@ -1,7 +1,8 @@
-import React, { Fragment, useContext } from "react";
+import React, { useContext } from "react";
 import { StyleSheet, View, ActivityIndicator, Text } from "react-native";
 import { Avatar } from "react-native-elements";
 import AuthContext from "../../../context/auth/authContext";
+import UpdateUserInfo from "./UpdateUserInfo";
 
 const UserInfo = () => {
   const authContext = useContext(AuthContext);
@@ -9,24 +10,27 @@ const UserInfo = () => {
   const { name, image, email } = user;
 
   return (
-    <View style={styles.viewUserInfo}>
+    <View>
       {!user ? (
         <ActivityIndicator />
       ) : (
-        <Fragment>
-          <Avatar
-            rounded
-            size="large"
-            source={{
-              uri: image
-                ? image
-                : "https://api.adorable.io/avatars/285/abott@adorable.pngCopy"
-            }}
-            containerStyle={styles.userInfoAvatar}
-          />
-          <Text style={styles.name}>{name}</Text>
-          <Text>{email}</Text>
-        </Fragment>
+        <View>
+          <View style={styles.viewUserInfo}>
+            <Avatar
+              rounded
+              size="large"
+              source={{
+                uri: image
+                  ? image
+                  : "https://api.adorable.io/avatars/285/abott@adorable.pngCopy"
+              }}
+              containerStyle={styles.userInfoAvatar}
+            />
+            <Text style={styles.name}>{name}</Text>
+            <Text>{email}</Text>
+          </View>
+          <UpdateUserInfo />
+        </View>
       )}
     </View>
   );
@@ -35,8 +39,11 @@ const UserInfo = () => {
 const styles = StyleSheet.create({
   viewUserInfo: {
     alignItems: "center",
+    justifyContent: "center",
     flexDirection: "row",
-    marginTop: 30
+    paddingTop: 30,
+    paddingBottom: 30,
+    backgroundColor: "#f2f2f2"
   },
   userInfoAvatar: {
     marginRight: 20

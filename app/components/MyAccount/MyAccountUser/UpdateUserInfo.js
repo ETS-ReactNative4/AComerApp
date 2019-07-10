@@ -1,15 +1,14 @@
 import React from "react";
 import { StyleSheet, View, Text } from "react-native";
-import UserInfo from "./UserInfo";
 
-const MyAccountUser = () => {
+const UpdateUserInfo = () => {
   return (
     <View>
-      <UserInfo />
+      <Text>Update user info</Text>
     </View>
   );
 };
 
 const styles = StyleSheet.create({});
 
-export default MyAccountUser;
+export default UpdateUserInfo;

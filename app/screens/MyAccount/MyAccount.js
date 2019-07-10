@@ -1,6 +1,5 @@
 import React, { Fragment, useContext, useEffect } from "react";
 import { StyleSheet, View } from "react-native";
-import { Button } from "react-native-elements";
 import AuthContext from "../../context/auth/authContext";
 
 import MyAccountGuest from "../../components/MyAccount/MyAccountGuest";
@@ -8,7 +7,7 @@ import MyAccountUser from "../../components/MyAccount/MyAccountUser";
 
 const MyAccount = ({ navigation }) => {
   const authContext = useContext(AuthContext);
-  const { isAuthenticated, logout, loadUser } = authContext;
+  const { isAuthenticated, loadUser } = authContext;
 
   useEffect(() => {
     loadUser();
@@ -23,7 +22,6 @@ const MyAccount = ({ navigation }) => {
       {isAuthenticated ? (
         <Fragment>
           <MyAccountUser />
-          <Button title="Cerrar Sesión" onPress={() => logout()} />
         </Fragment>
       ) : (
         <MyAccountGuest goToScreen={goToScreen} />
@@ -34,10 +32,7 @@ const MyAccount = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   viewBody: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: "#fff"
+    flex: 1
   }
 });
 
