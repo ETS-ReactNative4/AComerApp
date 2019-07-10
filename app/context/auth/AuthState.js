@@ -84,7 +84,7 @@ const AuthState = props => {
       const res = await api.put(`/api/users/${id}`, data);
       dispatch({ type: UPDATE_USER, payload: res.data });
     } catch (err) {
-      dispatch({ type: UPDATE_USER_FAIL, payload: err.response.data.msg });
+      setError(err.response.data.msg);
     }
   };
 

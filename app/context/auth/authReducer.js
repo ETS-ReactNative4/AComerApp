@@ -8,8 +8,7 @@ import {
   LOGOUT,
   SET_ERROR,
   REMOVE_ERROR,
-  UPDATE_USER,
-  UPDATE_USER_FAIL
+  UPDATE_USER
 } from "../types";
 import { AsyncStorage } from "react-native";
 
@@ -50,13 +49,10 @@ export default (state, action) => {
         error: null
       };
     case UPDATE_USER:
-      console.log("Llegando correctamente al reductor");
       return {
         ...state,
         user: action.payload
       };
-    case UPDATE_USER_FAIL:
-      return console.log("Error al actualizar el nombre del usuario");
     default:
       return state;
   }
