@@ -17,7 +17,9 @@ const UserInfo = () => {
             rounded
             size="large"
             source={{
-              uri: "https://api.adorable.io/avatars/285/abott@adorable.pngCopy"
+              uri: user.image
+                ? user.image
+                : "https://api.adorable.io/avatars/285/abott@adorable.pngCopy"
             }}
             containerStyle={styles.userInfoAvatar}
           />
