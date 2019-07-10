@@ -1,6 +1,7 @@
 import React from "react";
 import { StyleSheet, View, Text } from "react-native";
 import { ListItem } from "react-native-elements";
+import OverlayOneInput from "../../Elements/OverlayOneInput";
 
 const UpdateUserInfo = () => {
   const menuItems = [
@@ -53,6 +54,7 @@ const UpdateUserInfo = () => {
           containerStyle={styles.contentContainerStyle}
         />
       ))}
+      <OverlayOneInput />
     </View>
   );
 };
