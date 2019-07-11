@@ -90,10 +90,18 @@ const AuthState = props => {
   };
 
   // UPLOAD IMAGE
-  const uploadImage = async uri => {
-    console.log("====================");
-    console.log(uri);
-    console.log("====================");
+  const uploadImage = async (image, id, toast, timeout) => {
+    try {
+      console.log("=============================");
+      console.log("IMAGE", image);
+      console.log("USER ID", id);
+      console.log("TOAST", toast);
+      console.log("TimeOut", timeout);
+      console.log("La imagen se subio");
+      console.log("=============================");
+    } catch (err) {
+      console.log("Error al subir la imagen.");
+    }
   };
 
   return (

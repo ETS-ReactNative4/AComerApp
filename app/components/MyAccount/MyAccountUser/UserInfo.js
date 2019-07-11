@@ -37,7 +37,7 @@ const UserInfo = () => {
       if (result.cancelled) {
         toast.current.show("Haz cerrado la galería de imagenes");
       } else {
-        uploadImage(result);
+        uploadImage(result, user.id, toast.current, 500);
       }
     }
   };
