@@ -4,6 +4,8 @@ import { Avatar } from "react-native-elements";
 import AuthContext from "../../../context/auth/authContext";
 import UpdateUserInfo from "./UpdateUserInfo";
 import Toast from "react-native-easy-toast";
+import * as ImagePicker from "expo-image-picker";
+import * as Permissions from "expo-permissions";
 
 const UserInfo = () => {
   const authContext = useContext(AuthContext);

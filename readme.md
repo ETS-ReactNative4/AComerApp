@@ -12,3 +12,5 @@
 - [React Native Easy Toast](https://yarnpkg.com/en/package/react-native-easy-toast) yarn add react-native-easy-toast
 - [Axios](https://yarnpkg.com/en/package/axios) yarn add axios
 - [EXPO FACEBOOK](https://docs.expo.io/versions/latest/sdk/facebook/)
+- [EXPO IMAGEPICKER](https://docs.expo.io/versions/latest/sdk/imagepicker/)
+- [EXPO PERMISSIONS](https://docs.expo.io/versions/latest/sdk/permissions/)
