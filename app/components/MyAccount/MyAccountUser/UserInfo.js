@@ -34,6 +34,7 @@ const UserInfo = () => {
               rounded
               size="large"
               showEditButton
+              onEditPress={updateImage}
               source={{
                 uri: user.image
                   ? user.image
