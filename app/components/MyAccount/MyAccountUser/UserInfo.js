@@ -15,10 +15,8 @@ const UserInfo = () => {
     updateUser({ name }, user.id, toast.current, 500);
   };
 
-  const updateEmail = (newEmail, password) => {
-    console.log("UPDATE EMAIL");
-    console.log("NEW EMAIL", newEmail);
-    console.log("UPDATE PASSWORD", password);
+  const updateEmail = (email, password) => {
+    updateUser({ email, password }, user.id, toast.current, 500);
   };
 
   return (

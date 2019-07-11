@@ -40,11 +40,14 @@ const OverlayTwoInputs = ({
           containerStyle={styles.inputContainer}
           placeholder={placeholderOne}
           onChangeText={value => onChangeInputOne(value)}
+          autoCapitalize="none"
         />
         <Input
           containerStyle={styles.inputContainer}
           placeholder={placeholderTwo}
           onChangeText={value => onChangeInputTwo(value)}
+          autoCapitalize="none"
+          secureTextEntry={true}
         />
         <Button
           title="Actualizar"
