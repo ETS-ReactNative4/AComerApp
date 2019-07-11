@@ -36,7 +36,12 @@ const UserInfo = () => {
       if (result.cancelled) {
         toast.current.show("Haz cerrado la galería de imagenes");
       } else {
-        uploadImage(result, user.id, toast.current, 500);
+        const file = {
+          uri: result.uri,
+          name: result.uri.replace(/^.*[\\\/]/, ""),
+          type: "image/jpeg"
+        };
+        uploadImage(file, user.id, toast.current, 500);
       }
     }
   };

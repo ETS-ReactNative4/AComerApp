@@ -18,6 +18,7 @@ import { AsyncStorage } from "react-native";
 import api from "../../utils/ApiConnection";
 import setAuthToken from "../../utils/setAuthToken";
 import { RNS3 } from "react-native-aws3";
+import config from "../../utils/AwsConfig";
 
 const AuthState = props => {
   const initialState = {
@@ -92,23 +93,8 @@ const AuthState = props => {
   };
 
   // UPLOAD IMAGE
-  const uploadImage = async (image, id, toast, timeout) => {
+  const uploadImage = async (file, id, toast, timeout) => {
     try {
-      const file = {
-        uri: image.uri,
-        name: image.uri.replace(/^.*[\\\/]/, ""),
-        type: "image/jpeg"
-      };
-
-      const config = {
-        keyPrefix: "acomerapp/",
-        bucket: "acomerapi",
-        region: "us-east-1",
-        accessKey: "AKIAJTZQNE72FAH4RTUA",
-        secretKey: "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",
-        successActionStatus: 201
-      };
-
       const res = await RNS3.put(file, config).progress(e => {
         if (e.percent < 1) dispatch({ type: LOADING, payload: true });
       });
