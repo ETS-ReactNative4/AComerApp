@@ -4,7 +4,7 @@ import { ListItem } from "react-native-elements";
 import OverlayOneInput from "../../Elements/OverlayOneInput";
 import OverlayTwoInputs from "../../Elements/OverlayTwoInputs";
 
-const UpdateUserInfo = ({ user, updateName }) => {
+const UpdateUserInfo = ({ user, updateName, updateEmail }) => {
   const [overlayComponent, setOverlayComponent] = useState(null);
 
   const openOverlayComponent = (placeholder, updateFunction, inputValue) => {
@@ -24,8 +24,34 @@ const UpdateUserInfo = ({ user, updateName }) => {
   };
 
   const updateUserName = name => {
-    if (!(name === user.name) || !name) {
+    if (name !== user.name) {
       updateName(name);
+    }
+    setOverlayComponent(null);
+  };
+
+  const openOverlayTwoInputs = (
+    placeholderOne,
+    placeholderTwo,
+    inputValueOne,
+    updateFunction
+  ) => {
+    setOverlayComponent(
+      <OverlayTwoInputs
+        isVisible={true}
+        placeholderOne={placeholderOne}
+        placeholderTwo={placeholderTwo}
+        updateFunction={updateFunction}
+        valueOne={inputValueOne}
+        valueTwo=""
+        closeFunction={closeOverlay}
+      />
+    );
+  };
+
+  const updateUserEmail = (newEmail, password) => {
+    if (newEmail != user.email) {
+      updateEmail(newEmail, password);
     }
     setOverlayComponent(null);
   };
@@ -48,7 +74,13 @@ const UpdateUserInfo = ({ user, updateName }) => {
       iconColorRight: "#ccc",
       iconNameLeft: "at",
       iconColorLeft: "#ccc",
-      onPress: () => console.log("Click en cambiar email")
+      onPress: () =>
+        openOverlayTwoInputs(
+          "joe@example.com",
+          "*********",
+          user.email,
+          updateUserEmail
+        )
     },
     {
       title: "Cambiar Contraseña",

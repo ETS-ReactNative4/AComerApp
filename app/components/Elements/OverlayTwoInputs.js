@@ -8,7 +8,8 @@ const OverlayTwoInputs = ({
   placeholderTwo,
   updateFunction,
   valueOne,
-  valueTwo
+  valueTwo,
+  closeFunction
 }) => {
   const onChangeInputOne = inputData => {
     valueOne = inputData;
@@ -42,7 +43,7 @@ const OverlayTwoInputs = ({
         />
         <Input
           containerStyle={styles.inputContainer}
-          placeholder={placeholdertwo}
+          placeholder={placeholderTwo}
           onChangeText={value => onChangeInputTwo(value)}
         />
         <Button
@@ -56,7 +57,7 @@ const OverlayTwoInputs = ({
           name="close-circle-outline"
           size={30}
           color="#ffc107"
-          onPress={close}
+          onPress={closeFunction}
         />
       </View>
     </Overlay>
