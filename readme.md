@@ -14,6 +14,3 @@
 - [EXPO FACEBOOK](https://docs.expo.io/versions/latest/sdk/facebook/)
 - [EXPO IMAGEPICKER](https://docs.expo.io/versions/latest/sdk/imagepicker/)
 - [EXPO PERMISSIONS](https://docs.expo.io/versions/latest/sdk/permissions/)
-- [AWS AMPLIFY](https://aws-amplify.github.io/docs/)
-- [AWS AMPLIFY REACT NATIVE](https://aws-amplify.github.io/docs/js/start?ref=amplify-rn-btn&platform=react-native) yarn add aws-amplify
-  yarn add aws-amplify-react-native
