@@ -19,6 +19,10 @@ const UserInfo = () => {
     updateUser({ email, password }, user.id, toast.current, 500);
   };
 
+  const updateImage = async () => {
+    console.log("UPDATE IMAGE METHOD");
+  };
+
   return (
     <View>
       {!user ? (
@@ -29,6 +33,7 @@ const UserInfo = () => {
             <Avatar
               rounded
               size="large"
+              showEditButton
               source={{
                 uri: user.image
                   ? user.image
