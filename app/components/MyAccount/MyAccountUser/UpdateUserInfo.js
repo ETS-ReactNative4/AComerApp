@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { StyleSheet, View } from "react-native";
 import { ListItem } from "react-native-elements";
 import OverlayOneInput from "../../Elements/OverlayOneInput";
+import OverlayTwoInputs from "../../Elements/OverlayTwoInputs";
 
 const UpdateUserInfo = ({ user, updateName }) => {
   const [overlayComponent, setOverlayComponent] = useState(null);
@@ -13,8 +14,13 @@ const UpdateUserInfo = ({ user, updateName }) => {
         placeholder={placeholder}
         updateFunction={updateFunction}
         value={inputValue}
+        closeFunction={closeOverlay}
       />
     );
+  };
+
+  const closeOverlay = () => {
+    setOverlayComponent(null);
   };
 
   const updateUserName = name => {

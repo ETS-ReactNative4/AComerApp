@@ -15,6 +15,12 @@ const UserInfo = () => {
     updateUser({ name }, user.id, toast.current, 500);
   };
 
+  const updateEmail = (newEmail, password) => {
+    console.log("UPDATE EMAIL");
+    console.log("NEW EMAIL", newEmail);
+    console.log("UPDATE PASSWORD", password);
+  };
+
   return (
     <View>
       {!user ? (
@@ -38,7 +44,11 @@ const UserInfo = () => {
               <Text>{user.email}</Text>
             </Text>
           </View>
-          <UpdateUserInfo user={user} updateName={updateName} />
+          <UpdateUserInfo
+            user={user}
+            updateName={updateName}
+            updateEmail={updateEmail}
+          />
         </View>
       )}
       <Toast

@@ -2,7 +2,13 @@ import React from "react";
 import { StyleSheet, View } from "react-native";
 import { Overlay, Input, Button, Icon } from "react-native-elements";
 
-const OverlayOneInput = ({ isVisible, placeholder, updateFunction, value }) => {
+const OverlayOneInput = ({
+  isVisible,
+  placeholder,
+  updateFunction,
+  value,
+  closeFunction
+}) => {
   const onChangeInput = inputData => {
     value = inputData;
   };
@@ -10,10 +16,6 @@ const OverlayOneInput = ({ isVisible, placeholder, updateFunction, value }) => {
   const update = () => {
     const newValue = value;
     updateFunction(newValue);
-  };
-
-  const close = () => {
-    updateFunction(null);
   };
 
   return (
@@ -39,7 +41,7 @@ const OverlayOneInput = ({ isVisible, placeholder, updateFunction, value }) => {
           name="close-circle-outline"
           size={30}
           color="#ffc107"
-          onPress={close}
+          onPress={closeFunction}
         />
       </View>
     </Overlay>
