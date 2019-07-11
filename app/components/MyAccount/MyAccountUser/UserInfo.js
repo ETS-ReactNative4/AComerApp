@@ -22,13 +22,25 @@ const UserInfo = () => {
   };
 
   const updateImage = async () => {
-    console.log("=========================");
-    console.log("UPDATE IMAGE METHOD");
-    console.log("=========================");
     const resultPermissions = await Permissions.askAsync(
       Permissions.CAMERA_ROLL
     );
-    console.log(resultPermissions);
+
+    if (resultPermissions.status === "denied") {
+      toast.current.show("Es necesario aceptar los permisos de la galería");
+    } else {
+      const result = await ImagePicker.launchImageLibraryAsync({
+        allowEditing: true,
+        aspect: [4, 3]
+      });
+
+      if (result.cancelled) {
+        toast.current.show("Haz cerrado la galería de imagenes");
+      } else {
+        console.log("Haz seleccionado una imagen");
+        console.log(result);
+      }
+    }
   };
 
   return (
