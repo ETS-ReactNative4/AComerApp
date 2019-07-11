@@ -14,4 +14,5 @@
 - [EXPO FACEBOOK](https://docs.expo.io/versions/latest/sdk/facebook/)
 - [EXPO IMAGEPICKER](https://docs.expo.io/versions/latest/sdk/imagepicker/)
 - [EXPO PERMISSIONS](https://docs.expo.io/versions/latest/sdk/permissions/)
-- [REACT NATIVE S3 UPLOAD](https://www.npmjs.com/package/react-native-s3-upload) npm install --save react-native-s3-upload
+- [REACT NATIVE AWS3](https://yarnpkg.com/en/package/react-native-aws3) yarn add react-native-aws3
+  - [TUTORIAL](https://www.youtube.com/watch?v=FXG3AJ6OJCk)
