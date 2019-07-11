@@ -14,3 +14,4 @@
 - [EXPO FACEBOOK](https://docs.expo.io/versions/latest/sdk/facebook/)
 - [EXPO IMAGEPICKER](https://docs.expo.io/versions/latest/sdk/imagepicker/)
 - [EXPO PERMISSIONS](https://docs.expo.io/versions/latest/sdk/permissions/)
+- [REACT NATIVE S3 UPLOAD](https://www.npmjs.com/package/react-native-s3-upload) npm install --save react-native-s3-upload
