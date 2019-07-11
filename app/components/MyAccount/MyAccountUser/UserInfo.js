@@ -9,12 +9,8 @@ import * as Permissions from "expo-permissions";
 
 const UserInfo = () => {
   const authContext = useContext(AuthContext);
-  const { user, updateUser, uploadImage, loading } = authContext;
+  const { user, updateUser, uploadImage } = authContext;
   const toast = useRef(null);
-
-  useEffect(() => {
-    console.log(loading);
-  }, []);
 
   const updateName = name => {
     updateUser({ name }, user.id, toast.current, 500);

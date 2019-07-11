@@ -11,8 +11,7 @@ import {
   LOGOUT,
   SET_ERROR,
   REMOVE_ERROR,
-  UPDATE_USER,
-  LOADING
+  UPDATE_USER
 } from "../types";
 import { AsyncStorage } from "react-native";
 import api from "../../utils/ApiConnection";
@@ -111,13 +110,13 @@ const AuthState = props => {
 
       const res = await RNS3.put(file, config).progress(e => {
         if (e.percent != 1) {
-          dispatch({ type: LOADING, payload: true });
+          toast.show("Cargando imagen ... ", timeout);
         } else {
-          dispatch({ type: LOADING, payload: false });
+          toast.show("Imagen cargada con éxito", timeout);
         }
       });
 
-      toast.show("Imagen cargada con éxito", timeout);
+      console.log(res.body.postResponse.location);
     } catch (err) {
       console.log(err);
     }

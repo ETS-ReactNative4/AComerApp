@@ -8,8 +8,7 @@ import {
   LOGOUT,
   SET_ERROR,
   REMOVE_ERROR,
-  UPDATE_USER,
-  LOADING
+  UPDATE_USER
 } from "../types";
 import { AsyncStorage } from "react-native";
 
@@ -53,11 +52,6 @@ export default (state, action) => {
       return {
         ...state,
         user: action.payload
-      };
-    case LOADING:
-      return {
-        ...state,
-        loading: action.payload
       };
     default:
       return state;
