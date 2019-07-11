@@ -22,7 +22,13 @@ const UserInfo = () => {
   };
 
   const updateImage = async () => {
+    console.log("=========================");
     console.log("UPDATE IMAGE METHOD");
+    console.log("=========================");
+    const resultPermissions = await Permissions.askAsync(
+      Permissions.CAMERA_ROLL
+    );
+    console.log(resultPermissions);
   };
 
   return (
