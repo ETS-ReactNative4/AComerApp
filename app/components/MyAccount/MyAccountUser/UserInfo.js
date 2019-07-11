@@ -9,7 +9,7 @@ import * as Permissions from "expo-permissions";
 
 const UserInfo = () => {
   const authContext = useContext(AuthContext);
-  const { user, updateUser } = authContext;
+  const { user, updateUser, uploadImage } = authContext;
 
   const toast = useRef(null);
 
@@ -37,8 +37,7 @@ const UserInfo = () => {
       if (result.cancelled) {
         toast.current.show("Haz cerrado la galería de imagenes");
       } else {
-        console.log("Haz seleccionado una imagen");
-        console.log(result);
+        uploadImage(result);
       }
     }
   };

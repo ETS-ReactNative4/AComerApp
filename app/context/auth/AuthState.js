@@ -89,6 +89,13 @@ const AuthState = props => {
     }
   };
 
+  // UPLOAD IMAGE
+  const uploadImage = async uri => {
+    console.log("====================");
+    console.log(uri);
+    console.log("====================");
+  };
+
   return (
     <AuthContext.Provider
       value={{
@@ -101,7 +108,8 @@ const AuthState = props => {
         login,
         register,
         logout,
-        updateUser
+        updateUser,
+        uploadImage
       }}
     >
       {props.children}
