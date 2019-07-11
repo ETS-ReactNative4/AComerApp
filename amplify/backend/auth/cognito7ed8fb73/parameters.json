@@ -1,0 +1,25 @@
+{
+    "identityPoolName": "acomerapp_identitypool_b1f4b7c5",
+    "allowUnauthenticatedIdentities": true,
+    "openIdLambdaRoleName": "acomerb1f4b7c5_openid_lambda_role",
+    "authSelections": "identityPoolOnly",
+    "resourceName": "cognito7ed8fb73",
+    "authRoleName": {
+        "Ref": "AuthRoleName"
+    },
+    "unauthRoleName": {
+        "Ref": "UnauthRoleName"
+    },
+    "authRoleArn": {
+        "Fn::GetAtt": [
+            "AuthRole",
+            "Arn"
+        ]
+    },
+    "unauthRoleArn": {
+        "Fn::GetAtt": [
+            "UnauthRole",
+            "Arn"
+        ]
+    }
+}

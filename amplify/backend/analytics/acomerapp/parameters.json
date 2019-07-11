@@ -1,0 +1,20 @@
+{
+    "appName": "acomerapp",
+    "roleName": "pinpointLambdaRole4644e66a",
+    "cloudWatchPolicyName": "cloudWatchPolicy4644e66a",
+    "pinpointPolicyName": "pinpointPolicy4644e66a",
+    "authPolicyName": "pinpoint_amplify_4644e66a",
+    "unauthPolicyName": "pinpoint_amplify_4644e66a",
+    "authRoleName": {
+        "Ref": "AuthRoleName"
+    },
+    "unauthRoleName": {
+        "Ref": "UnauthRoleName"
+    },
+    "authRoleArn": {
+        "Fn::GetAtt": [
+            "AuthRole",
+            "Arn"
+        ]
+    }
+}

@@ -1,0 +1,19 @@
+{
+    "dev": {
+        "awscloudformation": {
+            "AuthRoleName": "acomerapp-dev-20190710225542-authRole",
+            "UnauthRoleArn": "arn:aws:iam::537289795563:role/acomerapp-dev-20190710225542-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::537289795563:role/acomerapp-dev-20190710225542-authRole",
+            "Region": "us-east-1",
+            "DeploymentBucketName": "acomerapp-dev-20190710225542-deployment",
+            "UnauthRoleName": "acomerapp-dev-20190710225542-unauthRole",
+            "StackName": "acomerapp-dev-20190710225542",
+            "StackId": "arn:aws:cloudformation:us-east-1:537289795563:stack/acomerapp-dev-20190710225542/5fd1fae0-a387-11e9-87b1-0af1b2bb447e"
+        },
+        "categories": {
+            "auth": {
+                "cognito7ed8fb73": {}
+            }
+        }
+    }
+}

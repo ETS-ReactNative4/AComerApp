@@ -1,0 +1,14 @@
+{
+	"auth": {
+		"cognito7ed8fb73": {
+			"service": "Cognito",
+			"providerPlugin": "awscloudformation"
+		}
+	},
+	"analytics": {
+		"acomerapp": {
+			"service": "Pinpoint",
+			"providerPlugin": "awscloudformation"
+		}
+	}
+}
