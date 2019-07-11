@@ -11,7 +11,8 @@ import {
   LOGOUT,
   SET_ERROR,
   REMOVE_ERROR,
-  UPDATE_USER
+  UPDATE_USER,
+  LOADING
 } from "../types";
 import { AsyncStorage } from "react-native";
 import api from "../../utils/ApiConnection";
@@ -109,7 +110,7 @@ const AuthState = props => {
       };
 
       const res = await RNS3.put(file, config).progress(e => {
-        console.log(e.percent);
+        if (e.percent < 1) dispatch({ type: LOADING, payload: true });
       });
 
       updateUser({ image: res.body.postResponse.location }, id, toast, timeout);

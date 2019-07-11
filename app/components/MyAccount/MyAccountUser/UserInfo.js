@@ -51,7 +51,7 @@ const UserInfo = () => {
             {loading ? (
               <ActivityIndicator
                 size="large"
-                color="#0000ff"
+                color="#ffc107"
                 style={styles.activityIndicatorStyle}
               />
             ) : (
