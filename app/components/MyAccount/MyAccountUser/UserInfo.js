@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useEffect } from "react";
+import React, { useContext, useRef } from "react";
 import { StyleSheet, View, ActivityIndicator, Text } from "react-native";
 import { Avatar } from "react-native-elements";
 import AuthContext from "../../../context/auth/authContext";
@@ -9,7 +9,7 @@ import * as Permissions from "expo-permissions";
 
 const UserInfo = () => {
   const authContext = useContext(AuthContext);
-  const { user, updateUser, uploadImage } = authContext;
+  const { user, updateUser, uploadImage, loading } = authContext;
   const toast = useRef(null);
 
   const updateName = name => {
@@ -48,18 +48,26 @@ const UserInfo = () => {
       ) : (
         <View>
           <View style={styles.viewUserInfo}>
-            <Avatar
-              rounded
-              size="large"
-              showEditButton
-              onEditPress={updateImage}
-              source={{
-                uri: user.image
-                  ? user.image
-                  : "https://api.adorable.io/avatars/285/abott@adorable.pngCopy"
-              }}
-              containerStyle={styles.userInfoAvatar}
-            />
+            {loading ? (
+              <ActivityIndicator
+                size="large"
+                color="#0000ff"
+                style={styles.activityIndicatorStyle}
+              />
+            ) : (
+              <Avatar
+                rounded
+                size="large"
+                showEditButton
+                onEditPress={updateImage}
+                source={{
+                  uri: user.image
+                    ? user.image
+                    : "https://api.adorable.io/avatars/285/abott@adorable.pngCopy"
+                }}
+                containerStyle={styles.userInfoAvatar}
+              />
+            )}
             <Text>
               <Text style={styles.name}>{user.name}</Text>
               {"\n"}
@@ -100,6 +108,9 @@ const styles = StyleSheet.create({
   },
   name: {
     fontWeight: "bold"
+  },
+  activityIndicatorStyle: {
+    marginRight: 20
   }
 });
 
