@@ -76,7 +76,7 @@ const UserInfo = () => {
       <Toast
         ref={toast}
         position="bottom"
-        positionValue={450}
+        positionValue={250}
         fadeInDuration={750}
         fadeOutDuration={1000}
         opacity={0.8}

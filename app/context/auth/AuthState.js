@@ -109,16 +109,12 @@ const AuthState = props => {
       };
 
       const res = await RNS3.put(file, config).progress(e => {
-        if (e.percent != 1) {
-          toast.show("Cargando imagen ... ", timeout);
-        } else {
-          toast.show("Imagen cargada con éxito", timeout);
-        }
+        console.log(e.percent);
       });
 
-      console.log(res.body.postResponse.location);
+      updateUser({ image: res.body.postResponse.location }, id, toast, timeout);
     } catch (err) {
-      console.log(err);
+      toast.show("Ocurrió un error al subir la imagen");
     }
   };
 
