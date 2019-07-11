@@ -25,10 +25,6 @@ const OverlayTwoInputs = ({
     updateFunction(newValueOne, newValueTwo);
   };
 
-  const close = () => {
-    updateFunction(null);
-  };
-
   return (
     <Overlay
       isVisible={isVisible}
