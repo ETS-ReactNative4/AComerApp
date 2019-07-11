@@ -11,8 +11,7 @@ import {
   LOGOUT,
   SET_ERROR,
   REMOVE_ERROR,
-  UPDATE_USER,
-  UPDATE_USER_FAIL
+  UPDATE_USER
 } from "../types";
 import { AsyncStorage } from "react-native";
 import api from "../../utils/ApiConnection";
