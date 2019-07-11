@@ -1,4 +1,4 @@
-import React, { useContext, useRef } from "react";
+import React, { useContext, useRef, useEffect } from "react";
 import { StyleSheet, View, ActivityIndicator, Text } from "react-native";
 import { Avatar } from "react-native-elements";
 import AuthContext from "../../../context/auth/authContext";
@@ -9,9 +9,12 @@ import * as Permissions from "expo-permissions";
 
 const UserInfo = () => {
   const authContext = useContext(AuthContext);
-  const { user, updateUser, uploadImage } = authContext;
-
+  const { user, updateUser, uploadImage, loading } = authContext;
   const toast = useRef(null);
+
+  useEffect(() => {
+    console.log(loading);
+  }, []);
 
   const updateName = name => {
     updateUser({ name }, user.id, toast.current, 500);

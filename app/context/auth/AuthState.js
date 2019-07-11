@@ -11,7 +11,8 @@ import {
   LOGOUT,
   SET_ERROR,
   REMOVE_ERROR,
-  UPDATE_USER
+  UPDATE_USER,
+  LOADING
 } from "../types";
 import { AsyncStorage } from "react-native";
 import api from "../../utils/ApiConnection";
@@ -23,7 +24,8 @@ const AuthState = props => {
     token: AsyncStorage.getItem("token"),
     isAuthenticated: null,
     error: null,
-    user: null
+    user: null,
+    loading: false
   };
 
   const [state, dispatch] = useReducer(authReducer, initialState);
@@ -107,11 +109,15 @@ const AuthState = props => {
         successActionStatus: 201
       };
 
-      const res = await RNS3.put(file, config).progress(e =>
-        console.log(e.percent)
-      );
+      const res = await RNS3.put(file, config).progress(e => {
+        if (e.percent != 1) {
+          dispatch({ type: LOADING, payload: true });
+        } else {
+          dispatch({ type: LOADING, payload: false });
+        }
+      });
 
-      console.log(res.body.postResponse.location);
+      toast.show("Imagen cargada con éxito", timeout);
     } catch (err) {
       console.log(err);
     }
