@@ -64,7 +64,7 @@ const OverlayTwoInputs = ({
           secureTextEntry={true}
         />
         <Button
-          title="Actualizar contraseña"
+          title="Actualizar"
           buttonStyle={styles.buttonUpdate}
           onPress={update}
         />
