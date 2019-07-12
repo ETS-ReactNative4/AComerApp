@@ -20,6 +20,11 @@ const UserInfo = () => {
     updateUser({ email, password }, user.id, toast.current, 500);
   };
 
+  const updatePassword = (currentPassword, newPassword) => {
+    console.log("Current Password", currentPassword);
+    console.log("New Password", newPassword);
+  };
+
   const updateImage = async () => {
     const resultPermissions = await Permissions.askAsync(
       Permissions.CAMERA_ROLL
@@ -83,6 +88,7 @@ const UserInfo = () => {
             user={user}
             updateName={updateName}
             updateEmail={updateEmail}
+            updatePassword={updatePassword}
           />
         </View>
       )}

@@ -3,8 +3,9 @@ import { StyleSheet, View } from "react-native";
 import { ListItem } from "react-native-elements";
 import OverlayOneInput from "../../Elements/OverlayOneInput";
 import OverlayTwoInputs from "../../Elements/OverlayTwoInputs";
+import OverlayThreeInputs from "../../Elements/OverlayThreeInputs";
 
-const UpdateUserInfo = ({ user, updateName, updateEmail }) => {
+const UpdateUserInfo = ({ user, updateName, updateEmail, updatePassword }) => {
   const [overlayComponent, setOverlayComponent] = useState(null);
 
   const openOverlayComponent = (placeholder, updateFunction, inputValue) => {
@@ -56,6 +57,35 @@ const UpdateUserInfo = ({ user, updateName, updateEmail }) => {
     setOverlayComponent(null);
   };
 
+  const openOverlayThreeInputs = (
+    placeholderOne,
+    placeholderTwo,
+    placeholderThree,
+    updateFunction
+  ) => {
+    setOverlayComponent(
+      <OverlayThreeInputs
+        isVisible={true}
+        placeholderOne={placeholderOne}
+        placeholderTwo={placeholderTwo}
+        placeholderThree={placeholderThree}
+        updateFunction={updateFunction}
+        valueOne=""
+        valueTwo=""
+        valueThree=""
+        closeFunction={closeOverlay}
+      />
+    );
+  };
+
+  const updateUserPassword = (
+    currentPassword,
+    newPassword,
+    repeatNewPassword
+  ) => {
+    console.log("Pasando por aquí");
+  };
+
   const menuItems = [
     {
       title: "Cambiar Nombre y Apellido",
@@ -89,7 +119,7 @@ const UpdateUserInfo = ({ user, updateName, updateEmail }) => {
       iconColorRight: "#ccc",
       iconNameLeft: "lock-reset",
       iconColorLeft: "#ccc",
-      onPress: () => console.log("Click en cambiar contraseña")
+      onPress: () => openOverlayThreeInputs()
     }
   ];
 
