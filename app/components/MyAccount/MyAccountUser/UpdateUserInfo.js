@@ -119,7 +119,13 @@ const UpdateUserInfo = ({ user, updateName, updateEmail, updatePassword }) => {
       iconColorRight: "#ccc",
       iconNameLeft: "lock-reset",
       iconColorLeft: "#ccc",
-      onPress: () => openOverlayThreeInputs()
+      onPress: () =>
+        openOverlayThreeInputs(
+          "Contraseña actual",
+          "Nueva contraseña",
+          "Repite contraseña",
+          updateUserPassword
+        )
     }
   ];
 
