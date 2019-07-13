@@ -5,7 +5,7 @@ import { Icon, Image } from "react-native-elements";
 import * as ImagePicker from "expo-image-picker";
 import * as Permissions from "expo-permissions";
 import Toast from "react-native-easy-toast";
-import defaultImage from "../../../assets/img/comiendo-en-restaurant-asociado-a-acomerapp.png";
+import defaultImage from "../../../assets/img/no-image.png";
 
 import t from "tcomb-form-native";
 const Form = t.form.Form;
