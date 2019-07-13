@@ -44,7 +44,7 @@ const AddRestaurant = () => {
           type: "image/jpeg"
         };
         //setRestaurantPhoto(file.uri);
-        console.log("HOLAAA", restaurantPhoto);
+        //console.log("HOLAAA", restaurantPhoto);
         //uploadImage(file, user.id, toast.current, 500);
       }
     }
