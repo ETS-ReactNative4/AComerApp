@@ -87,8 +87,15 @@ const UpdateUserInfo = ({ user, updateName, updateEmail, updatePassword }) => {
   ) => {
     if (currentPassword && newPassword && repeatNewPassword) {
       if (newPassword === repeatNewPassword) {
+        if (currentPassword === newPassword) {
+          toast.current.show(
+            "La nueva contraseña no puede ser igual a la actual"
+          );
+        } else {
+          updatePassword(currentPassword, newPassword);
+        }
       } else {
-        toast.current.show("Tus contraseñas no coinciden");
+        toast.current.show("Las nuevas contraseñas deben ser iguales");
       }
     } else {
       toast.current.show(
