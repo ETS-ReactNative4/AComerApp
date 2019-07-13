@@ -16,7 +16,7 @@ import MyAccountScreen from "../screens/MyAccount/MyAccount";
 import RegisterScreen from "../screens/MyAccount/Register";
 import LoginScreen from "../screens/MyAccount/Login";
 
-const HomeScreenStack = createStackNavigator({
+const RestaurantsScreenStack = createStackNavigator({
   Restaurants: {
     screen: RestaurantsScreen,
     navigationOptions: ({ navigation }) => ({
@@ -24,7 +24,9 @@ const HomeScreenStack = createStackNavigator({
     }),
     AddRestaurant: {
       screen: AddRestaurantScreen,
-      title: "Nuevo Restaurant"
+      navigationOptions: ({ navigation }) => ({
+        title: "Nuevo Restaurant"
+      })
     }
   }
 });
@@ -70,7 +72,7 @@ const MyAccountScreenStack = createStackNavigator({
 const RootStack = createBottomTabNavigator(
   {
     Restaurants: {
-      screen: HomeScreenStack,
+      screen: RestaurantsScreenStack,
       navigationOptions: ({ navigation }) => ({
         tabBarLabel: "Inicio",
         tabBarIcon: ({ tintColor }) => (
