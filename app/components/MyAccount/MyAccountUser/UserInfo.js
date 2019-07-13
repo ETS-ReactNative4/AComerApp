@@ -21,8 +21,7 @@ const UserInfo = () => {
   };
 
   const updatePassword = (currentPassword, newPassword) => {
-    console.log("Current Password", currentPassword);
-    console.log("New Password", newPassword);
+    updateUser({ currentPassword, newPassword }, user.id, toast.current, 500);
   };
 
   const updateImage = async () => {
