@@ -1,5 +1,9 @@
 import React, { useRef, useState } from "react";
 import { StyleSheet, View } from "react-native";
+import { Icon, Image } from "react-native-elements";
+import { Permissions, ImagePicker } from "expo";
+import Toast from "react-native-easy-toast";
+
 import t from "tcomb-form-native";
 const Form = t.form.Form;
 import {
