@@ -1,10 +1,17 @@
 import React from "react";
 import { StyleSheet, View, Text } from "react-native";
+import ActionButton from "react-native-action-button";
 
 const Home = () => {
   return (
     <View style={styles.viewBody}>
       <Text>Home Screen</Text>
+      <ActionButton
+        buttonColor="#ffc107"
+        onPress={() => {
+          console.log("hi");
+        }}
+      />
     </View>
   );
 };
