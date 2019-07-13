@@ -16,8 +16,15 @@ import {
 
 const AddRestaurant = () => {
   const restaurantContext = useContext(RestaurantContext);
-  console.log(restaurantContext);
-  const { restaurantPhoto } = restaurantContext;
+  const { restaurantPhoto, setRestaurantPhoto } = restaurantContext;
+
+  useEffect(() => {
+    if (restaurantPhoto) {
+      console.log(restaurantPhoto);
+    } else {
+      console.log("No hay foto");
+    }
+  }, [restaurantPhoto]);
 
   const addRestaurantForm = useRef(null);
   const toast = useRef(null);
@@ -48,8 +55,9 @@ const AddRestaurant = () => {
           name: result.uri.replace(/^.*[\\\/]/, ""),
           type: "image/jpeg"
         };
-        //setRestaurantPhoto(file.uri);
-        //console.log("HOLAAA", restaurantPhoto);
+
+        await setRestaurantPhoto(file.uri);
+        //console.log("RESTAURANT PHOTO", restaurantPhoto);
         //uploadImage(file, user.id, toast.current, 500);
       }
     }
