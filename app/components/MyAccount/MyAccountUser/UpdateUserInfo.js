@@ -85,10 +85,17 @@ const UpdateUserInfo = ({ user, updateName, updateEmail, updatePassword }) => {
     newPassword,
     repeatNewPassword
   ) => {
-    console.log("Contraseña Actual", currentPassword);
-    console.log("Nueva contraseña", newPassword);
-    console.log("Nueva contraseña repeat", repeatNewPassword);
-    toast.current.show("QUE PASA QLO");
+    if (currentPassword && newPassword && repeatNewPassword) {
+      if (newPassword === repeatNewPassword) {
+      } else {
+        toast.current.show("Tus contraseñas no coinciden");
+      }
+    } else {
+      toast.current.show(
+        "Debes completar los campos para actualizar tu contraseña"
+      );
+    }
+
     setOverlayComponent(null);
   };
 
