@@ -1,4 +1,4 @@
-import React, { useRef, useState, useContext, useEffect } from "react";
+import React, { useRef, useState, useContext } from "react";
 import RestaurantContext from "../../context/restaurant/restaurantContext";
 import { StyleSheet, View, ActivityIndicator } from "react-native";
 import { Icon, Image } from "react-native-elements";
@@ -17,8 +17,6 @@ import {
 const AddRestaurant = () => {
   const restaurantContext = useContext(RestaurantContext);
   const { restaurantPhoto, setRestaurantPhoto, loading } = restaurantContext;
-
-  useEffect(() => {}, [restaurantPhoto, loading]);
 
   const addRestaurantForm = useRef(null);
   const toast = useRef(null);
@@ -61,7 +59,11 @@ const AddRestaurant = () => {
     <View style={styles.viewBody}>
       <View style={styles.viewPhoto}>
         {loading ? (
-          <ActivityIndicator size="large" color="#ffc107" />
+          <ActivityIndicator
+            size="large"
+            color="#ffc107"
+            style={styles.activityIndicatorStyle}
+          />
         ) : (
           <Image
             source={!restaurantPhoto ? defaultImage : { uri: restaurantPhoto }}
@@ -119,6 +121,9 @@ const styles = StyleSheet.create({
     padding: 17,
     paddingBottom: 14,
     margin: 0
+  },
+  activityIndicatorStyle: {
+    padding: 100
   }
 });
 

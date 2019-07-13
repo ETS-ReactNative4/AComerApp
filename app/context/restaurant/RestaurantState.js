@@ -33,6 +33,7 @@ const AuthState = props => {
     <RestaurantContext.Provider
       value={{
         restaurantPhoto: state.restaurantPhoto,
+        loading: state.loading,
         setRestaurantPhoto
       }}
     >
