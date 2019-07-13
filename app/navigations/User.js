@@ -7,7 +7,9 @@ import {
 } from "react-navigation";
 
 import HomeScreen from "../screens/Home";
-import TopFive from "../screens/TopFive";
+import AddRestaurantScreen from "../screens/Restaurants/AddRestaurant";
+
+import TopFiveScreen from "../screens/TopFive";
 import SearchScreen from "../screens/Search";
 
 import MyAccountScreen from "../screens/MyAccount/MyAccount";
@@ -19,13 +21,17 @@ const HomeScreenStack = createStackNavigator({
     screen: HomeScreen,
     navigationOptions: ({ navigation }) => ({
       title: "Home"
-    })
+    }),
+    AddRestaurant: {
+      screen: AddRestaurantScreen,
+      title: "Nuevo Restaurant"
+    }
   }
 });
 
 const TopFiveScreenStack = createStackNavigator({
   TopFive: {
-    screen: TopFive,
+    screen: TopFiveScreen,
     navigationOptions: ({ navigation }) => ({
       title: "Top 5 Restaurants"
     })
