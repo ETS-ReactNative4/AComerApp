@@ -1,8 +1,9 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { StyleSheet, View } from "react-native";
 import { Icon, Image } from "react-native-elements";
 import { Permissions, ImagePicker } from "expo";
 import Toast from "react-native-easy-toast";
+import defaultImage from "../../../assets/img/comiendo-en-restaurant-asociado-a-acomerapp.png";
 
 import t from "tcomb-form-native";
 const Form = t.form.Form;
@@ -22,6 +23,9 @@ const AddRestaurant = () => {
 
   return (
     <View style={styles.viewBody}>
+      <View style={styles.viewPhoto}>
+        <Image source={defaultImage} style={{ width: 500, height: 200 }} />
+      </View>
       <View>
         <Form
           ref={addRestaurantForm}
@@ -37,6 +41,11 @@ const AddRestaurant = () => {
 const styles = StyleSheet.create({
   viewBody: {
     flex: 1
+  },
+  viewPhoto: {
+    alignItems: "center",
+    height: 200,
+    marginBottom: 20
   }
 });
 
