@@ -66,7 +66,9 @@ const AddRestaurant = () => {
           />
         ) : (
           <Image
-            source={!restaurantPhoto ? defaultImage : { uri: restaurantPhoto }}
+            source={
+              !restaurantPhoto ? defaultImage : { uri: restaurantPhoto.uri }
+            }
             PlaceholderContent={<ActivityIndicator />}
             style={{ width: 500, height: 200 }}
           />

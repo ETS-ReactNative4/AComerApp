@@ -18,7 +18,7 @@ const AuthState = props => {
     try {
       await dispatch({
         type: SET_RESTAURANT_PHOTO,
-        payload: file.uri
+        payload: file
       });
     } catch (err) {
       toast.show("Ocurrió un error al subir la imagen");
