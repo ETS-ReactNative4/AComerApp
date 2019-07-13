@@ -1,6 +1,6 @@
 import React, { useContext, useRef } from "react";
 import { StyleSheet, View, ActivityIndicator, Text } from "react-native";
-import { Avatar } from "react-native-elements";
+import { Avatar, Button } from "react-native-elements";
 import AuthContext from "../../../context/auth/authContext";
 import UpdateUserInfo from "./UpdateUserInfo";
 import Toast from "react-native-easy-toast";
@@ -9,7 +9,7 @@ import * as Permissions from "expo-permissions";
 
 const UserInfo = () => {
   const authContext = useContext(AuthContext);
-  const { user, updateUser, uploadImage, loading } = authContext;
+  const { user, updateUser, uploadImage, loading, logout } = authContext;
   const toast = useRef(null);
 
   const updateName = name => {
@@ -89,6 +89,12 @@ const UserInfo = () => {
             updateEmail={updateEmail}
             updatePassword={updatePassword}
           />
+          <Button
+            title="Cerrar Sesión"
+            onPress={logout}
+            buttonStyle={styles.buttonCloseSession}
+            titleStyle={styles.buttonCloseSessionText}
+          />
         </View>
       )}
       <Toast
@@ -121,6 +127,20 @@ const styles = StyleSheet.create({
   },
   activityIndicatorStyle: {
     marginRight: 20
+  },
+  buttonCloseSession: {
+    marginTop: 30,
+    borderRadius: 0,
+    backgroundColor: "#fff",
+    borderTopWidth: 1,
+    borderTopColor: "#e3e3e3",
+    borderBottomWidth: 1,
+    borderBottomColor: "#e3e3e3",
+    paddingTop: 10,
+    paddingBottom: 10
+  },
+  buttonCloseSessionText: {
+    color: "#ffc107"
   }
 });
 
