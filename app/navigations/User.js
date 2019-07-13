@@ -6,7 +6,7 @@ import {
   createBottomTabNavigator
 } from "react-navigation";
 
-import HomeScreen from "../screens/Home";
+import RestaurantsScreen from "../screens/Restaurants/Restaurants";
 import AddRestaurantScreen from "../screens/Restaurants/AddRestaurant";
 
 import TopFiveScreen from "../screens/TopFive";
@@ -17,10 +17,10 @@ import RegisterScreen from "../screens/MyAccount/Register";
 import LoginScreen from "../screens/MyAccount/Login";
 
 const HomeScreenStack = createStackNavigator({
-  Home: {
-    screen: HomeScreen,
+  Restaurants: {
+    screen: RestaurantsScreen,
     navigationOptions: ({ navigation }) => ({
-      title: "Home"
+      title: "Restaurants"
     }),
     AddRestaurant: {
       screen: AddRestaurantScreen,
@@ -69,7 +69,7 @@ const MyAccountScreenStack = createStackNavigator({
 
 const RootStack = createBottomTabNavigator(
   {
-    Home: {
+    Restaurants: {
       screen: HomeScreenStack,
       navigationOptions: ({ navigation }) => ({
         tabBarLabel: "Inicio",
@@ -127,8 +127,8 @@ const RootStack = createBottomTabNavigator(
     }
   },
   {
-    initialRouteName: "Home",
-    order: ["Home", "TopFive", "Search", "MyAccount"],
+    initialRouteName: "Restaurants",
+    order: ["Restaurants", "TopFive", "Search", "MyAccount"],
     tabBarOptions: {
       inactiveTintColor: "#646464",
       activeTintColor: "#ffc107"

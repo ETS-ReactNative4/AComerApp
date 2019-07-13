@@ -2,10 +2,10 @@ import React from "react";
 import { StyleSheet, View, Text } from "react-native";
 import ActionButton from "react-native-action-button";
 
-const Home = () => {
+const Restaurants = () => {
   return (
     <View style={styles.viewBody}>
-      <Text>Home Screen</Text>
+      <Text>Restaurants Screen</Text>
       <ActionButton
         buttonColor="#ffc107"
         onPress={() => {
@@ -25,4 +25,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default Home;
+export default Restaurants;
