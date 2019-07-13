@@ -1,4 +1,5 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useContext, useEffect } from "react";
+import RestaurantContext from "../../context/restaurant/restaurantContext";
 import { StyleSheet, View } from "react-native";
 import { Icon, Image } from "react-native-elements";
 import * as ImagePicker from "expo-image-picker";
@@ -14,6 +15,10 @@ import {
 } from "../../forms/AddRestaurant";
 
 const AddRestaurant = () => {
+  const restaurantContext = useContext(RestaurantContext);
+  console.log(restaurantContext);
+  const { restaurantPhoto } = restaurantContext;
+
   const addRestaurantForm = useRef(null);
   const toast = useRef(null);
   const { formData, setFormData } = useState({
