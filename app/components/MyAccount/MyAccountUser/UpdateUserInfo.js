@@ -1,12 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { StyleSheet, View } from "react-native";
 import { ListItem } from "react-native-elements";
+import Toast from "react-native-easy-toast";
 import OverlayOneInput from "../../Elements/OverlayOneInput";
 import OverlayTwoInputs from "../../Elements/OverlayTwoInputs";
 import OverlayThreeInputs from "../../Elements/OverlayThreeInputs";
 
 const UpdateUserInfo = ({ user, updateName, updateEmail, updatePassword }) => {
   const [overlayComponent, setOverlayComponent] = useState(null);
+  const toast = useRef(null);
 
   const openOverlayComponent = (placeholder, updateFunction, inputValue) => {
     setOverlayComponent(
@@ -83,7 +85,11 @@ const UpdateUserInfo = ({ user, updateName, updateEmail, updatePassword }) => {
     newPassword,
     repeatNewPassword
   ) => {
-    console.log("Pasando por aquí");
+    console.log("Contraseña Actual", currentPassword);
+    console.log("Nueva contraseña", newPassword);
+    console.log("Nueva contraseña repeat", repeatNewPassword);
+    toast.current.show("QUE PASA QLO");
+    setOverlayComponent(null);
   };
 
   const menuItems = [
@@ -150,6 +156,15 @@ const UpdateUserInfo = ({ user, updateName, updateEmail, updatePassword }) => {
         />
       ))}
       {overlayComponent}
+      <Toast
+        ref={toast}
+        position="bottom"
+        positionValue={400}
+        fadeInDuration={750}
+        fadeOutDuration={1000}
+        opacity={0.8}
+        textStyle={{ color: "#fff" }}
+      />
     </View>
   );
 };
