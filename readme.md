@@ -16,3 +16,4 @@
 - [EXPO PERMISSIONS](https://docs.expo.io/versions/latest/sdk/permissions/)
 - [REACT NATIVE AWS3](https://yarnpkg.com/en/package/react-native-aws3) yarn add react-native-aws3
   - [TUTORIAL](https://www.youtube.com/watch?v=FXG3AJ6OJCk)
+- [REACT NATIVE ACTION BUTTON](https://yarnpkg.com/en/package/react-native-action-button)
