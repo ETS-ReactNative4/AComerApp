@@ -1,6 +1,6 @@
 import React, { useRef, useState, useContext, useEffect } from "react";
 import RestaurantContext from "../../context/restaurant/restaurantContext";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, ActivityIndicator } from "react-native";
 import { Icon, Image } from "react-native-elements";
 import * as ImagePicker from "expo-image-picker";
 import * as Permissions from "expo-permissions";
@@ -16,15 +16,9 @@ import {
 
 const AddRestaurant = () => {
   const restaurantContext = useContext(RestaurantContext);
-  const { restaurantPhoto, setRestaurantPhoto } = restaurantContext;
+  const { restaurantPhoto, setRestaurantPhoto, loading } = restaurantContext;
 
-  useEffect(() => {
-    if (restaurantPhoto) {
-      console.log(restaurantPhoto);
-    } else {
-      console.log("No hay foto");
-    }
-  }, [restaurantPhoto]);
+  useEffect(() => {}, [restaurantPhoto, loading]);
 
   const addRestaurantForm = useRef(null);
   const toast = useRef(null);
@@ -56,7 +50,7 @@ const AddRestaurant = () => {
           type: "image/jpeg"
         };
 
-        await setRestaurantPhoto(file.uri);
+        await setRestaurantPhoto(file);
         //console.log("RESTAURANT PHOTO", restaurantPhoto);
         //uploadImage(file, user.id, toast.current, 500);
       }
@@ -66,10 +60,14 @@ const AddRestaurant = () => {
   return (
     <View style={styles.viewBody}>
       <View style={styles.viewPhoto}>
-        {restaurantPhoto ? (
-          <Image source={restaurantPhoto} style={{ width: 500, height: 200 }} />
+        {loading ? (
+          <ActivityIndicator size="large" color="#ffc107" />
         ) : (
-          <Image source={defaultImage} style={{ width: 500, height: 200 }} />
+          <Image
+            source={!restaurantPhoto ? defaultImage : { uri: restaurantPhoto }}
+            PlaceholderContent={<ActivityIndicator />}
+            style={{ width: 500, height: 200 }}
+          />
         )}
       </View>
       <View>
