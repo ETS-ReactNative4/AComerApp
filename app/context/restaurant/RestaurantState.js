@@ -16,13 +16,9 @@ const AuthState = props => {
   // SET RESTAURANT PHOTO
   const setRestaurantPhoto = async file => {
     try {
-      const res = await RNS3.put(file, config).progress(e => {
-        if (e.percent < 1) dispatch({ type: LOADING, payload: true });
-      });
-
-      dispatch({
+      await dispatch({
         type: SET_RESTAURANT_PHOTO,
-        payload: res.body.postResponse.location
+        payload: file.uri
       });
     } catch (err) {
       toast.show("Ocurrió un error al subir la imagen");
