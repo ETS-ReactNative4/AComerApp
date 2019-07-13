@@ -3,12 +3,19 @@ import { StyleSheet, View, Text } from "react-native";
 
 const AddRestaurant = () => {
   return (
-    <View>
+    <View style={styles.viewBody}>
       <Text>Add Restaurant Screen</Text>
     </View>
   );
 };
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  viewBody: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "#fff"
+  }
+});
 
 export default AddRestaurant;
