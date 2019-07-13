@@ -1,5 +1,6 @@
 import t from "tcomb-form-native";
 import inputTemplate from "./templates/input";
+import TextAreaTemplate from "./templates/TextArea";
 
 export const AddRestaurantStruct = t.struct({
   name: t.String,
@@ -13,7 +14,7 @@ export const AddRestaurantOptions = {
     name: {
       template: inputTemplate,
       config: {
-        placeholder: "Nombre del Restaurant",
+        placeholder: "Nombre del Restaurant ...",
         icontype: "material-community",
         iconName: "silverware-variant"
       }
@@ -21,7 +22,7 @@ export const AddRestaurantOptions = {
     city: {
       template: inputTemplate,
       config: {
-        placeholder: "Ciudad del Restaurant",
+        placeholder: "Ciudad del Restaurant ...",
         icontype: "material-community",
         iconName: "city"
       }
@@ -29,17 +30,15 @@ export const AddRestaurantOptions = {
     address: {
       template: inputTemplate,
       config: {
-        placeholder: "Dirección del Restaurant",
+        placeholder: "Dirección del Restaurant ...",
         icontype: "material-community",
         iconName: "map-marker"
       }
     },
     description: {
-      template: inputTemplate,
+      template: TextAreaTemplate,
       config: {
-        placeholder: "Descripción del Restaurant",
-        icontype: "material-community",
-        iconName: "silverware-variant"
+        placeholder: "Descripción del Restaurant ..."
       }
     }
   }
