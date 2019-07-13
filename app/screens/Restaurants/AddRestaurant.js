@@ -16,7 +16,6 @@ import {
 const AddRestaurant = () => {
   const addRestaurantForm = useRef(null);
   const toast = useRef(null);
-  const { restaurantPhoto, setRestaurantPhoto } = useState(null);
   const { formData, setFormData } = useState({
     name: "",
     city: "",
@@ -44,7 +43,8 @@ const AddRestaurant = () => {
           name: result.uri.replace(/^.*[\\\/]/, ""),
           type: "image/jpeg"
         };
-        setRestaurantPhoto(file.uri);
+        //setRestaurantPhoto(file.uri);
+        console.log("HOLAAA", restaurantPhoto);
         //uploadImage(file, user.id, toast.current, 500);
       }
     }
