@@ -1,7 +1,7 @@
 import React, { useRef, useState, useContext, useEffect } from "react";
 import RestaurantContext from "../../context/restaurant/restaurantContext";
 import AuthContext from "../../context/auth/authContext";
-import { StyleSheet, View, ActivityIndicator } from "react-native";
+import { StyleSheet, View, ActivityIndicator, ScrollView } from "react-native";
 import { Icon, Image, Button } from "react-native-elements";
 import * as ImagePicker from "expo-image-picker";
 import * as Permissions from "expo-permissions";
@@ -80,7 +80,7 @@ const AddRestaurant = () => {
   };
 
   return (
-    <View style={styles.viewBody}>
+    <ScrollView style={styles.viewBody}>
       <View style={styles.viewPhoto}>
         {loading ? (
           <ActivityIndicator
@@ -132,7 +132,7 @@ const AddRestaurant = () => {
         opacity={0.8}
         textStyle={{ color: "#fff" }}
       />
-    </View>
+    </ScrollView>
   );
 };
 
@@ -165,9 +165,7 @@ const styles = StyleSheet.create({
   },
   btnSubmit: {
     backgroundColor: "#ffc107",
-    marginLeft: 20,
-    marginRight: 20,
-    marginBottom: 5
+    margin: 20
   }
 });
 

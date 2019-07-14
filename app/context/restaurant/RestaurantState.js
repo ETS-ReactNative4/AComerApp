@@ -29,7 +29,10 @@ const AuthState = props => {
   // ADD RESTAURANT
   const addRestaurant = async (formData, file, id, toast, timeout) => {
     try {
-      const res = await api.post("/api/restaurants/", { formData, file, id });
+      toast.show("Creando restaurant", timeout);
+      const imgUrl = await uploadImage(file);
+      const res = await api.post("/api/restaurants/", { formData, imgUrl, id });
+      console.log(res.body);
       toast.show("Restaurant creado correctamente", timeout);
     } catch (err) {
       toast.show("Ocurrió un error al crear el restaurant", timeout);
@@ -37,13 +40,12 @@ const AuthState = props => {
   };
 
   // UPLOAD IMAGE
-  const uploadImage = async (file, id, toast, timeout) => {
+  const uploadImage = async file => {
     try {
       const res = await RNS3.put(file, config).progress(e => {
         if (e.percent < 1) dispatch({ type: LOADING, payload: true });
       });
-
-      //updateUser({ image: res.body.postResponse.location }, id, toast, timeout);
+      return res.body.postResponse.location;
     } catch (err) {
       toast.show("Ocurrió un error al subir la imagen", timeout);
     }
