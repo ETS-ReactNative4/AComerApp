@@ -31,9 +31,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    paddingLeft: 30,
-    paddingRight: 30,
-    paddingTop: 30
+    padding: 30
   },
   image: {
     height: 300,
