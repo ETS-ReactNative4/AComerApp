@@ -28,10 +28,6 @@ const Restaurants = ({ navigation }) => {
     navigation.navigate(name);
   };
 
-  const goToRestaurant = restaurant => {
-    console.log(restaurant);
-  };
-
   const renderRow = restaurant => {
     const { name, city, description, address, image } = restaurant.item;
     return (
@@ -59,6 +55,22 @@ const Restaurants = ({ navigation }) => {
     );
   };
 
+  const goToRestaurant = restaurant => {
+    console.log(restaurant);
+  };
+
+  const handleLoadMore = async () => {
+    await console.log("Cargando más");
+  };
+
+  const renderFooter = () => {
+    return (
+      <View>
+        <Text>Cargando nuevos restaurantes</Text>
+      </View>
+    );
+  };
+
   return (
     <View style={styles.viewBody}>
       {restaurants ? (
@@ -67,6 +79,9 @@ const Restaurants = ({ navigation }) => {
             data={restaurants}
             renderItem={renderRow}
             keyExtractor={(item, index) => index.toString()}
+            onEndReached={handleLoadMore}
+            onEndReachedThreshold={0}
+            ListFooterComponent={renderFooter}
           />
         </View>
       ) : (
