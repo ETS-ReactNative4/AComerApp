@@ -67,12 +67,15 @@ const AuthState = props => {
   };
 
   // GET_RESTAURANTS
-  const getRestaurants = async toast => {
+  const getRestaurants = async () => {
     try {
       const res = await api.get("/api/restaurants/");
       dispatch({ type: GET_RESTAURANTS, payload: res.data });
     } catch (err) {
-      toast.show("Error en el servidor, nose pueden obtener los restaurants");
+      console.log(
+        "Error en el servidor, nose pueden obtener los restaurants",
+        err
+      );
     }
   };
 
@@ -82,6 +85,7 @@ const AuthState = props => {
         restaurantPhoto: state.restaurantPhoto,
         loading: state.loading,
         restaurants: state.restaurants,
+        startRestaurants: state.startRestaurants,
         setRestaurantPhoto,
         addRestaurant,
         uploadImage,
