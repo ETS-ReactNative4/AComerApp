@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import AuthContext from "../../context/auth/authContext";
 import RestaurantContext from "../../context/restaurant/restaurantContext";
 import {
@@ -18,6 +18,8 @@ const Restaurants = ({ navigation }) => {
 
   const restaurantContext = useContext(RestaurantContext);
   const { getRestaurants, restaurants } = restaurantContext;
+
+  const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
     loadUser();
@@ -64,11 +66,19 @@ const Restaurants = ({ navigation }) => {
   };
 
   const renderFooter = () => {
-    return (
-      <View>
-        <Text>Cargando nuevos restaurantes</Text>
-      </View>
-    );
+    if (!isLoading) {
+      return (
+        <View style={styles.loaderRestaurants}>
+          <ActivityIndicator size="large" />
+        </View>
+      );
+    } else {
+      return (
+        <View style={styles.noFoundRestaurants}>
+          <Text>No quedan restaurants por cargar</Text>
+        </View>
+      );
+    }
   };
 
   return (
@@ -133,6 +143,15 @@ const styles = StyleSheet.create({
     paddingTop: 2,
     color: "grey",
     width: 300
+  },
+  loaderRestaurants: {
+    marginTop: 20,
+    marginBottom: 20
+  },
+  noFoundRestaurants: {
+    marginTop: 20,
+    marginBottom: 20,
+    alignItems: "center"
   }
 });
 
