@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import AuthContext from "../../context/auth/authContext";
+import RestaurantContext from "../../context/restaurant/restaurantContext";
 import { StyleSheet, View, Text } from "react-native";
 import ActionButton from "react-native-action-button";
 
@@ -7,9 +8,13 @@ const Restaurants = ({ navigation }) => {
   const authContext = useContext(AuthContext);
   const { loadUser, isAuthenticated } = authContext;
 
+  const restaurantContext = useContext(RestaurantContext);
+  const { getRestaurants, restaurants } = restaurantContext;
+
   useEffect(() => {
     loadUser();
-  }, [isAuthenticated]);
+    getRestaurants();
+  }, []);
 
   const goToScreen = name => {
     navigation.navigate(name);

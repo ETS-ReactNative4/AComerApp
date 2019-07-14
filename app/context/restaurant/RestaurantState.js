@@ -1,7 +1,12 @@
 import React, { useReducer } from "react";
 import RestaurantContext from "./restaurantContext";
 import restaurantReducer from "./restaurantReducer";
-import { SET_RESTAURANT_PHOTO, LOADING, ADD_RESTAURANT } from "../types";
+import {
+  SET_RESTAURANT_PHOTO,
+  LOADING,
+  ADD_RESTAURANT,
+  GET_RESTAURANTS
+} from "../types";
 import api from "../../utils/ApiConnection";
 import { RNS3 } from "react-native-aws3";
 import config from "../../utils/AwsConfig";
@@ -9,7 +14,8 @@ import config from "../../utils/AwsConfig";
 const AuthState = props => {
   const initialState = {
     restaurantPhoto: null,
-    loading: false
+    loading: false,
+    restaurants: null
   };
 
   const [state, dispatch] = useReducer(restaurantReducer, initialState);
@@ -60,14 +66,26 @@ const AuthState = props => {
     }
   };
 
+  // GET_RESTAURANTS
+  const getRestaurants = async toast => {
+    try {
+      const res = await api.get("/api/restaurants/");
+      dispatch({ type: GET_RESTAURANTS, payload: res.data });
+    } catch (err) {
+      toast.show("Error en el servidor, nose pueden obtener los restaurants");
+    }
+  };
+
   return (
     <RestaurantContext.Provider
       value={{
         restaurantPhoto: state.restaurantPhoto,
         loading: state.loading,
+        restaurants: state.restaurants,
         setRestaurantPhoto,
         addRestaurant,
-        uploadImage
+        uploadImage,
+        getRestaurants
       }}
     >
       {props.children}
