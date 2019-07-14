@@ -59,8 +59,14 @@ const AddRestaurant = () => {
   const onChange = formData => setFormData(formData);
 
   const onSubmit = () => {
-    console.log(formData);
-    console.log(restaurantPhoto);
+    if (!name || !address || !city || !description) {
+      toast.current.show("Debes completar todos los campos", 1500);
+    } else if (!restaurantPhoto) {
+      toast.current.show("Debes subir una imagen", 1500);
+    } else {
+      console.log(formData);
+      console.log(restaurantPhoto);
+    }
   };
 
   return (
