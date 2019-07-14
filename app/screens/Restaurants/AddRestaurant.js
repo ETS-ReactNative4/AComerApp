@@ -2,7 +2,7 @@ import React, { useRef, useState, useContext, useEffect } from "react";
 import RestaurantContext from "../../context/restaurant/restaurantContext";
 import AuthContext from "../../context/auth/authContext";
 import { StyleSheet, View, ActivityIndicator, ScrollView } from "react-native";
-import { Icon, Image, Button } from "react-native-elements";
+import { Icon, Image, Button, Text, Overlay } from "react-native-elements";
 import * as ImagePicker from "expo-image-picker";
 import * as Permissions from "expo-permissions";
 import Toast from "react-native-easy-toast";
@@ -82,21 +82,13 @@ const AddRestaurant = () => {
   return (
     <ScrollView style={styles.viewBody}>
       <View style={styles.viewPhoto}>
-        {loading ? (
-          <ActivityIndicator
-            size="large"
-            color="#ffc107"
-            style={styles.activityIndicatorStyle}
-          />
-        ) : (
-          <Image
-            source={
-              !restaurantPhoto ? defaultImage : { uri: restaurantPhoto.uri }
-            }
-            PlaceholderContent={<ActivityIndicator />}
-            style={{ width: 500, height: 200 }}
-          />
-        )}
+        <Image
+          source={
+            !restaurantPhoto ? defaultImage : { uri: restaurantPhoto.uri }
+          }
+          PlaceholderContent={<ActivityIndicator />}
+          style={{ width: 500, height: 200 }}
+        />
       </View>
       <View>
         <Form
@@ -123,6 +115,22 @@ const AddRestaurant = () => {
           buttonStyle={styles.btnSubmit}
         />
       </View>
+      <Overlay
+        overlayBackgroundColor="transparent"
+        overlayStyle={styles.overlayLoading}
+        isVisible={loading}
+        width="auto"
+        height="auto"
+      >
+        <View>
+          <Text style={styles.overlayText}>Creando restaurant</Text>
+          <ActivityIndicator
+            size="large"
+            color="#ffc107"
+            style={styles.activityIndicatorStyle}
+          />
+        </View>
+      </Overlay>
       <Toast
         ref={toast}
         position="bottom"
@@ -156,9 +164,6 @@ const styles = StyleSheet.create({
     paddingBottom: 14,
     margin: 0
   },
-  activityIndicatorStyle: {
-    padding: 100
-  },
   viewBtnSubmit: {
     flex: 1,
     justifyContent: "flex-end"
@@ -166,7 +171,16 @@ const styles = StyleSheet.create({
   btnSubmit: {
     backgroundColor: "#ffc107",
     margin: 20
-  }
+  },
+  overlayStyle: {
+    padding: 20
+  },
+  overlayText: {
+    color: "#ffc107",
+    marginBottom: 20,
+    fontSize: 20
+  },
+  activityIndicatorStyle: {}
 });
 
 export default AddRestaurant;

@@ -32,9 +32,10 @@ const AuthState = props => {
       toast.show("Creando restaurant", timeout);
       const imgUrl = await uploadImage(file);
       const res = await api.post("/api/restaurants/", { formData, imgUrl, id });
+      dispatch({ type: ADD_RESTAURANT, payload: res.data });
       toast.show("Restaurant creado correctamente", timeout);
     } catch (err) {
-      toast.show("Ocurrió un error al crear el restaurant", timeout);
+      toast.show("Error en el servidor, intente más tarde", timeout);
     }
   };
 

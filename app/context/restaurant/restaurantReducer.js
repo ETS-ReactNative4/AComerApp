@@ -8,6 +8,12 @@ export default (state, action) => {
         restaurantPhoto: action.payload,
         loading: false
       };
+    case ADD_RESTAURANT: {
+      return {
+        ...state,
+        loading: false
+      };
+    }
     case LOADING:
       return {
         ...state,
