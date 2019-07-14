@@ -16,7 +16,12 @@ import {
 
 const AddRestaurant = () => {
   const restaurantContext = useContext(RestaurantContext);
-  const { restaurantPhoto, setRestaurantPhoto, loading } = restaurantContext;
+  const {
+    restaurantPhoto,
+    setRestaurantPhoto,
+    loading,
+    addRestaurant
+  } = restaurantContext;
 
   const addRestaurantForm = useRef(null);
   const toast = useRef(null);
@@ -43,8 +48,6 @@ const AddRestaurant = () => {
         };
 
         await setRestaurantPhoto(file);
-        //console.log("RESTAURANT PHOTO", restaurantPhoto);
-        //uploadImage(file, user.id, toast.current, 500);
       }
     }
   };
@@ -64,8 +67,7 @@ const AddRestaurant = () => {
     } else if (!restaurantPhoto) {
       toast.current.show("Debes subir una imagen", 1500);
     } else {
-      console.log(formData);
-      console.log(restaurantPhoto);
+      addRestaurant(formData, restaurantPhoto, toast.current, 1500);
     }
   };
 

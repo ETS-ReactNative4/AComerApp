@@ -1,4 +1,4 @@
-import { SET_RESTAURANT_PHOTO, LOADING } from "../types";
+import { SET_RESTAURANT_PHOTO, LOADING, ADD_RESTAURANT } from "../types";
 
 export default (state, action) => {
   switch (action.type) {
