@@ -100,8 +100,12 @@ const AddRestaurant = () => {
           onPress={uploadImage}
         />
       </View>
-      <View>
-        <Button title="Crear Restaurant" onPress={onSubmit} />
+      <View style={styles.viewBtnSubmit}>
+        <Button
+          title="Crear Restaurant"
+          onPress={onSubmit}
+          buttonStyle={styles.btnSubmit}
+        />
       </View>
       <Toast
         ref={toast}
@@ -138,6 +142,16 @@ const styles = StyleSheet.create({
   },
   activityIndicatorStyle: {
     padding: 100
+  },
+  viewBtnSubmit: {
+    flex: 1,
+    justifyContent: "flex-end"
+  },
+  btnSubmit: {
+    backgroundColor: "#ffc107",
+    marginLeft: 20,
+    marginRight: 20,
+    marginBottom: 5
   }
 });
 
