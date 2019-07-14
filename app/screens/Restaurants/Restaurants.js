@@ -6,7 +6,8 @@ import {
   View,
   Text,
   FlatList,
-  ActivityIndicator
+  ActivityIndicator,
+  TouchableOpacity
 } from "react-native";
 import { Image } from "react-native-elements";
 import ActionButton from "react-native-action-button";
@@ -27,28 +28,34 @@ const Restaurants = ({ navigation }) => {
     navigation.navigate(name);
   };
 
-  const renderRow = restaurants => {
-    const { name, city, description, address, image } = restaurants.item;
+  const goToRestaurant = restaurant => {
+    console.log(restaurant);
+  };
+
+  const renderRow = restaurant => {
+    const { name, city, description, address, image } = restaurant.item;
     return (
-      <View style={styles.viewRestaurant}>
-        <View sytle={styles.viewRestaurantImage}>
-          <Image
-            resizeMode="cover"
-            source={{ uri: image }}
-            style={styles.imageRestaurant}
-            PlaceholderContent={<ActivityIndicator />}
-          />
+      <TouchableOpacity onPress={() => goToRestaurant(restaurant.item)}>
+        <View style={styles.viewRestaurant}>
+          <View sytle={styles.viewRestaurantImage}>
+            <Image
+              resizeMode="cover"
+              source={{ uri: image }}
+              style={styles.imageRestaurant}
+              PlaceholderContent={<ActivityIndicator />}
+            />
+          </View>
+          <View style={styles.viewRestaurantInfo}>
+            <Text style={styles.flatlistRestaurantName}>{name}</Text>
+            <Text style={styles.flatlistRestaurantAddress}>
+              {address}, {city}
+            </Text>
+            <Text style={styles.flatlistRestaurantDescription}>
+              {description.substr(0, 60)} ...
+            </Text>
+          </View>
         </View>
-        <View style={styles.viewRestaurantInfo}>
-          <Text style={styles.flatlistRestaurantName}>{name}</Text>
-          <Text style={styles.flatlistRestaurantAddress}>
-            {address}, {city}
-          </Text>
-          <Text style={styles.flatlistRestaurantDescription}>
-            {description.substr(0, 60)} ...
-          </Text>
-        </View>
-      </View>
+      </TouchableOpacity>
     );
   };
 
