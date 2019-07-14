@@ -1,7 +1,7 @@
 import React, { useRef, useState, useContext } from "react";
 import RestaurantContext from "../../context/restaurant/restaurantContext";
 import { StyleSheet, View, ActivityIndicator } from "react-native";
-import { Icon, Image } from "react-native-elements";
+import { Icon, Image, Button } from "react-native-elements";
 import * as ImagePicker from "expo-image-picker";
 import * as Permissions from "expo-permissions";
 import Toast from "react-native-easy-toast";
@@ -20,12 +20,6 @@ const AddRestaurant = () => {
 
   const addRestaurantForm = useRef(null);
   const toast = useRef(null);
-  const { formData, setFormData } = useState({
-    name: "",
-    city: "",
-    address: "",
-    description: ""
-  });
 
   const uploadImage = async () => {
     const resultPermissions = await Permissions.askAsync(
@@ -55,6 +49,20 @@ const AddRestaurant = () => {
     }
   };
 
+  const [formData, setFormData] = useState({
+    name: "",
+    address: "",
+    city: "",
+    description: ""
+  });
+  const { name, address, city, description } = formData;
+  const onChange = formData => setFormData(formData);
+
+  const onSubmit = () => {
+    console.log(formData);
+    console.log(restaurantPhoto);
+  };
+
   return (
     <View style={styles.viewBody}>
       <View style={styles.viewPhoto}>
@@ -80,6 +88,7 @@ const AddRestaurant = () => {
           type={AddRestaurantStruct}
           options={AddRestaurantOptions}
           value={formData}
+          onChange={onChange}
         />
       </View>
       <View style={styles.viewIconUploadPhoto}>
@@ -90,6 +99,9 @@ const AddRestaurant = () => {
           iconStyle={styles.addPhotoIcon}
           onPress={uploadImage}
         />
+      </View>
+      <View>
+        <Button title="Crear Restaurant" onPress={onSubmit} />
       </View>
       <Toast
         ref={toast}
