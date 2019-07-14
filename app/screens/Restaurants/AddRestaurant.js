@@ -1,5 +1,6 @@
-import React, { useRef, useState, useContext } from "react";
+import React, { useRef, useState, useContext, useEffect } from "react";
 import RestaurantContext from "../../context/restaurant/restaurantContext";
+import AuthContext from "../../context/auth/authContext";
 import { StyleSheet, View, ActivityIndicator } from "react-native";
 import { Icon, Image, Button } from "react-native-elements";
 import * as ImagePicker from "expo-image-picker";
@@ -15,6 +16,13 @@ import {
 } from "../../forms/AddRestaurant";
 
 const AddRestaurant = () => {
+  const authContext = useContext(AuthContext);
+  const { user, loadUser } = authContext;
+
+  useEffect(() => {
+    loadUser();
+  }, []);
+
   const restaurantContext = useContext(RestaurantContext);
   const {
     restaurantPhoto,
@@ -67,7 +75,7 @@ const AddRestaurant = () => {
     } else if (!restaurantPhoto) {
       toast.current.show("Debes subir una imagen", 1500);
     } else {
-      addRestaurant(formData, restaurantPhoto, toast.current, 1500);
+      addRestaurant(formData, restaurantPhoto, user.id, toast.current, 1500);
     }
   };
 
