@@ -43,6 +43,7 @@ const AuthState = props => {
         navigation.goBack();
       });
     } catch (err) {
+      dispatch({ type: LOADING, payload: false });
       toast.show("Error en el servidor, intente más tarde", timeout);
     }
   };
