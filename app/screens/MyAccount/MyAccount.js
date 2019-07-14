@@ -1,5 +1,5 @@
-import React, { Fragment, useContext, useEffect } from "react";
-import { StyleSheet, View } from "react-native";
+import React, { useContext, useEffect } from "react";
+import { StyleSheet, View, ScrollView } from "react-native";
 import AuthContext from "../../context/auth/authContext";
 
 import MyAccountGuest from "../../components/MyAccount/MyAccountGuest";
@@ -18,15 +18,13 @@ const MyAccount = ({ navigation }) => {
   };
 
   return (
-    <View style={styles.viewBody}>
+    <ScrollView style={styles.viewBody}>
       {isAuthenticated ? (
-        <Fragment>
-          <MyAccountUser />
-        </Fragment>
+        <MyAccountUser />
       ) : (
         <MyAccountGuest goToScreen={goToScreen} />
       )}
-    </View>
+    </ScrollView>
   );
 };
 
