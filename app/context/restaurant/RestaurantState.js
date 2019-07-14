@@ -27,13 +27,21 @@ const AuthState = props => {
   };
 
   // ADD RESTAURANT
-  const addRestaurant = async (formData, file, id, toast, timeout) => {
+  const addRestaurant = async (
+    formData,
+    file,
+    id,
+    toast,
+    timeout,
+    navigation
+  ) => {
     try {
-      toast.show("Creando restaurant", timeout);
       const imgUrl = await uploadImage(file);
       const res = await api.post("/api/restaurants/", { formData, imgUrl, id });
       dispatch({ type: ADD_RESTAURANT, payload: res.data });
-      toast.show("Restaurant creado correctamente", timeout);
+      toast.show("Restaurant creado correctamente", 100, () => {
+        navigation.goBack();
+      });
     } catch (err) {
       toast.show("Error en el servidor, intente más tarde", timeout);
     }

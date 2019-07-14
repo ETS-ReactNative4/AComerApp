@@ -15,7 +15,7 @@ import {
   AddRestaurantOptions
 } from "../../forms/AddRestaurant";
 
-const AddRestaurant = () => {
+const AddRestaurant = ({ navigation }) => {
   const authContext = useContext(AuthContext);
   const { user, loadUser } = authContext;
 
@@ -75,7 +75,14 @@ const AddRestaurant = () => {
     } else if (!restaurantPhoto) {
       toast.current.show("Debes subir una imagen", 1500);
     } else {
-      addRestaurant(formData, restaurantPhoto, user.id, toast.current, 1500);
+      addRestaurant(
+        formData,
+        restaurantPhoto,
+        user.id,
+        toast.current,
+        1500,
+        navigation
+      );
     }
   };
 
