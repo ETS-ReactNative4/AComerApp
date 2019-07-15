@@ -101,10 +101,12 @@ const AuthState = props => {
   };
 
   // ADD_REVIEW_RESTAURANT
-  const addReviewRestaurant = async (formData, toast) => {
+  const addReviewRestaurant = async (formData, toast, navigation) => {
     try {
       const res = await api.post("/api/restaurant-reviews", formData);
-      toast.show("¡Tu opinión ha sido enviada!", 1500);
+      toast.show("¡Tu opinión ha sido enviada!", 100, () => {
+        navigation.goBack();
+      });
     } catch (err) {
       toast.show(err.message, 1500);
     }

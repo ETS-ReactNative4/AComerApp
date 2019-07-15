@@ -43,7 +43,7 @@ const AddReviewRestaurant = ({ navigation }) => {
             userId: navigation.state.params.user.id
           };
 
-          addReviewRestaurant(formData, toast.current);
+          addReviewRestaurant(formData, toast.current, navigation);
         }
       }
     }
