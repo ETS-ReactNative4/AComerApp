@@ -78,15 +78,16 @@ const Restaurant = ({ navigation }) => {
     return (
       <View style={styles.viewReview}>
         <View style={styles.viewImage}>
-          {image ? (
-            <Avatar source={{ uri: image }} />
-          ) : (
-            <Avatar
-              source={{
-                uri: "https://api.adorable.io/avatars/285/abott@adorable.png"
-              }}
-            />
-          )}
+          <Avatar
+            source={{
+              uri: image
+                ? image
+                : "https://api.adorable.io/avatars/285/abott@adorable.png"
+            }}
+            size="large"
+            rounded
+            containerStyle={styles.imageAvatarUser}
+          />
         </View>
       </View>
     );
@@ -253,6 +254,10 @@ const styles = StyleSheet.create({
   },
   viewImage: {
     marginRight: 15
+  },
+  imageAvatarUser: {
+    width: 50,
+    height: 50
   }
 });
 
