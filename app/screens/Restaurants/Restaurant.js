@@ -129,9 +129,10 @@ const Restaurant = ({ navigation }) => {
         />
       </View>
       <View style={styles.viewRestaurantBasicInfo}>
-        <View>
+        <View style={{ flexDirection: "row" }}>
           <Text style={styles.nameRestaurant}>{name}</Text>
           <Rating
+            style={{ position: "absolute", right: 0 }}
             imageSize={20}
             readonly
             startingValue={averageRestaurantReviews}
