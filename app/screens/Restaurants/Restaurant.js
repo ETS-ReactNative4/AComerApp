@@ -54,16 +54,25 @@ const Restaurant = ({ navigation }) => {
           />
         ))}
       </View>
-      {isAuthenticated && (
+      {isAuthenticated ? (
         <View style={styles.viewBtnAddReview}>
           <Button
             title="Añadir Comentario"
             onPress={() =>
-              navigation.navigate("AddReviewRestaurant", { id, name, user })
+              navigation.navigate("AddReviewRestaurant", {
+                id,
+                name,
+                user
+              })
             }
             buttonStyle={styles.btnAddReview}
           />
         </View>
+      ) : (
+        <Text>
+          Para escribir una opinión tienes que iniciar sesión, puedes hacer
+          click <Text onPress={() => navigation.navigate("Login")}>AQUI</Text>
+        </Text>
       )}
     </View>
   );
