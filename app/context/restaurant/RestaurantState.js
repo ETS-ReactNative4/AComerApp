@@ -139,6 +139,16 @@ const AuthState = props => {
     }
   };
 
+  // GET REVIEWS
+  const getReviews = async restaurantId => {
+    try {
+      const res = await api.get(`/api/reviews/${restaurantId}'`);
+      dispatch({ type: GET_REVIEWS, payload: res.data });
+    } catch (err) {
+      console.log(err.message);
+    }
+  };
+
   return (
     <RestaurantContext.Provider
       value={{
@@ -158,7 +168,8 @@ const AuthState = props => {
         getRestaurants,
         setStartRestaurants,
         addReviewRestaurant,
-        checkAddReviewUser
+        checkAddReviewUser,
+        getReviews
       }}
     >
       {props.children}
