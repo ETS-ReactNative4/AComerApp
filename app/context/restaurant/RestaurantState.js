@@ -24,7 +24,8 @@ const AuthState = props => {
     startRestaurants: 0,
     loadingRestaurants: true,
     userHasReview: false,
-    reviews: null
+    reviews: null,
+    averageRestaurantReviews: null
   };
 
   const [state, dispatch] = useReducer(restaurantReducer, initialState);
@@ -142,7 +143,19 @@ const AuthState = props => {
     try {
       let url = `/api/restaurant-reviews/${restaurantId}`;
       const res = await api.get(url);
-      dispatch({ type: GET_REVIEWS, payload: res.data });
+
+      const ratingRestaurants = [];
+      await res.data.forEach(item => ratingRestaurants.push(item.stars));
+      let sum = 0;
+      ratingRestaurants.map(value => {
+        sum = sum + value;
+      });
+      let average = 0;
+      if (ratingRestaurants.length > 0) {
+        average = sum / ratingRestaurants.length;
+      }
+
+      dispatch({ type: GET_REVIEWS, payload: { reviews: res.data, average } });
     } catch (err) {}
   };
 
@@ -157,6 +170,7 @@ const AuthState = props => {
         loadingRestaurants: state.loadingRestaurants,
         userHasReview: state.userHasReview,
         reviews: state.reviews,
+        averageRestaurantReviews: state.averageRestaurantReviews,
         setRestaurantPhoto,
         addRestaurant,
         uploadImage,

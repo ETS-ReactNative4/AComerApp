@@ -29,7 +29,7 @@ const Restaurant = ({ navigation }) => {
     userHasReview,
     getReviews,
     reviews,
-    setStartReviews
+    averageRestaurantReviews
   } = restaurantContext;
 
   const toast = useRef(null);

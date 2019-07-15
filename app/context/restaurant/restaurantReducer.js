@@ -15,7 +15,8 @@ export default (state, action) => {
     case GET_REVIEWS: {
       return {
         ...state,
-        reviews: action.payload
+        reviews: action.payload.reviews,
+        averageRestaurantReviews: action.payload.average
       };
     }
     case SET_RESTAURANT_PHOTO:
