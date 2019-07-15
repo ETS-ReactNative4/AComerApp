@@ -111,6 +111,7 @@ const AuthState = props => {
       toast.show("¡Tu opinión ha sido enviada!", 100, () => {
         dispatch({ type: CHECK_ADD_REVIEW_USER, payload: true });
         navigation.goBack();
+        getReviews(formData.restaurantId);
       });
     } catch (err) {
       toast.show(err.message, 1500);
