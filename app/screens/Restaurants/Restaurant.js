@@ -2,7 +2,15 @@ import React, { useContext, useEffect, useRef } from "react";
 import AuthContext from "../../context/auth/authContext";
 import RestaurantContext from "../../context/restaurant/restaurantContext";
 import { StyleSheet, View, ActivityIndicator } from "react-native";
-import { Image, Icon, ListItem, Button, Text } from "react-native-elements";
+import {
+  Image,
+  Icon,
+  ListItem,
+  Button,
+  Text,
+  Rating,
+  Avatar
+} from "react-native-elements";
 import Toast from "react-native-easy-toast";
 
 const Restaurant = ({ navigation }) => {

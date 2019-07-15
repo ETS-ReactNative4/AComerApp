@@ -8,7 +8,8 @@ import {
   GET_RESTAURANTS,
   SET_START_RESTAURANTS,
   LOADING_RESTAURANTS,
-  CHECK_ADD_REVIEW_USER
+  CHECK_ADD_REVIEW_USER,
+  GET_REVIEWS
 } from "../types";
 import api from "../../utils/ApiConnection";
 import { RNS3 } from "react-native-aws3";
@@ -22,7 +23,10 @@ const AuthState = props => {
     limitRestaurants: 8,
     startRestaurants: 0,
     loadingRestaurants: true,
-    userHasReview: false
+    userHasReview: false,
+    reviews: null,
+    limitReviews: 5,
+    startReviews: 0
   };
 
   const [state, dispatch] = useReducer(restaurantReducer, initialState);
@@ -145,6 +149,9 @@ const AuthState = props => {
         startRestaurants: state.startRestaurants,
         loadingRestaurants: state.loadingRestaurants,
         userHasReview: state.userHasReview,
+        reviews: state.reviews,
+        limitReviews: state.limitReviews,
+        startReviews: state.startReviews,
         setRestaurantPhoto,
         addRestaurant,
         uploadImage,

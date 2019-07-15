@@ -5,7 +5,8 @@ import {
   GET_RESTAURANTS,
   SET_START_RESTAURANTS,
   LOADING_RESTAURANTS,
-  CHECK_ADD_REVIEW_USER
+  CHECK_ADD_REVIEW_USER,
+  GET_REVIEWS
 } from "../types";
 
 export default (state, action) => {
