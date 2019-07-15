@@ -26,7 +26,8 @@ const AuthState = props => {
     loadingRestaurants: true,
     userHasReview: false,
     reviews: null,
-    averageRestaurantReviews: null
+    averageRestaurantReviews: null,
+    topFiveRestaurants: null
   };
 
   const [state, dispatch] = useReducer(restaurantReducer, initialState);
@@ -161,6 +162,14 @@ const AuthState = props => {
     } catch (err) {}
   };
 
+  // LOAD_TOP_FIVE_RESTAURANTS
+  const loadTopFiveRestaurants = async () => {
+    try {
+    } catch (err) {
+      console.log(err.message);
+    }
+  };
+
   return (
     <RestaurantContext.Provider
       value={{
@@ -173,6 +182,7 @@ const AuthState = props => {
         userHasReview: state.userHasReview,
         reviews: state.reviews,
         averageRestaurantReviews: state.averageRestaurantReviews,
+        topFiveRestaurants: state.topFiveRestaurants,
         setRestaurantPhoto,
         addRestaurant,
         uploadImage,
@@ -180,7 +190,8 @@ const AuthState = props => {
         setStartRestaurants,
         addReviewRestaurant,
         checkAddReviewUser,
-        getReviews
+        getReviews,
+        loadTopFiveRestaurants
       }}
     >
       {props.children}
