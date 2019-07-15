@@ -106,6 +106,7 @@ const AuthState = props => {
     try {
       await api.post("/api/restaurant-reviews", formData);
       toast.show("¡Tu opinión ha sido enviada!", 100, () => {
+        dispatch({ type: CHECK_ADD_REVIEW_USER, payload: true });
         navigation.goBack();
       });
     } catch (err) {
