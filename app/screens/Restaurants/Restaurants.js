@@ -17,13 +17,19 @@ const Restaurants = ({ navigation }) => {
   const { loadUser, isAuthenticated } = authContext;
 
   const restaurantContext = useContext(RestaurantContext);
-  const { getRestaurants, restaurants } = restaurantContext;
+  const {
+    getRestaurants,
+    restaurants,
+    limitRestaurants,
+    startRestaurants,
+    setStartRestaurants
+  } = restaurantContext;
 
   const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
     loadUser();
-    getRestaurants();
+    getRestaurants(limitRestaurants, startRestaurants);
   }, []);
 
   const goToScreen = name => {
@@ -57,16 +63,16 @@ const Restaurants = ({ navigation }) => {
     );
   };
 
-  const goToRestaurant = restaurant => {
-    console.log(restaurant);
-  };
+  const goToRestaurant = restaurant => {};
 
   const handleLoadMore = async () => {
-    await console.log("Cargando más");
+    let resultRestaurants = restaurants;
+    await setStartRestaurants(resultRestaurants.length);
+    await getRestaurants(limitRestaurants, startRestaurants);
   };
 
   const renderFooter = () => {
-    if (!isLoading) {
+    if (isLoading) {
       return (
         <View style={styles.loaderRestaurants}>
           <ActivityIndicator size="large" />
