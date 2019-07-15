@@ -74,7 +74,18 @@ const Restaurant = ({ navigation }) => {
       .replace("T", " ")
       .replace("Z", " ")
       .substring(0, created_at.length - 5);
-    console.log(created_at, createReview);
+
+    return (
+      <View style={styles.viewReview}>
+        <View style={styles.viewImage}>
+          {image ? (
+            <Avatar source={{ uri: image }} />
+          ) : (
+            <Avatar icon={{ name: "user", type: "font-awesome" }} />
+          )}
+        </View>
+      </View>
+    );
   };
 
   const handleLoadMore = async () => {
@@ -228,6 +239,16 @@ const styles = StyleSheet.create({
   startLoadReviews: {
     marginTop: 20,
     alignItems: "center"
+  },
+  viewReview: {
+    flexDirection: "row",
+    margin: 10,
+    paddingBottom: 20,
+    borderBottomColor: "#e3e3e3",
+    borderBottomWidth: 1
+  },
+  viewImage: {
+    marginRight: 15
   }
 });
 
