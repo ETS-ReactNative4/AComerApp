@@ -52,6 +52,7 @@ const Restaurant = ({ navigation }) => {
           onPress={() =>
             navigation.navigate("AddReviewRestaurant", { id, name })
           }
+          buttonStyle={styles.btnAddReview}
         />
       </View>
     </View>
@@ -92,6 +93,9 @@ const styles = StyleSheet.create({
   },
   viewBtnAddReview: {
     margin: 20
+  },
+  btnAddReview: {
+    backgroundColor: "#ffc107"
   }
 });
 
