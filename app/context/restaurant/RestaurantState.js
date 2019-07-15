@@ -8,7 +8,7 @@ import {
   GET_RESTAURANTS,
   SET_START_RESTAURANTS,
   LOADING_RESTAURANTS,
-  ADD_REVIEW_RESTAURANT
+  CHECK_ADD_REVIEW_USER
 } from "../types";
 import api from "../../utils/ApiConnection";
 import { RNS3 } from "react-native-aws3";
@@ -112,6 +112,19 @@ const AuthState = props => {
     }
   };
 
+  // CHECK_ADD_REVIEW_USER
+  const checkAddReviewUser = async (formData, toast) => {
+    try {
+      const { restaurant_id, user_id } = formData;
+      const res = await api.get(
+        `/api/restaurant-reviews/${restaurant_id}/${user_id}`
+      );
+      console.log(res.data);
+    } catch (err) {
+      toast.show(err.message);
+    }
+  };
+
   return (
     <RestaurantContext.Provider
       value={{
@@ -126,7 +139,8 @@ const AuthState = props => {
         uploadImage,
         getRestaurants,
         setStartRestaurants,
-        addReviewRestaurant
+        addReviewRestaurant,
+        checkAddReviewUser
       }}
     >
       {props.children}

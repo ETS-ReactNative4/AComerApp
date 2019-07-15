@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useRef } from "react";
 import AuthContext from "../../context/auth/authContext";
+import RestaurantContext from "../../context/restaurant/restaurantContext";
 import { StyleSheet, View, ActivityIndicator } from "react-native";
 import { Image, Icon, ListItem, Button, Text } from "react-native-elements";
 import Toast from "react-native-easy-toast";
@@ -7,11 +8,11 @@ import Toast from "react-native-easy-toast";
 const Restaurant = ({ navigation }) => {
   const authContext = useContext(AuthContext);
   const { loadUser, isAuthenticated, user } = authContext;
-  const toast = useRef(null);
 
-  useEffect(() => {
-    loadUser();
-  }, []);
+  const restaurantContext = useContext(RestaurantContext);
+  const { checkAddReviewUser } = restaurantContext;
+
+  const toast = useRef(null);
 
   const {
     id,
@@ -21,6 +22,11 @@ const Restaurant = ({ navigation }) => {
     city,
     image
   } = navigation.state.params;
+
+  useEffect(() => {
+    loadUser();
+    checkAddReviewUser({ restaurant_id: id, user_id: user.id }, toast.current);
+  }, []);
 
   const listExtraInfo = [
     {
