@@ -5,6 +5,15 @@ import { Image, Icon, ListItem } from "react-native-elements";
 const Restaurant = ({ navigation }) => {
   const { name, description, address, city, image } = navigation.state.params;
 
+  const listExtraInfo = [
+    {
+      text: `${address}, ${city}`,
+      iconName: "map-marker",
+      iconType: "material-community",
+      action: null
+    }
+  ];
+
   return (
     <View style={styles.viewBody}>
       <View style={styles.viewImage}>
@@ -17,10 +26,20 @@ const Restaurant = ({ navigation }) => {
       <View style={styles.viewRestaurantBasicInfo}>
         <Text style={styles.nameRestaurant}>{name}</Text>
         <Text style={styles.descriptionRestaurant}>{description}</Text>
-        <Text style={styles.addressRestaurant}>
-          {address}, {city}
-        </Text>
       </View>
+      <View style={styles.viewRestaurantExtraInfo}>
+        <Text style={styles.restaurantExtraInfoTitle}>
+          Información sobre el Restaurant
+        </Text>
+        <View />
+      </View>
+      {listExtraInfo.map((item, index) => (
+        <ListItem
+          key={index}
+          title={item.text}
+          leftIcon={<Icon name={item.iconName} type={item.iconType} />}
+        />
+      ))}
     </View>
   );
 };
@@ -48,9 +67,14 @@ const styles = StyleSheet.create({
     marginTop: 5,
     color: "grey"
   },
-  addressRestaurant: {
-    marginTop: 5,
-    color: "grey"
+  viewRestaurantExtraInfo: {
+    margin: 15,
+    marginTop: 25
+  },
+  restaurantExtraInfoTitle: {
+    fontSize: 20,
+    fontWeight: "bold",
+    marginBottom: 10
   }
 });
 
