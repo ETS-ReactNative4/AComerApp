@@ -25,7 +25,10 @@ const Restaurant = ({ navigation }) => {
 
   useEffect(() => {
     loadUser();
-    checkAddReviewUser({ restaurant_id: id, user_id: user.id }, toast.current);
+    checkAddReviewUser(
+      { restaurant_id: id, user_id: user ? user.id : null },
+      toast.current
+    );
   }, []);
 
   const listExtraInfo = [

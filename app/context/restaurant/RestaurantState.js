@@ -116,10 +116,14 @@ const AuthState = props => {
   const checkAddReviewUser = async (formData, toast) => {
     try {
       const { restaurant_id, user_id } = formData;
-      const res = await api.get(
-        `/api/restaurant-reviews/${restaurant_id}/${user_id}`
-      );
-      console.log(res.data);
+      if (user_id) {
+        const res = await api.get(
+          `/api/restaurant-reviews/${restaurant_id}/${user_id}`
+        );
+        console.log(res.data);
+      } else {
+        toast.show("¡Inicia sesión para dejar tu opinión!");
+      }
     } catch (err) {
       toast.show(err.message);
     }
