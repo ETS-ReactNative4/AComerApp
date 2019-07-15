@@ -11,6 +11,12 @@ import {
 
 export default (state, action) => {
   switch (action.type) {
+    case GET_REVIEWS: {
+      return {
+        ...state,
+        reviews: action.payload
+      };
+    }
     case SET_RESTAURANT_PHOTO:
       return {
         ...state,

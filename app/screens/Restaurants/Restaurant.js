@@ -18,7 +18,12 @@ const Restaurant = ({ navigation }) => {
   const { loadUser, isAuthenticated, user } = authContext;
 
   const restaurantContext = useContext(RestaurantContext);
-  const { checkAddReviewUser, userHasReview, getReviews } = restaurantContext;
+  const {
+    checkAddReviewUser,
+    userHasReview,
+    getReviews,
+    reviews
+  } = restaurantContext;
 
   const toast = useRef(null);
 
@@ -37,7 +42,7 @@ const Restaurant = ({ navigation }) => {
       { restaurant_id: id, user_id: user ? user.id : null },
       toast.current
     );
-    getReviews();
+    getReviews(id);
   }, []);
 
   const listExtraInfo = [
