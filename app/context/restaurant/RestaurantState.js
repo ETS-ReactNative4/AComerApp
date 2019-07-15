@@ -9,7 +9,8 @@ import {
   SET_START_RESTAURANTS,
   LOADING_RESTAURANTS,
   CHECK_ADD_REVIEW_USER,
-  GET_REVIEWS
+  GET_REVIEWS,
+  SET_START_REVIEWS
 } from "../types";
 import api from "../../utils/ApiConnection";
 import { RNS3 } from "react-native-aws3";
@@ -152,6 +153,16 @@ const AuthState = props => {
     }
   };
 
+  // SET START REVIEWS
+  const setStartReviews = async reviewsLength => {
+    try {
+      await dispatch({
+        type: SET_START_REVIEWS,
+        payload: reviewsLength
+      });
+    } catch (err) {}
+  };
+
   return (
     <RestaurantContext.Provider
       value={{
@@ -172,7 +183,8 @@ const AuthState = props => {
         setStartRestaurants,
         addReviewRestaurant,
         checkAddReviewUser,
-        getReviews
+        getReviews,
+        setStartReviews
       }}
     >
       {props.children}
