@@ -72,13 +72,13 @@ const AuthState = props => {
   };
 
   // GET_RESTAURANTS
-  const getRestaurants = async (limitRestaurants, startRestaurants) => {
+  const getRestaurants = async () => {
     try {
       const res = await api.get(
-        `/api/restaurants/${limitRestaurants}/${startRestaurants}`
+        `/api/restaurants/${state.limitRestaurants}/${state.startRestaurants}`
       );
 
-      const evaluation = res.data.length - limitRestaurants;
+      const evaluation = res.data.length - state.limitRestaurants;
 
       if (evaluation > -7) {
         dispatch({ type: GET_RESTAURANTS, payload: res.data });

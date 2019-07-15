@@ -20,20 +20,14 @@ const Restaurants = ({ navigation }) => {
   const {
     getRestaurants,
     restaurants,
-    limitRestaurants,
-    startRestaurants,
     setStartRestaurants,
     loadingRestaurants
   } = restaurantContext;
 
   useEffect(() => {
     loadUser();
-    getRestaurants(limitRestaurants, startRestaurants);
+    getRestaurants();
   }, []);
-
-  const goToScreen = name => {
-    navigation.navigate(name);
-  };
 
   const renderRow = restaurant => {
     const { name, city, description, address, image } = restaurant.item;
@@ -67,7 +61,7 @@ const Restaurants = ({ navigation }) => {
   const handleLoadMore = async () => {
     let resultRestaurants = restaurants;
     await setStartRestaurants(resultRestaurants.length);
-    await getRestaurants(limitRestaurants, startRestaurants);
+    await getRestaurants();
   };
 
   const renderFooter = () => {
@@ -108,7 +102,7 @@ const Restaurants = ({ navigation }) => {
       {isAuthenticated && (
         <ActionButton
           buttonColor="#ffc107"
-          onPress={() => goToScreen("AddRestaurant")}
+          onPress={() => navigation.navigate("AddRestaurant")}
         />
       )}
     </View>
