@@ -107,38 +107,16 @@ const Restaurant = ({ navigation }) => {
     );
   };
 
-  const handleLoadMore = async () => {
-    let resultReviews = reviews;
-    await setStartReviews(resultReviews.length);
-    await getReviews();
-  };
-
   const renderFooter = () => {
-    if (reviews.length >= 5) {
-      if (loadingReviews) {
-        return (
-          <View style={styles.loaderReviews}>
-            <ActivityIndicator size="large" />
-          </View>
-        );
-      } else {
-        return (
-          <View style={styles.noFoundReviews}>
-            <Text>No quedan opiniones por cargar</Text>
-          </View>
-        );
-      }
-    } else {
-      return (
-        <View style={styles.noFoundReviews}>
-          {reviews.length === 0 ? (
-            <Text>¡Se el primer en dejar tu comentario!</Text>
-          ) : (
-            <Text>Pronto se añadiran más opiniones</Text>
-          )}
-        </View>
-      );
-    }
+    return (
+      <View style={styles.noFoundReviews}>
+        {reviews.length === 0 ? (
+          <Text>¡Se el primer en dejar tu comentario!</Text>
+        ) : (
+          <Text>Pronto se añadiran más opiniones</Text>
+        )}
+      </View>
+    );
   };
 
   return (
@@ -192,7 +170,6 @@ const Restaurant = ({ navigation }) => {
           data={reviews}
           renderItem={renderRow}
           keyExtractor={(item, index) => index.toString()}
-          onEndReached={handleLoadMore}
           onEndReachedThreshold={0}
           ListFooterComponent={renderFooter}
         />
