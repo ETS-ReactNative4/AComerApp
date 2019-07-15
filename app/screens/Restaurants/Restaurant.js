@@ -98,7 +98,7 @@ const Restaurant = ({ navigation }) => {
         <View style={styles.viewInfo}>
           <Text style={styles.reviewTitle}>{title}</Text>
           <Text style={styles.reviewText}>{review}</Text>
-          <Rating imageSize={15} startingValue={stars} />
+          <Rating imageSize={15} startingValue={stars} readonly />
           <Text style={styles.reviewDate}>
             {createReview} - {name}
           </Text>
@@ -129,7 +129,14 @@ const Restaurant = ({ navigation }) => {
         />
       </View>
       <View style={styles.viewRestaurantBasicInfo}>
-        <Text style={styles.nameRestaurant}>{name}</Text>
+        <View>
+          <Text style={styles.nameRestaurant}>{name}</Text>
+          <Rating
+            imageSize={20}
+            readonly
+            startingValue={averageRestaurantReviews}
+          />
+        </View>
         <Text style={styles.descriptionRestaurant}>{description}</Text>
       </View>
       <View style={styles.viewRestaurantExtraInfo}>
