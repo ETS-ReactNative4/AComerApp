@@ -12,7 +12,9 @@ const TopFive = () => {
 
   return (
     <View style={styles.viewBody}>
-      <Text>TopFive Screen</Text>
+      <Text>
+        TopFive Screen{topFiveRestaurants && topFiveRestaurants.length}
+      </Text>
     </View>
   );
 };
