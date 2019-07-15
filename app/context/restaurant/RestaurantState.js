@@ -166,8 +166,11 @@ const AuthState = props => {
   const loadTopFiveRestaurants = async () => {
     try {
       console.log("LOAD TOP FIVE");
+      let url = "/api/restaurants/top-five";
+      const res = await api.get(url);
+      console.log(res.data);
     } catch (err) {
-      console.log(err.message);
+      console.log("ERROR", err.message);
     }
   };
 
