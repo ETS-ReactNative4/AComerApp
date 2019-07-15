@@ -83,7 +83,7 @@ const Restaurant = ({ navigation }) => {
 
     return (
       <View style={styles.viewReview}>
-        <View style={styles.viewImage}>
+        <View style={styles.viewImageAvatar}>
           <Avatar
             source={{
               uri: image
@@ -258,7 +258,7 @@ const styles = StyleSheet.create({
     borderBottomColor: "#e3e3e3",
     borderBottomWidth: 1
   },
-  viewImage: {
+  viewImageAvatar: {
     marginRight: 15
   },
   imageAvatarUser: {
