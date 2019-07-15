@@ -7,7 +7,8 @@ import {
   LOADING_RESTAURANTS,
   CHECK_ADD_REVIEW_USER,
   GET_REVIEWS,
-  SET_START_REVIEWS
+  SET_START_REVIEWS,
+  LOAD_TOP_FIVE_RESTAURANTS
 } from "../types";
 
 export default (state, action) => {

@@ -9,7 +9,8 @@ import {
   SET_START_RESTAURANTS,
   LOADING_RESTAURANTS,
   CHECK_ADD_REVIEW_USER,
-  GET_REVIEWS
+  GET_REVIEWS,
+  LOAD_TOP_FIVE_RESTAURANTS
 } from "../types";
 import api from "../../utils/ApiConnection";
 import { RNS3 } from "react-native-aws3";
