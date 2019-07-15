@@ -68,7 +68,7 @@ const Restaurant = ({ navigation }) => {
   };
 
   const renderRow = reviewItem => {
-    const { title, review, stars, created_at } = reviewItem;
+    const { title, review, stars, created_at } = reviewItem.item;
     console.log(review);
   };
 
