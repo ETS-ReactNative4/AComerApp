@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useRef } from "react";
 import AuthContext from "../../context/auth/authContext";
 import RestaurantContext from "../../context/restaurant/restaurantContext";
-import { StyleSheet, View, ActivityIndicator } from "react-native";
+import { StyleSheet, View, ActivityIndicator, FlatList } from "react-native";
 import {
   Image,
   Icon,
@@ -67,6 +67,38 @@ const Restaurant = ({ navigation }) => {
     }
   };
 
+  const renderRow = review => {};
+
+  const handleLoadMore = async () => {
+    let resultReviews = reviews;
+    await setStartReviews(resultReviews.length);
+    await getReviews();
+  };
+
+  const renderFooter = () => {
+    if (reviews.length >= 5) {
+      if (loadingReviews) {
+        return (
+          <View style={styles.loaderReviews}>
+            <ActivityIndicator size="large" />
+          </View>
+        );
+      } else {
+        return (
+          <View style={styles.noFoundReviews}>
+            <Text>No quedan opiniones por cargar</Text>
+          </View>
+        );
+      }
+    } else {
+      return (
+        <View style={styles.noFoundReviews}>
+          <Text>Pronto se añadiran más opiniones</Text>
+        </View>
+      );
+    }
+  };
+
   return (
     <View style={styles.viewBody}>
       <View style={styles.viewImage}>
@@ -113,10 +145,18 @@ const Restaurant = ({ navigation }) => {
         </Text>
       )}
       {reviews ? (
-        <Text>Lista de reviews {reviews.length}</Text>
+        <FlatList
+          data={reviews}
+          renderItem={renderRow}
+          keyExtractor={(item, index) => index.toString()}
+          onEndReached={handleLoadMore}
+          onEndReachedThreshold={0}
+          ListFooterComponent={renderFooter}
+        />
       ) : (
         <View style={styles.startLoadReviews}>
-          <ActivityIndicator />
+          <ActivityIndicator size="large" />
+          <Text>Cargando opiniones</Text>
         </View>
       )}
       <Toast
