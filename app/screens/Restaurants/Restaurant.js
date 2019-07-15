@@ -22,7 +22,8 @@ const Restaurant = ({ navigation }) => {
     checkAddReviewUser,
     userHasReview,
     getReviews,
-    reviews
+    reviews,
+    setStartReviews
   } = restaurantContext;
 
   const toast = useRef(null);
