@@ -81,7 +81,7 @@ const AuthState = props => {
       );
 
       const evaluation = res.data.length - state.limitRestaurants;
-      console.log(evaluation);
+
       if (evaluation > -8) {
         dispatch({ type: GET_RESTAURANTS, payload: res.data });
       } else {

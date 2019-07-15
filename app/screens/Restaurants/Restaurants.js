@@ -67,16 +67,24 @@ const Restaurants = ({ navigation }) => {
   };
 
   const renderFooter = () => {
-    if (loadingRestaurants) {
-      return (
-        <View style={styles.loaderRestaurants}>
-          <ActivityIndicator size="large" />
-        </View>
-      );
+    if (restaurants.length >= 8) {
+      if (loadingRestaurants) {
+        return (
+          <View style={styles.loaderRestaurants}>
+            <ActivityIndicator size="large" />
+          </View>
+        );
+      } else {
+        return (
+          <View style={styles.noFoundRestaurants}>
+            <Text>No quedan restaurants por cargar</Text>
+          </View>
+        );
+      }
     } else {
       return (
         <View style={styles.noFoundRestaurants}>
-          <Text>No quedan restaurants por cargar</Text>
+          <Text>Pronto se añadiran más restaurantes</Text>
         </View>
       );
     }
