@@ -29,7 +29,8 @@ const Restaurant = ({ navigation }) => {
     userHasReview,
     getReviews,
     reviews,
-    setStartReviews
+    setStartReviews,
+    loadingReviews
   } = restaurantContext;
 
   const toast = useRef(null);
@@ -99,7 +100,9 @@ const Restaurant = ({ navigation }) => {
           <Text style={styles.reviewTitle}>{title}</Text>
           <Text style={styles.reviewText}>{review}</Text>
           <Rating imageSize={15} startingValue={stars} />
-          <Text style={styles.reviewDate}>{createReview}</Text>
+          <Text style={styles.reviewDate}>
+            {createReview} - {name}
+          </Text>
         </View>
       </View>
     );

@@ -7,7 +7,8 @@ import {
   LOADING_RESTAURANTS,
   CHECK_ADD_REVIEW_USER,
   GET_REVIEWS,
-  SET_START_REVIEWS
+  SET_START_REVIEWS,
+  LOADING_REVIEWS
 } from "../types";
 
 export default (state, action) => {
@@ -48,6 +49,12 @@ export default (state, action) => {
         ...state,
         limitReviews: state.limitReviews + action.payload,
         startReviews: 0
+      };
+    }
+    case LOADING_REVIEWS: {
+      return {
+        ...state,
+        loadingReviews: action.payload
       };
     }
     case LOADING_RESTAURANTS: {
