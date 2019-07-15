@@ -9,8 +9,7 @@ import {
   SET_START_RESTAURANTS,
   LOADING_RESTAURANTS,
   CHECK_ADD_REVIEW_USER,
-  GET_REVIEWS,
-  SET_START_REVIEWS
+  GET_REVIEWS
 } from "../types";
 import api from "../../utils/ApiConnection";
 import { RNS3 } from "react-native-aws3";
@@ -25,9 +24,7 @@ const AuthState = props => {
     startRestaurants: 0,
     loadingRestaurants: true,
     userHasReview: false,
-    reviews: null,
-    limitReviews: 5,
-    startReviews: 0
+    reviews: null
   };
 
   const [state, dispatch] = useReducer(restaurantReducer, initialState);
@@ -143,22 +140,10 @@ const AuthState = props => {
   // GET REVIEWS
   const getReviews = async restaurantId => {
     try {
-      let url = `/api/restaurant-reviews/${restaurantId}/${
-        state.limitReviews
-      }/${state.startReviews}/reviews`;
+      let url = `/api/restaurant-reviews/${restaurantId}/reviews`;
       const res = await api.get(url);
 
       dispatch({ type: GET_REVIEWS, payload: res.data });
-    } catch (err) {}
-  };
-
-  // SET START REVIEWS
-  const setStartReviews = async reviewsLength => {
-    try {
-      await dispatch({
-        type: SET_START_REVIEWS,
-        payload: reviewsLength
-      });
     } catch (err) {}
   };
 
@@ -173,8 +158,6 @@ const AuthState = props => {
         loadingRestaurants: state.loadingRestaurants,
         userHasReview: state.userHasReview,
         reviews: state.reviews,
-        limitReviews: state.limitReviews,
-        startReviews: state.startReviews,
         setRestaurantPhoto,
         addRestaurant,
         uploadImage,
@@ -182,8 +165,7 @@ const AuthState = props => {
         setStartRestaurants,
         addReviewRestaurant,
         checkAddReviewUser,
-        getReviews,
-        setStartReviews
+        getReviews
       }}
     >
       {props.children}
