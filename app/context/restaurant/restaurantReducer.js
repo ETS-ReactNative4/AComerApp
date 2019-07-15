@@ -3,7 +3,8 @@ import {
   LOADING,
   ADD_RESTAURANT,
   GET_RESTAURANTS,
-  SET_START_RESTAURANTS
+  SET_START_RESTAURANTS,
+  LOADING_RESTAURANTS
 } from "../types";
 
 export default (state, action) => {
@@ -30,6 +31,12 @@ export default (state, action) => {
       return {
         ...state,
         startRestaurants: state.startRestaurants + action.payload
+      };
+    }
+    case LOADING_RESTAURANTS: {
+      return {
+        ...state,
+        loadingRestaurants: action.payload
       };
     }
     case LOADING:

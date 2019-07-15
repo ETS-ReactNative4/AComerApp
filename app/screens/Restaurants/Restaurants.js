@@ -22,10 +22,9 @@ const Restaurants = ({ navigation }) => {
     restaurants,
     limitRestaurants,
     startRestaurants,
-    setStartRestaurants
+    setStartRestaurants,
+    loadingRestaurants
   } = restaurantContext;
-
-  const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
     loadUser();
@@ -72,7 +71,7 @@ const Restaurants = ({ navigation }) => {
   };
 
   const renderFooter = () => {
-    if (isLoading) {
+    if (loadingRestaurants) {
       return (
         <View style={styles.loaderRestaurants}>
           <ActivityIndicator size="large" />

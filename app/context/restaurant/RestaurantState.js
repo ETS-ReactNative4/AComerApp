@@ -6,7 +6,8 @@ import {
   LOADING,
   ADD_RESTAURANT,
   GET_RESTAURANTS,
-  SET_START_RESTAURANTS
+  SET_START_RESTAURANTS,
+  LOADING_RESTAURANTS
 } from "../types";
 import api from "../../utils/ApiConnection";
 import { RNS3 } from "react-native-aws3";
@@ -18,7 +19,8 @@ const AuthState = props => {
     loading: false,
     restaurants: null,
     limitRestaurants: 8,
-    startRestaurants: 0
+    startRestaurants: 0,
+    loadingRestaurants: true
   };
 
   const [state, dispatch] = useReducer(restaurantReducer, initialState);
@@ -75,7 +77,11 @@ const AuthState = props => {
       const res = await api.get(
         `/api/restaurants/${limitRestaurants}/${startRestaurants}`
       );
-      dispatch({ type: GET_RESTAURANTS, payload: res.data });
+      if (res.data.length > 0) {
+        dispatch({ type: GET_RESTAURANTS, payload: res.data });
+      } else {
+        dispatch({ type: LOADING_RESTAURANTS, payload: false });
+      }
     } catch (err) {}
   };
 
@@ -97,6 +103,7 @@ const AuthState = props => {
         restaurants: state.restaurants,
         limitRestaurants: state.limitRestaurants,
         startRestaurants: state.startRestaurants,
+        loadingRestaurants: state.loadingRestaurants,
         setRestaurantPhoto,
         addRestaurant,
         uploadImage,
