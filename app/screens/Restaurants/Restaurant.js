@@ -1,9 +1,16 @@
 import React from "react";
 import { StyleSheet, View, Text, ActivityIndicator } from "react-native";
-import { Image, Icon, ListItem } from "react-native-elements";
+import { Image, Icon, ListItem, Button } from "react-native-elements";
 
 const Restaurant = ({ navigation }) => {
-  const { name, description, address, city, image } = navigation.state.params;
+  const {
+    id,
+    name,
+    description,
+    address,
+    city,
+    image
+  } = navigation.state.params;
 
   const listExtraInfo = [
     {
@@ -31,15 +38,22 @@ const Restaurant = ({ navigation }) => {
         <Text style={styles.restaurantExtraInfoTitle}>
           Información sobre el Restaurant
         </Text>
-        <View />
+        {listExtraInfo.map((item, index) => (
+          <ListItem
+            key={index}
+            title={item.text}
+            leftIcon={<Icon name={item.iconName} type={item.iconType} />}
+          />
+        ))}
       </View>
-      {listExtraInfo.map((item, index) => (
-        <ListItem
-          key={index}
-          title={item.text}
-          leftIcon={<Icon name={item.iconName} type={item.iconType} />}
+      <View style={styles.viewBtnAddReview}>
+        <Button
+          title="Añadir Comentario"
+          onPress={() =>
+            navigation.navigate("AddReviewRestaurant", { id, name })
+          }
         />
-      ))}
+      </View>
     </View>
   );
 };
@@ -75,6 +89,9 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: "bold",
     marginBottom: 10
+  },
+  viewBtnAddReview: {
+    margin: 20
   }
 });
 

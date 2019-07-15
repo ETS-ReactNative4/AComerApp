@@ -4,7 +4,7 @@ import { StyleSheet, View, Text } from "react-native";
 const AddReviewRestaurant = () => {
   return (
     <View style={styles.viewBody}>
-      <TexT>Add Review to Restaurant</TexT>
+      <Text>Add Review to Restaurant</Text>
     </View>
   );
 };
