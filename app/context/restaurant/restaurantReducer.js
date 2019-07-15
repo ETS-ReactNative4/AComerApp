@@ -31,7 +31,7 @@ export default (state, action) => {
       return {
         ...state,
         limitRestaurants: state.limitRestaurants + action.payload,
-        startRestaurants: state.startRestaurants + action.payload
+        startRestaurants: 0
       };
     }
     case LOADING_RESTAURANTS: {

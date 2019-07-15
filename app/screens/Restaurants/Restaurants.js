@@ -67,7 +67,6 @@ const Restaurants = ({ navigation }) => {
   const handleLoadMore = async () => {
     let resultRestaurants = restaurants;
     await setStartRestaurants(resultRestaurants.length);
-    console.log(limitRestaurants, startRestaurants);
     await getRestaurants(limitRestaurants, startRestaurants);
   };
 
