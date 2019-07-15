@@ -1,11 +1,13 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 import AuthContext from "../../context/auth/authContext";
 import { StyleSheet, View, ActivityIndicator } from "react-native";
 import { Image, Icon, ListItem, Button, Text } from "react-native-elements";
+import Toast from "react-native-easy-toast";
 
 const Restaurant = ({ navigation }) => {
   const authContext = useContext(AuthContext);
   const { loadUser, isAuthenticated, user } = authContext;
+  const toast = useRef(null);
 
   useEffect(() => {
     loadUser();
@@ -80,6 +82,15 @@ const Restaurant = ({ navigation }) => {
           </Text>
         </Text>
       )}
+      <Toast
+        ref={toast}
+        position="bottom"
+        positionValue={320}
+        fadeInDuration={1000}
+        fadeOutDuration={1000}
+        opacity={0.8}
+        textStyle={{ color: "#fff" }}
+      />
     </View>
   );
 };
