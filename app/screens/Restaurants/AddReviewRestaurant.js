@@ -33,7 +33,7 @@ const AddReviewRestaurant = () => {
         } else {
           const formData = {
             title: validate.title,
-            commentary: validate.review,
+            review: validate.review,
             stars: ratingValue
           };
           console.log(formData);
