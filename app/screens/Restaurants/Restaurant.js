@@ -81,7 +81,11 @@ const Restaurant = ({ navigation }) => {
           {image ? (
             <Avatar source={{ uri: image }} />
           ) : (
-            <Avatar icon={{ name: "user", type: "font-awesome" }} />
+            <Avatar
+              source={{
+                uri: "https://api.adorable.io/avatars/285/abott@adorable.png"
+              }}
+            />
           )}
         </View>
       </View>
