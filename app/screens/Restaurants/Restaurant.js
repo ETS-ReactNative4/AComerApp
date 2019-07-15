@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import AuthContext from "../../context/auth/authContext";
-import { StyleSheet, View, Text, ActivityIndicator } from "react-native";
-import { Image, Icon, ListItem, Button } from "react-native-elements";
+import { StyleSheet, View, ActivityIndicator } from "react-native";
+import { Image, Icon, ListItem, Button, Text } from "react-native-elements";
 
 const Restaurant = ({ navigation }) => {
   const authContext = useContext(AuthContext);
@@ -54,15 +54,17 @@ const Restaurant = ({ navigation }) => {
           />
         ))}
       </View>
-      <View style={styles.viewBtnAddReview}>
-        <Button
-          title="Añadir Comentario"
-          onPress={() =>
-            navigation.navigate("AddReviewRestaurant", { id, name, user })
-          }
-          buttonStyle={styles.btnAddReview}
-        />
-      </View>
+      {isAuthenticated && (
+        <View style={styles.viewBtnAddReview}>
+          <Button
+            title="Añadir Comentario"
+            onPress={() =>
+              navigation.navigate("AddReviewRestaurant", { id, name, user })
+            }
+            buttonStyle={styles.btnAddReview}
+          />
+        </View>
+      )}
     </View>
   );
 };

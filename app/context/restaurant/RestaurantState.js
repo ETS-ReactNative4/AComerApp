@@ -103,7 +103,7 @@ const AuthState = props => {
   // ADD_REVIEW_RESTAURANT
   const addReviewRestaurant = async (formData, toast, navigation) => {
     try {
-      const res = await api.post("/api/restaurant-reviews", formData);
+      await api.post("/api/restaurant-reviews", formData);
       toast.show("¡Tu opinión ha sido enviada!", 100, () => {
         navigation.goBack();
       });
