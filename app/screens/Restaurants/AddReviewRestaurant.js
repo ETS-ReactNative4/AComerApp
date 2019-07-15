@@ -62,7 +62,7 @@ const AddReviewRestaurant = ({ navigation }) => {
             "Muy Bueno",
             "¡Excelente!"
           ]}
-          defaultRating={0}
+          defaultRating={3}
           size={35}
         />
       </View>
