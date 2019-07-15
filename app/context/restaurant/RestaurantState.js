@@ -10,8 +10,7 @@ import {
   LOADING_RESTAURANTS,
   CHECK_ADD_REVIEW_USER,
   GET_REVIEWS,
-  SET_START_REVIEWS,
-  LOADING_REVIEWS
+  SET_START_REVIEWS
 } from "../types";
 import api from "../../utils/ApiConnection";
 import { RNS3 } from "react-native-aws3";
@@ -28,8 +27,7 @@ const AuthState = props => {
     userHasReview: false,
     reviews: null,
     limitReviews: 5,
-    startReviews: 0,
-    loadingReviews: true
+    startReviews: 0
   };
 
   const [state, dispatch] = useReducer(restaurantReducer, initialState);
@@ -150,13 +148,7 @@ const AuthState = props => {
       }/${state.startReviews}/reviews`;
       const res = await api.get(url);
 
-      const evaluation = res.data.length - state.limitReviews;
-
-      if (evaluation > -5) {
-        dispatch({ type: GET_REVIEWS, payload: res.data });
-      } else {
-        dispatch({ type: LOADING_REVIEWS, payload: false });
-      }
+      dispatch({ type: GET_REVIEWS, payload: res.data });
     } catch (err) {}
   };
 
@@ -183,7 +175,6 @@ const AuthState = props => {
         reviews: state.reviews,
         limitReviews: state.limitReviews,
         startReviews: state.startReviews,
-        loadingReviews: state.loadingReviews,
         setRestaurantPhoto,
         addRestaurant,
         uploadImage,
