@@ -8,6 +8,7 @@ import {
 
 import RestaurantsScreen from "../screens/Restaurants/Restaurants";
 import AddRestaurantScreen from "../screens/Restaurants/AddRestaurant";
+import RestaurantScreen from "../screens/Restaurants/Restaurant";
 
 import TopFiveScreen from "../screens/TopFive";
 import SearchScreen from "../screens/Search";
@@ -27,6 +28,12 @@ const RestaurantsScreenStack = createStackNavigator({
     screen: AddRestaurantScreen,
     navigationOptions: ({ navigation }) => ({
       title: "Nuevo Restaurant"
+    })
+  },
+  Restaurant: {
+    screen: RestaurantScreen,
+    navigationOptions: ({ navigation }) => ({
+      title: navigation.state.params.name
     })
   }
 });

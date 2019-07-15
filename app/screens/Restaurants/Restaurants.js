@@ -56,7 +56,9 @@ const Restaurants = ({ navigation }) => {
     );
   };
 
-  const goToRestaurant = restaurant => {};
+  const goToRestaurant = restaurant => {
+    navigation.navigate("Restaurant", restaurant);
+  };
 
   const handleLoadMore = async () => {
     let resultRestaurants = restaurants;
