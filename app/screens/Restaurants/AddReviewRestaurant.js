@@ -1,4 +1,5 @@
-import React, { useRef } from "react";
+import React, { useRef, useContext } from "react";
+import RestaurantContext from "../../context/restaurant/restaurantContext";
 import { StyleSheet, View } from "react-native";
 import { AirbnbRating, Button } from "react-native-elements";
 import Toast from "react-native-easy-toast";
@@ -14,6 +15,9 @@ const AddReviewRestaurant = ({ navigation }) => {
   const rating = useRef(null);
   const AddReviewRestaurantForm = useRef(null);
   const toast = useRef(null);
+
+  const restaurantContext = useContext(RestaurantContext);
+  const { addReviewRestaurant } = restaurantContext;
 
   const sendReview = () => {
     const ratingValue = rating.current.state.position;
@@ -35,11 +39,11 @@ const AddReviewRestaurant = ({ navigation }) => {
             title: validate.title,
             review: validate.review,
             stars: ratingValue,
-            restaurant_id: navigation.state.params.id,
-            user_id: navigation.state.params.user.id
+            restaurantId: navigation.state.params.id,
+            userId: navigation.state.params.user.id
           };
 
-          console.log(formData);
+          addReviewRestaurant(formData, toast.current);
         }
       }
     }

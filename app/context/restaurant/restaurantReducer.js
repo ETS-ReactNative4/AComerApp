@@ -4,7 +4,8 @@ import {
   ADD_RESTAURANT,
   GET_RESTAURANTS,
   SET_START_RESTAURANTS,
-  LOADING_RESTAURANTS
+  LOADING_RESTAURANTS,
+  ADD_REVIEW_RESTAURANT
 } from "../types";
 
 export default (state, action) => {
