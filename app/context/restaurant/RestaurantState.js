@@ -77,6 +77,7 @@ const AuthState = props => {
       const res = await api.get(
         `/api/restaurants/${limitRestaurants}/${startRestaurants}`
       );
+      console.log(res.data.length);
       if (res.data.length > 0) {
         dispatch({ type: GET_RESTAURANTS, payload: res.data });
       } else {

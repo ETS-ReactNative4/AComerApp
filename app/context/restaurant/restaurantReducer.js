@@ -30,6 +30,7 @@ export default (state, action) => {
     case SET_START_RESTAURANTS: {
       return {
         ...state,
+        limitRestaurants: state.limitRestaurants + action.payload,
         startRestaurants: state.startRestaurants + action.payload
       };
     }
