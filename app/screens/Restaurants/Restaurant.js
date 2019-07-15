@@ -10,7 +10,7 @@ const Restaurant = ({ navigation }) => {
   const { loadUser, isAuthenticated, user } = authContext;
 
   const restaurantContext = useContext(RestaurantContext);
-  const { checkAddReviewUser } = restaurantContext;
+  const { checkAddReviewUser, userHasReview } = restaurantContext;
 
   const toast = useRef(null);
 
@@ -39,6 +39,18 @@ const Restaurant = ({ navigation }) => {
       action: null
     }
   ];
+
+  const goToScreenAddReviewRestaurant = () => {
+    if (userHasReview) {
+      toast.current.show("¡Ya enviaste tu opinión!");
+    } else {
+      navigation.navigate("AddReviewRestaurant", {
+        id,
+        name,
+        user
+      });
+    }
+  };
 
   return (
     <View style={styles.viewBody}>
@@ -69,13 +81,7 @@ const Restaurant = ({ navigation }) => {
         <View style={styles.viewBtnAddReview}>
           <Button
             title="Añadir Comentario"
-            onPress={() =>
-              navigation.navigate("AddReviewRestaurant", {
-                id,
-                name,
-                user
-              })
-            }
+            onPress={goToScreenAddReviewRestaurant}
             buttonStyle={styles.btnAddReview}
           />
         </View>

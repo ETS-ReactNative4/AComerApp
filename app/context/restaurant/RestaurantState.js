@@ -21,7 +21,8 @@ const AuthState = props => {
     restaurants: null,
     limitRestaurants: 8,
     startRestaurants: 0,
-    loadingRestaurants: true
+    loadingRestaurants: true,
+    userHasReview: false
   };
 
   const [state, dispatch] = useReducer(restaurantReducer, initialState);
@@ -120,7 +121,11 @@ const AuthState = props => {
         const res = await api.get(
           `/api/restaurant-reviews/${restaurant_id}/${user_id}`
         );
-        console.log(res.data);
+        if (res.data.length > 0) {
+          dispatch({ type: CHECK_ADD_REVIEW_USER, payload: true });
+        } else {
+          dispatch({ type: CHECK_ADD_REVIEW_USER, payload: false });
+        }
       } else {
         toast.show("¡Inicia sesión para dejar tu opinión!");
       }
@@ -138,6 +143,7 @@ const AuthState = props => {
         limitRestaurants: state.limitRestaurants,
         startRestaurants: state.startRestaurants,
         loadingRestaurants: state.loadingRestaurants,
+        userHasReview: state.userHasReview,
         setRestaurantPhoto,
         addRestaurant,
         uploadImage,

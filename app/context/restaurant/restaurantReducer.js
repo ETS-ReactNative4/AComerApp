@@ -46,6 +46,12 @@ export default (state, action) => {
         ...state,
         loading: action.payload
       };
+    case CHECK_ADD_REVIEW_USER: {
+      return {
+        ...state,
+        userHasReview: action.payload
+      };
+    }
     default:
       return state;
   }
