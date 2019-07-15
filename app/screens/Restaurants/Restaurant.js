@@ -67,7 +67,10 @@ const Restaurant = ({ navigation }) => {
     }
   };
 
-  const renderRow = review => {};
+  const renderRow = reviewItem => {
+    const { title, review, stars, created_at } = reviewItem;
+    console.log(review);
+  };
 
   const handleLoadMore = async () => {
     let resultReviews = reviews;
