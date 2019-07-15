@@ -142,7 +142,9 @@ const AuthState = props => {
   // GET REVIEWS
   const getReviews = async restaurantId => {
     try {
-      let url = `/api/restaurant-reviews/${restaurantId}`;
+      let url = `/api/restaurant-reviews/${restaurantId}/${
+        state.limitReviews
+      }/${state.startReviews}/reviews`;
       const res = await api.get(url);
       dispatch({ type: GET_REVIEWS, payload: res.data });
     } catch (err) {
