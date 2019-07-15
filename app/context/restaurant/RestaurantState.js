@@ -165,6 +165,7 @@ const AuthState = props => {
   // LOAD_TOP_FIVE_RESTAURANTS
   const loadTopFiveRestaurants = async () => {
     try {
+      console.log("LOAD TOP FIVE");
     } catch (err) {
       console.log(err.message);
     }
