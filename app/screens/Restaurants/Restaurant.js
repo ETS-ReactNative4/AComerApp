@@ -69,9 +69,15 @@ const Restaurant = ({ navigation }) => {
           />
         </View>
       ) : (
-        <Text>
+        <Text style={styles.textNoAuth}>
           Para escribir una opinión tienes que iniciar sesión, puedes hacer
-          click <Text onPress={() => navigation.navigate("Login")}>AQUI</Text>
+          click{" "}
+          <Text
+            onPress={() => navigation.navigate("Login")}
+            style={styles.textLinkLogin}
+          >
+            AQUI
+          </Text>
         </Text>
       )}
     </View>
@@ -115,6 +121,13 @@ const styles = StyleSheet.create({
   },
   btnAddReview: {
     backgroundColor: "#ffc107"
+  },
+  textNoAuth: {
+    margin: 20
+  },
+  textLinkLogin: {
+    color: "#ffc107",
+    fontWeight: "bold"
   }
 });
 
