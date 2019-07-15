@@ -1,7 +1,13 @@
 import React, { useContext, useEffect, useRef } from "react";
 import AuthContext from "../../context/auth/authContext";
 import RestaurantContext from "../../context/restaurant/restaurantContext";
-import { StyleSheet, View, ActivityIndicator, FlatList } from "react-native";
+import {
+  StyleSheet,
+  View,
+  ActivityIndicator,
+  FlatList,
+  ScrollView
+} from "react-native";
 import {
   Image,
   Icon,
@@ -89,6 +95,12 @@ const Restaurant = ({ navigation }) => {
             containerStyle={styles.imageAvatarUser}
           />
         </View>
+        <View style={styles.viewInfo}>
+          <Text style={styles.reviewTitle}>{title}</Text>
+          <Text style={styles.reviewText}>{review}</Text>
+          <Rating imageSize={15} startingValue={stars} />
+          <Text style={styles.reviewDate}>{createReview}</Text>
+        </View>
       </View>
     );
   };
@@ -117,14 +129,18 @@ const Restaurant = ({ navigation }) => {
     } else {
       return (
         <View style={styles.noFoundReviews}>
-          <Text>Pronto se añadiran más opiniones</Text>
+          {reviews.length === 0 ? (
+            <Text>¡Se el primer en dejar tu comentario!</Text>
+          ) : (
+            <Text>Pronto se añadiran más opiniones</Text>
+          )}
         </View>
       );
     }
   };
 
   return (
-    <View style={styles.viewBody}>
+    <ScrollView style={styles.viewBody}>
       <View style={styles.viewImage}>
         <Image
           source={{ uri: image }}
@@ -168,6 +184,7 @@ const Restaurant = ({ navigation }) => {
           </Text>
         </Text>
       )}
+      <Text style={styles.commentTitle}>Comentarios</Text>
       {reviews ? (
         <FlatList
           data={reviews}
@@ -192,7 +209,7 @@ const Restaurant = ({ navigation }) => {
         opacity={0.8}
         textStyle={{ color: "#fff" }}
       />
-    </View>
+    </ScrollView>
   );
 };
 
@@ -258,6 +275,35 @@ const styles = StyleSheet.create({
   imageAvatarUser: {
     width: 50,
     height: 50
+  },
+  viewInfo: {
+    flex: 1,
+    alignItems: "flex-start"
+  },
+  reviewTitle: {
+    fontWeight: "bold"
+  },
+  reviewText: {
+    paddingTop: 2,
+    color: "grey",
+    marginBottom: 5
+  },
+  reviewDate: {
+    marginTop: 5,
+    color: "grey",
+    fontSize: 12
+  },
+  commentTitle: {
+    fontSize: 20,
+    textAlign: "center",
+    marginTop: 20,
+    marginBottom: 10,
+    fontWeight: "bold"
+  },
+  noFoundReviews: {
+    marginTop: 20,
+    marginBottom: 20,
+    alignItems: "center"
   }
 });
 
