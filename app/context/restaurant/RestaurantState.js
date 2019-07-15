@@ -78,7 +78,9 @@ const AuthState = props => {
         `/api/restaurants/${limitRestaurants}/${startRestaurants}`
       );
 
-      if (res.data.length > 0) {
+      const evaluation = res.data.length - limitRestaurants;
+
+      if (evaluation > -7) {
         dispatch({ type: GET_RESTAURANTS, payload: res.data });
       } else {
         dispatch({ type: LOADING_RESTAURANTS, payload: false });
