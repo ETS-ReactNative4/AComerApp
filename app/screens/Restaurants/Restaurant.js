@@ -112,6 +112,13 @@ const Restaurant = ({ navigation }) => {
           </Text>
         </Text>
       )}
+      {reviews ? (
+        <Text>Lista de reviews {reviews.length}</Text>
+      ) : (
+        <View style={styles.startLoadReviews}>
+          <ActivityIndicator />
+        </View>
+      )}
       <Toast
         ref={toast}
         position="bottom"
@@ -169,6 +176,10 @@ const styles = StyleSheet.create({
   textLinkLogin: {
     color: "#ffc107",
     fontWeight: "bold"
+  },
+  startLoadReviews: {
+    marginTop: 20,
+    alignItems: "center"
   }
 });
 
