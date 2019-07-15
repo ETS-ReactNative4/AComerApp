@@ -164,7 +164,9 @@ const Restaurant = ({ navigation }) => {
           </Text>
         </Text>
       )}
-      <Text style={styles.commentTitle}>Comentarios</Text>
+      <Text style={styles.commentTitle}>
+        Comentarios ({reviews && reviews.length}){" "}
+      </Text>
       {reviews ? (
         <FlatList
           data={reviews}
