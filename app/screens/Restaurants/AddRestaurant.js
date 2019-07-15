@@ -28,7 +28,8 @@ const AddRestaurant = ({ navigation }) => {
     restaurantPhoto,
     setRestaurantPhoto,
     loading,
-    addRestaurant
+    addRestaurant,
+    getRestaurants
   } = restaurantContext;
 
   const addRestaurantForm = useRef(null);
