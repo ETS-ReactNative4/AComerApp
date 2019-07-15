@@ -10,7 +10,7 @@ import {
   AddReviewRestaurantOptions
 } from "../../forms/AddReviewRestaurant";
 
-const AddReviewRestaurant = () => {
+const AddReviewRestaurant = ({ navigation }) => {
   const rating = useRef(null);
   const AddReviewRestaurantForm = useRef(null);
   const toast = useRef(null);
@@ -34,8 +34,11 @@ const AddReviewRestaurant = () => {
           const formData = {
             title: validate.title,
             review: validate.review,
-            stars: ratingValue
+            stars: ratingValue,
+            restaurant_id: navigation.state.params.id,
+            user_id: navigation.state.params.user.id
           };
+
           console.log(formData);
         }
       }
