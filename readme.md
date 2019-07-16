@@ -17,3 +17,9 @@
 - [REACT NATIVE AWS3](https://yarnpkg.com/en/package/react-native-aws3) yarn add react-native-aws3
   - [TUTORIAL](https://www.youtube.com/watch?v=FXG3AJ6OJCk)
 - [REACT NATIVE ACTION BUTTON](https://yarnpkg.com/en/package/react-native-action-button)
+
+### How to generate Android APK
+
+1. Config package in app.json
+2. expo build:android
+3. Follow steps

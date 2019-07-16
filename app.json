@@ -21,6 +21,7 @@
       "supportsTablet": true
     },
     "android": {
+      "package": "com.alejandrohernandezlara.acomer",
       "permissions": ["CAMERA_ROLL"]
     }
   }
