@@ -1,5 +1,11 @@
 import React, { useRef, useState, useContext, useEffect } from "react";
-import { StyleSheet, View, Text, ActivityIndicator } from "react-native";
+import {
+  StyleSheet,
+  View,
+  Text,
+  ActivityIndicator,
+  ScrollView
+} from "react-native";
 import { Image, Button, SocialIcon, Divider } from "react-native-elements";
 import Toast from "react-native-easy-toast";
 import AuthContext from "../../context/auth/authContext";
@@ -76,7 +82,7 @@ const Login = ({ navigation }) => {
   };
 
   return (
-    <View style={styles.viewBody}>
+    <ScrollView style={styles.viewBody}>
       <Image
         source={require("../../../assets/img/logo.png")}
         style={styles.logo}
@@ -124,7 +130,7 @@ const Login = ({ navigation }) => {
           onPress={() => loginFacebook()}
         />
       </View>
-    </View>
+    </ScrollView>
   );
 };
 

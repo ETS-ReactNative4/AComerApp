@@ -1,5 +1,5 @@
 import React, { useRef, useState, useContext, useEffect } from "react";
-import { StyleSheet, View, ActivityIndicator } from "react-native";
+import { StyleSheet, View, ActivityIndicator, ScrollView } from "react-native";
 import { Button, Text, Image } from "react-native-elements";
 import Toast from "react-native-easy-toast";
 import AuthContext from "../../context/auth/authContext";
@@ -50,7 +50,7 @@ const Register = ({ navigation }) => {
   };
 
   return (
-    <View style={styles.viewBody}>
+    <ScrollView style={styles.viewBody}>
       <Image
         source={require("../../../assets/img/logo.png")}
         style={styles.logo}
@@ -82,7 +82,7 @@ const Register = ({ navigation }) => {
           textStyle={{ color: "#fff" }}
         />
       </View>
-    </View>
+    </ScrollView>
   );
 };
 
