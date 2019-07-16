@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import RestaurantContext from "../context/restaurant/restaurantContext";
 import { StyleSheet, View, Text } from "react-native";
 import { SearchBar } from "react-native-elements";
 
 const Search = () => {
   const [search, setSearch] = useState("");
+  const restaurantContext = useContext(RestaurantContext);
+  const {} = restaurantContext;
 
   const searchRestaurants = value => {
     setSearch(value);
