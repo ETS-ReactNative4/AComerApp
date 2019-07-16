@@ -3,7 +3,7 @@ import RestaurantContext from "../context/restaurant/restaurantContext";
 import { StyleSheet, View, Text } from "react-native";
 import { SearchBar, ListItem, Icon } from "react-native-elements";
 
-const Search = () => {
+const Search = ({ navigation }) => {
   const [search, setSearch] = useState(null);
   const restaurantContext = useContext(RestaurantContext);
   const {
@@ -22,6 +22,20 @@ const Search = () => {
     }
   };
 
+  const touchRestaurant = async restaurant => {
+    await clearFilter();
+    await setSearch(null);
+    const { id, name, description, address, city, image } = restaurant;
+    navigation.navigate("Restaurant", {
+      id,
+      name,
+      description,
+      address,
+      city,
+      image
+    });
+  };
+
   return (
     <View style={styles.viewBody}>
       <SearchBar
@@ -31,11 +45,26 @@ const Search = () => {
         containerStyle={styles.SearchBar}
         lightTheme={true}
       />
-      <Text>{search}</Text>
-      {foundRestaurants && <Text>{foundRestaurants.length}</Text>}
       {foundRestaurants ? (
         foundRestaurants.length > 0 ? (
-          <Text>Hay restaurantes</Text>
+          <View>
+            {foundRestaurants.map((restaurant, index) => {
+              return (
+                <ListItem
+                  key={index}
+                  title={restaurant.name}
+                  leftAvatar={{ source: { uri: restaurant.image } }}
+                  rightIcon={
+                    <Icon
+                      type="material-community"
+                      name="chevron-right"
+                      onPress={() => touchRestaurant(restaurant)}
+                    />
+                  }
+                />
+              );
+            })}
+          </View>
         ) : (
           <Text style={styles.notFoundRestaurantsText}>
             No se han encontrado restaurantes
