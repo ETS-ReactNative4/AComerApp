@@ -38,6 +38,7 @@ const TopFive = () => {
                     style={styles.rating}
                   />
                 </View>
+                <Text style={styles.description}>{restaurant.description}</Text>
               </Card>
             );
           })}
@@ -71,6 +72,11 @@ const styles = StyleSheet.create({
   rating: {
     position: "absolute",
     right: 0
+  },
+  description: {
+    color: "grey",
+    marginTop: 10,
+    textAlign: "justify"
   }
 });
 
