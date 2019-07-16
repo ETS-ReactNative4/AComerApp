@@ -27,7 +27,11 @@ export default (state, action) => {
         ...state,
         foundRestaurants: state.allRestaurants.filter(restaurant => {
           const regex = new RegExp(`${action.payload}`, "gi");
-          return restaurant.name.match(regex) || restaurant.city.match(regex);
+          return (
+            restaurant.name.match(regex) ||
+            restaurant.city.match(regex) ||
+            restaurant.address.match(regex)
+          );
         })
       };
     }

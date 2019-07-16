@@ -39,7 +39,7 @@ const Search = ({ navigation }) => {
   return (
     <View style={styles.viewBody}>
       <SearchBar
-        placeholder="Ingresa nombre o ciudad"
+        placeholder="Nombre, Ciudad o Dirección"
         onChangeText={searchRestaurants}
         value={search}
         containerStyle={styles.SearchBar}
