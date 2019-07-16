@@ -23,3 +23,7 @@
 1. Config package in app.json
 2. expo build:android
 3. Follow steps
+
+### How to generate iOS IPA
+
+1.
