@@ -65,9 +65,9 @@ const TopFive = ({ navigation }) => {
           })}
         </View>
       ) : (
-        <View tyle={styles.startLoadRestaurants}>
+        <View style={styles.startLoadRestaurants}>
           <ActivityIndicator size="large" />
-          <Text>Cargando Restaurantes</Text>
+          <Text>Cargando restaurants</Text>
         </View>
       )}
     </ScrollView>

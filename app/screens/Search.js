@@ -64,13 +64,13 @@ const Search = ({ navigation }) => {
           </View>
         ) : (
           <Text style={styles.notFoundRestaurantsText}>
-            No se han encontrado restaurantes
+            No se han encontrado restaurants
           </Text>
         )
       ) : (
         <View>
           <Text style={styles.notFoundRestaurantsText}>
-            ¡Busca tus restaurantes!
+            ¡Busca tus restaurants!
           </Text>
         </View>
       )}
