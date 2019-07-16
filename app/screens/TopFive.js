@@ -35,6 +35,7 @@ const TopFive = () => {
                     imageSize={20}
                     startingValue={restaurant.rating}
                     readonly
+                    style={styles.rating}
                   />
                 </View>
               </Card>
@@ -66,6 +67,10 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 20,
     fontWeight: "bold"
+  },
+  rating: {
+    position: "absolute",
+    right: 0
   }
 });
 
