@@ -28,10 +28,7 @@ const TopFive = () => {
 
 const styles = StyleSheet.create({
   viewBody: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: "#fff"
+    flex: 1
   }
 });
 
