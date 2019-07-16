@@ -11,6 +11,7 @@ const Search = () => {
   const searchRestaurants = value => {
     setSearch(value);
     filterRestaurants(value);
+    console.log(foundRestaurants);
   };
 
   return (
@@ -23,6 +24,7 @@ const Search = () => {
         lightTheme={true}
       />
       <Text>{search}</Text>
+      {foundRestaurants && <Text>{foundRestaurants.length}</Text>}
     </View>
   );
 };
