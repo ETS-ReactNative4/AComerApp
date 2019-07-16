@@ -10,7 +10,7 @@ import {
 import { Card, Image, Rating } from "react-native-elements";
 import RestaurantContext from "../context/restaurant/restaurantContext";
 
-const TopFive = () => {
+const TopFive = ({ navigation }) => {
   const restaurantContext = useContext(RestaurantContext);
   const { loadTopFiveRestaurants, topFiveRestaurants } = restaurantContext;
 
@@ -18,18 +18,34 @@ const TopFive = () => {
     loadTopFiveRestaurants();
   }, []);
 
+  const touchRestaurant = restaurant => {
+    const { id, name, description, address, city, image } = restaurant;
+    navigation.navigate("Restaurant", {
+      id,
+      name,
+      description,
+      address,
+      city,
+      image
+    });
+  };
+
   return (
     <ScrollView style={styles.viewBody}>
       {topFiveRestaurants ? (
         <View>
           {topFiveRestaurants.map((restaurant, index) => {
             return (
-              <TouchableOpacity key={index}>
+              <TouchableOpacity
+                key={index}
+                onPress={() => touchRestaurant(restaurant)}
+              >
                 <Card>
                   <Image
                     style={styles.restaurantImage}
                     resizeMode="cover"
                     source={{ uri: restaurant.image }}
+                    PlaceholderContent={<ActivityIndicator />}
                   />
                   <View style={styles.titleRating}>
                     <Text style={styles.title}>{restaurant.name}</Text>
