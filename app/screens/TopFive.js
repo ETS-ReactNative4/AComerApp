@@ -29,8 +29,13 @@ const TopFive = () => {
                   resizeMode="cover"
                   source={{ uri: restaurant.image }}
                 />
-                <View>
-                  <Text>Hola</Text>
+                <View style={styles.titleRating}>
+                  <Text style={styles.title}>{restaurant.name}</Text>
+                  <Rating
+                    imageSize={20}
+                    startingValue={restaurant.rating}
+                    readonly
+                  />
                 </View>
               </Card>
             );
@@ -53,6 +58,14 @@ const styles = StyleSheet.create({
   restaurantImage: {
     width: "100%",
     height: 200
+  },
+  titleRating: {
+    flexDirection: "row",
+    marginTop: 10
+  },
+  title: {
+    fontSize: 20,
+    fontWeight: "bold"
   }
 });
 
