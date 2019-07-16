@@ -4,7 +4,8 @@ import {
   View,
   Text,
   ActivityIndicator,
-  ScrollView
+  ScrollView,
+  TouchableOpacity
 } from "react-native";
 import { Card, Image, Rating } from "react-native-elements";
 import RestaurantContext from "../context/restaurant/restaurantContext";
@@ -23,23 +24,27 @@ const TopFive = () => {
         <View>
           {topFiveRestaurants.map((restaurant, index) => {
             return (
-              <Card key={index}>
-                <Image
-                  style={styles.restaurantImage}
-                  resizeMode="cover"
-                  source={{ uri: restaurant.image }}
-                />
-                <View style={styles.titleRating}>
-                  <Text style={styles.title}>{restaurant.name}</Text>
-                  <Rating
-                    imageSize={20}
-                    startingValue={restaurant.rating}
-                    readonly
-                    style={styles.rating}
+              <TouchableOpacity key={index}>
+                <Card>
+                  <Image
+                    style={styles.restaurantImage}
+                    resizeMode="cover"
+                    source={{ uri: restaurant.image }}
                   />
-                </View>
-                <Text style={styles.description}>{restaurant.description}</Text>
-              </Card>
+                  <View style={styles.titleRating}>
+                    <Text style={styles.title}>{restaurant.name}</Text>
+                    <Rating
+                      imageSize={20}
+                      startingValue={restaurant.rating}
+                      readonly
+                      style={styles.rating}
+                    />
+                  </View>
+                  <Text style={styles.description}>
+                    {restaurant.description}
+                  </Text>
+                </Card>
+              </TouchableOpacity>
             );
           })}
         </View>
