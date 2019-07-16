@@ -22,16 +22,18 @@ const TopFive = () => {
       {topFiveRestaurants ? (
         <View>
           {topFiveRestaurants.map((restaurant, index) => {
-            <Card key={index}>
-              <Image
-                style={styles.restaurantImage}
-                resizeMode="cover"
-                source={{ uri: restaurant.image }}
-              />
-              <View>
-                <Text>Hola</Text>
-              </View>
-            </Card>;
+            return (
+              <Card key={index}>
+                <Image
+                  style={styles.restaurantImage}
+                  resizeMode="cover"
+                  source={{ uri: restaurant.image }}
+                />
+                <View>
+                  <Text>Hola</Text>
+                </View>
+              </Card>
+            );
           })}
         </View>
       ) : (
