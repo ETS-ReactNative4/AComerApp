@@ -20,7 +20,20 @@ const TopFive = () => {
   return (
     <ScrollView style={styles.viewBody}>
       {topFiveRestaurants ? (
-        <Text>Lista de top five restaurants</Text>
+        <View>
+          {topFiveRestaurants.map((restaurant, index) => {
+            <Card key={index}>
+              <Image
+                style={styles.restaurantImage}
+                resizeMode="cover"
+                source={{ uri: restaurant.image }}
+              />
+              <View>
+                <Text>Hola</Text>
+              </View>
+            </Card>;
+          })}
+        </View>
       ) : (
         <View>
           <ActivityIndicator size="large" />
@@ -34,6 +47,10 @@ const TopFive = () => {
 const styles = StyleSheet.create({
   viewBody: {
     flex: 1
+  },
+  restaurantImage: {
+    width: "100%",
+    height: 200
   }
 });
 
