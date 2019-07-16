@@ -65,7 +65,7 @@ const TopFive = ({ navigation }) => {
           })}
         </View>
       ) : (
-        <View>
+        <View tyle={styles.startLoadRestaurants}>
           <ActivityIndicator size="large" />
           <Text>Cargando Restaurantes</Text>
         </View>
@@ -98,6 +98,10 @@ const styles = StyleSheet.create({
     color: "grey",
     marginTop: 10,
     textAlign: "justify"
+  },
+  startLoadRestaurants: {
+    marginTop: 20,
+    alignItems: "center"
   }
 });
 
