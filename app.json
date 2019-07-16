@@ -18,6 +18,7 @@
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
+      "bundleIdentifier": "com.alejandrohernandezlara.acomer",
       "supportsTablet": true
     },
     "android": {

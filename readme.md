@@ -38,7 +38,8 @@
 5. Start Your Enrollment
 6. Complete enroll
 7. COST 99 USD
-8. expo build:ios
+8. Config bundleIdentifier in app.json
+9. expo build:ios
 
 ### IMPORTANT
 
