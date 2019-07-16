@@ -39,7 +39,7 @@
 6. Complete enroll
 7. COST 99 USD
 8. Config bundleIdentifier in app.json
-9. expo build:ios
+9. sudo expo build:ios
 10. Follow Steps
 
 ### IMPORTANT
