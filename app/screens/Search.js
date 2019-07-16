@@ -4,14 +4,22 @@ import { StyleSheet, View, Text } from "react-native";
 import { SearchBar } from "react-native-elements";
 
 const Search = () => {
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = useState(null);
   const restaurantContext = useContext(RestaurantContext);
-  const { foundRestaurants, filterRestaurants } = restaurantContext;
+  const {
+    foundRestaurants,
+    filterRestaurants,
+    clearFilter
+  } = restaurantContext;
 
   const searchRestaurants = value => {
-    setSearch(value);
-    filterRestaurants(value);
-    console.log(foundRestaurants);
+    if (!value) {
+      clearFilter();
+      setSearch(null);
+    } else {
+      setSearch(value);
+      filterRestaurants(value);
+    }
   };
 
   return (

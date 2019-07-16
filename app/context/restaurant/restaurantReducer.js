@@ -10,11 +10,18 @@ import {
   SET_START_REVIEWS,
   LOAD_TOP_FIVE_RESTAURANTS,
   SET_ALL_RESTAURANTS,
-  SET_FOUND_RESTAURANTS
+  SET_FOUND_RESTAURANTS,
+  CLEAR_FILTER
 } from "../types";
 
 export default (state, action) => {
   switch (action.type) {
+    case CLEAR_FILTER: {
+      return {
+        ...state,
+        foundRestaurants: null
+      };
+    }
     case SET_FOUND_RESTAURANTS: {
       return {
         ...state,

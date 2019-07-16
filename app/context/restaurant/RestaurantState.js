@@ -12,7 +12,8 @@ import {
   GET_REVIEWS,
   LOAD_TOP_FIVE_RESTAURANTS,
   SET_ALL_RESTAURANTS,
-  SET_FOUND_RESTAURANTS
+  SET_FOUND_RESTAURANTS,
+  CLEAR_FILTER
 } from "../types";
 import api from "../../utils/ApiConnection";
 import { RNS3 } from "react-native-aws3";
@@ -185,6 +186,8 @@ const AuthState = props => {
     } catch (err) {}
   };
 
+  const clearFilter = async () => dispatch({ type: CLEAR_FILTER });
+
   return (
     <RestaurantContext.Provider
       value={{
@@ -209,7 +212,8 @@ const AuthState = props => {
         checkAddReviewUser,
         getReviews,
         loadTopFiveRestaurants,
-        filterRestaurants
+        filterRestaurants,
+        clearFilter
       }}
     >
       {props.children}
