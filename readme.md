@@ -23,7 +23,19 @@
 1. Config package in app.json
 2. expo build:android
 3. Follow steps
+4. Go to developers android
+5. Join account
+6. Google Play
+7. Enroll
+8. COST 25 USD
 
 ### How to generate iOS IPA
 
-1.
+1. Go to developers apple
+2. Join account
+3. Join the apple developer program
+4. Enroll
+5. Start Your Enrollment
+6. Complete enroll
+7. COST 99 USD
+8. expo build:ios
