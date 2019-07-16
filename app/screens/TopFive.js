@@ -18,7 +18,7 @@ const TopFive = () => {
   }, []);
 
   return (
-    <View style={styles.viewBody}>
+    <ScrollView style={styles.viewBody}>
       {topFiveRestaurants ? (
         <Text>Lista de top five restaurants</Text>
       ) : (
@@ -27,7 +27,7 @@ const TopFive = () => {
           <Text>Cargando Restaurantes</Text>
         </View>
       )}
-    </View>
+    </ScrollView>
   );
 };
 
