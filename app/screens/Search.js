@@ -1,20 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
 import { StyleSheet, View, Text } from "react-native";
+import { SearchBar } from "react-native-elements";
 
 const Search = () => {
+  const [search, setSearch] = useState("");
+
+  const searchRestaurants = value => {
+    setSearch(value);
+  };
+
   return (
     <View style={styles.viewBody}>
-      <Text>Search Screen</Text>
+      <SearchBar
+        placeholder="Buscar restaurantes..."
+        onChangeText={searchRestaurants}
+        value={search}
+        containerStyle={styles.SearchBar}
+        lightTheme={true}
+      />
+      <Text>{search}</Text>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   viewBody: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: "#fff"
+    flex: 1
+  },
+  SearchBar: {
+    marginBottom: 20
   }
 });
 
