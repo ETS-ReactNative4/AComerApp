@@ -1,5 +1,12 @@
 import React, { useEffect, useContext } from "react";
-import { StyleSheet, View, Text } from "react-native";
+import {
+  StyleSheet,
+  View,
+  Text,
+  ActivityIndicator,
+  ScrollView
+} from "react-native";
+import { Card, Image, Rating } from "react-native-elements";
 import RestaurantContext from "../context/restaurant/restaurantContext";
 
 const TopFive = () => {
