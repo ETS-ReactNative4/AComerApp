@@ -19,9 +19,14 @@ const TopFive = () => {
 
   return (
     <View style={styles.viewBody}>
-      <Text>
-        TopFive Screen{topFiveRestaurants && topFiveRestaurants.length}
-      </Text>
+      {topFiveRestaurants ? (
+        <Text>Lista de top five restaurants</Text>
+      ) : (
+        <View>
+          <ActivityIndicator size="large" />
+          <Text>Cargando Restaurantes</Text>
+        </View>
+      )}
     </View>
   );
 };
