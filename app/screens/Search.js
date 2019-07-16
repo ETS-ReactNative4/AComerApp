@@ -55,12 +55,9 @@ const Search = ({ navigation }) => {
                   title={restaurant.name}
                   leftAvatar={{ source: { uri: restaurant.image } }}
                   rightIcon={
-                    <Icon
-                      type="material-community"
-                      name="chevron-right"
-                      onPress={() => touchRestaurant(restaurant)}
-                    />
+                    <Icon type="material-community" name="chevron-right" />
                   }
+                  onPress={() => touchRestaurant(restaurant)}
                 />
               );
             })}
