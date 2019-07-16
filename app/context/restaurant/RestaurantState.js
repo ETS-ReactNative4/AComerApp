@@ -10,7 +10,9 @@ import {
   LOADING_RESTAURANTS,
   CHECK_ADD_REVIEW_USER,
   GET_REVIEWS,
-  LOAD_TOP_FIVE_RESTAURANTS
+  LOAD_TOP_FIVE_RESTAURANTS,
+  SET_ALL_RESTAURANTS,
+  SET_FOUND_RESTAURANTS
 } from "../types";
 import api from "../../utils/ApiConnection";
 import { RNS3 } from "react-native-aws3";
@@ -176,11 +178,11 @@ const AuthState = props => {
   // FILTER RESTAURANTS
   const filterRestaurants = async value => {
     try {
-      console.log("FILTER", value);
-      console.log(state.restaurants.length);
-    } catch (err) {
-      console.log("Error", err.message);
-    }
+      let url = "/api/restaurants";
+      const res = await api.get(url);
+      await dispatch({ type: SET_ALL_RESTAURANTS, payload: res.data });
+      await dispatch({ type: SET_FOUND_RESTAURANTS, payload: value });
+    } catch (err) {}
   };
 
   return (
