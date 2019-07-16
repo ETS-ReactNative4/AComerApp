@@ -6,10 +6,11 @@ import { SearchBar } from "react-native-elements";
 const Search = () => {
   const [search, setSearch] = useState("");
   const restaurantContext = useContext(RestaurantContext);
-  const {} = restaurantContext;
+  const { foundRestaurants, filterRestaurants } = restaurantContext;
 
   const searchRestaurants = value => {
     setSearch(value);
+    filterRestaurants(value);
   };
 
   return (
