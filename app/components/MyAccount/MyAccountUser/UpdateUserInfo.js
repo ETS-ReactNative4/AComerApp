@@ -6,7 +6,13 @@ import OverlayOneInput from "../../Elements/OverlayOneInput";
 import OverlayTwoInputs from "../../Elements/OverlayTwoInputs";
 import OverlayThreeInputs from "../../Elements/OverlayThreeInputs";
 
-const UpdateUserInfo = ({ user, updateName, updateEmail, updatePassword }) => {
+const UpdateUserInfo = ({
+  user,
+  updateName,
+  updateEmail,
+  updatePassword,
+  goToScreen
+}) => {
   const [overlayComponent, setOverlayComponent] = useState(null);
   const toast = useRef(null);
 
@@ -107,6 +113,15 @@ const UpdateUserInfo = ({ user, updateName, updateEmail, updatePassword }) => {
   };
 
   const menuItems = [
+    {
+      title: "Mis Restaurantes",
+      iconType: "material-community",
+      iconNameRight: "chevron-right",
+      iconColorRight: "#ccc",
+      iconNameLeft: "store",
+      iconColorLeft: "#ccc",
+      onPress: () => goToScreen("Restaurants")
+    },
     {
       title: "Cambiar Nombre y Apellido",
       iconType: "material-community",

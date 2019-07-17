@@ -20,7 +20,7 @@ const MyAccount = ({ navigation }) => {
   return (
     <ScrollView style={styles.viewBody}>
       {isAuthenticated ? (
-        <MyAccountUser />
+        <MyAccountUser goToScreen={goToScreen} />
       ) : (
         <MyAccountGuest goToScreen={goToScreen} />
       )}

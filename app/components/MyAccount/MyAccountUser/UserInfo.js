@@ -7,7 +7,7 @@ import Toast from "react-native-easy-toast";
 import * as ImagePicker from "expo-image-picker";
 import * as Permissions from "expo-permissions";
 
-const UserInfo = () => {
+const UserInfo = ({ goToScreen }) => {
   const authContext = useContext(AuthContext);
   const { user, updateUser, uploadImage, loading, logout } = authContext;
   const toast = useRef(null);
@@ -88,6 +88,7 @@ const UserInfo = () => {
             updateName={updateName}
             updateEmail={updateEmail}
             updatePassword={updatePassword}
+            goToScreen={goToScreen}
           />
           <Button
             title="Cerrar Sesión"

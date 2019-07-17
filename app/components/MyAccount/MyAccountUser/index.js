@@ -2,10 +2,10 @@ import React from "react";
 import { StyleSheet, View, Text } from "react-native";
 import UserInfo from "./UserInfo";
 
-const MyAccountUser = () => {
+const MyAccountUser = ({ goToScreen }) => {
   return (
     <View style={styles.viewUserAccount}>
-      <UserInfo />
+      <UserInfo goToScreen={goToScreen} />
     </View>
   );
 };
