@@ -120,7 +120,7 @@ const UpdateUserInfo = ({
       iconColorRight: "#ccc",
       iconNameLeft: "store",
       iconColorLeft: "#ccc",
-      onPress: () => goToScreen("Restaurants")
+      onPress: () => goToScreen("MyRestaurants")
     },
     {
       title: "Cambiar Nombre y Apellido",

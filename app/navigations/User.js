@@ -17,6 +17,7 @@ import SearchScreen from "../screens/Search";
 import MyAccountScreen from "../screens/MyAccount/MyAccount";
 import RegisterScreen from "../screens/MyAccount/Register";
 import LoginScreen from "../screens/MyAccount/Login";
+import MyRestaurantsScreen from "../screens/MyAccount/MyRestaurants";
 
 const RestaurantsScreenStack = createStackNavigator({
   Restaurants: {
@@ -79,6 +80,12 @@ const MyAccountScreenStack = createStackNavigator({
     screen: LoginScreen,
     navigationOptions: ({ navigation }) => ({
       title: "Ingresar"
+    })
+  },
+  MyRestaurants: {
+    screen: MyRestaurantsScreen,
+    navigationOptions: ({ navigation }) => ({
+      title: "Mis Restaurantes"
     })
   }
 });
