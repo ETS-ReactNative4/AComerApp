@@ -107,8 +107,11 @@ const AuthState = props => {
   };
 
   // LOAD MY RESTAURANTS
-  const loadMyRestaurants = user => {
-    console.log("LOAD MY RESTAURANTS", user);
+  const loadMyRestaurants = async user => {
+    try {
+      const res = await api.get(`/api/users/${user.id}/restaurants`);
+      console.log(res.data);
+    } catch (err) {}
   };
 
   return (
