@@ -13,8 +13,8 @@ const MyAccount = ({ navigation }) => {
     loadUser();
   }, []);
 
-  const goToScreen = nameScreen => {
-    navigation.navigate(nameScreen);
+  const goToScreen = (nameScreen, object) => {
+    navigation.navigate(nameScreen, object);
   };
 
   return (
