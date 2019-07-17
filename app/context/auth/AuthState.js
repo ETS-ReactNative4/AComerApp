@@ -26,7 +26,8 @@ const AuthState = props => {
     isAuthenticated: null,
     error: null,
     user: null,
-    loading: false
+    loading: false,
+    myRestaurants: null
   };
 
   const [state, dispatch] = useReducer(authReducer, initialState);
@@ -105,6 +106,11 @@ const AuthState = props => {
     }
   };
 
+  // LOAD MY RESTAURANTS
+  const loadMyRestaurants = user => {
+    console.log("LOAD MY RESTAURANTS", user);
+  };
+
   return (
     <AuthContext.Provider
       value={{
@@ -113,13 +119,15 @@ const AuthState = props => {
         user: state.user,
         error: state.error,
         loading: state.loading,
+        myRestaurants: state.myRestaurants,
         setError,
         loadUser,
         login,
         register,
         logout,
         updateUser,
-        uploadImage
+        uploadImage,
+        loadMyRestaurants
       }}
     >
       {props.children}

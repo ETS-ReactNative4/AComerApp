@@ -1,14 +1,14 @@
 import React, { useContext, useEffect } from "react";
 import { StyleSheet, View, Text } from "react-native";
-import RestaurantContext from "../../../context/restaurant/restaurantContext";
+import AuthContext from "../../../context/auth/authContext";
 
 const MyRestaurants = ({ navigation }) => {
-  const restaurantContext = useContext(RestaurantContext);
-  const { loadMyRestaurants } = restaurantContext;
+  const authContext = useContext(AuthContext);
+  const { loadMyRestaurants } = authContext;
   const user = navigation.state.params;
 
   useEffect(() => {
-    //loadMyRestaurants();
+    loadMyRestaurants(user);
   }, []);
 
   return (
