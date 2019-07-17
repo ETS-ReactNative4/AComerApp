@@ -69,7 +69,9 @@ export default (state, action) => {
     case GET_RESTAURANTS: {
       return {
         ...state,
-        restaurants: action.payload
+        restaurants: action.payload.filter(
+          restaurant => restaurant.status == "approved"
+        )
       };
     }
     case SET_START_RESTAURANTS: {
