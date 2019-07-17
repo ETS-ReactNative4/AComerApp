@@ -11,6 +11,7 @@ import {
 } from "react-native";
 import { Image } from "react-native-elements";
 import ActionButton from "react-native-action-button";
+import Icon from "react-native-vector-icons/Ionicons";
 
 const Restaurants = ({ navigation }) => {
   const authContext = useContext(AuthContext);
@@ -110,10 +111,22 @@ const Restaurants = ({ navigation }) => {
         </View>
       )}
       {isAuthenticated && (
-        <ActionButton
-          buttonColor="#ffc107"
-          onPress={() => navigation.navigate("AddRestaurant")}
-        />
+        <ActionButton buttonColor="#ffc107">
+          <ActionButton.Item
+            buttonColor="#ffc107"
+            title="Nuevo Restaurant"
+            onPress={() => navigation.navigate("AddRestaurant")}
+          >
+            <Icon name="md-create" style={styles.actionButtonIcon} />
+          </ActionButton.Item>
+          <ActionButton.Item
+            buttonColor="black"
+            title="Actualizar"
+            onPress={() => getRestaurants()}
+          >
+            <Icon name="md-refresh-circle" style={styles.actionButtonIcon} />
+          </ActionButton.Item>
+        </ActionButton>
       )}
     </View>
   );
@@ -161,6 +174,11 @@ const styles = StyleSheet.create({
     marginTop: 20,
     marginBottom: 20,
     alignItems: "center"
+  },
+  actionButtonIcon: {
+    fontSize: 20,
+    height: 22,
+    color: "white"
   }
 });
 
