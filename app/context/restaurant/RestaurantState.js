@@ -62,10 +62,14 @@ const AuthState = props => {
       const imgUrl = await uploadImage(file);
       const res = await api.post("/api/restaurants/", { formData, imgUrl, id });
       dispatch({ type: ADD_RESTAURANT, payload: res.data });
-      toast.show("¡Creado con éxito!", 100, () => {
-        navigation.goBack();
-        getRestaurants();
-      });
+      toast.show(
+        "¡Creado con éxito, tu restaurant esta en revisión!",
+        1000,
+        () => {
+          navigation.goBack();
+          getRestaurants();
+        }
+      );
     } catch (err) {
       dispatch({ type: LOADING, payload: false });
       toast.show("Error en el servidor, intente más tarde", timeout);
