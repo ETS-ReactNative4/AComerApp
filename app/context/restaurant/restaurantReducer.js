@@ -28,9 +28,10 @@ export default (state, action) => {
         foundRestaurants: state.allRestaurants.filter(restaurant => {
           const regex = new RegExp(`${action.payload}`, "gi");
           return (
-            restaurant.name.match(regex) ||
-            restaurant.city.match(regex) ||
-            restaurant.address.match(regex)
+            (restaurant.name.match(regex) ||
+              restaurant.city.match(regex) ||
+              restaurant.address.match(regex)) &&
+            restaurant.status == "approved"
           );
         })
       };
@@ -44,7 +45,9 @@ export default (state, action) => {
     case LOAD_TOP_FIVE_RESTAURANTS: {
       return {
         ...state,
-        topFiveRestaurants: action.payload
+        topFiveRestaurants: action.payload.filter(
+          restaurant => restaurant.status == "approved"
+        )
       };
     }
     case GET_REVIEWS: {
