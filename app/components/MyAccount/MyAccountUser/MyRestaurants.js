@@ -1,10 +1,11 @@
 import React, { useContext, useEffect } from "react";
 import { StyleSheet, View, Text } from "react-native";
-import RestaurantContext from "../../context/restaurant/restaurantContext";
+import RestaurantContext from "../../../context/restaurant/restaurantContext";
 
-const MyRestaurants = ({ user }) => {
+const MyRestaurants = ({ navigation }) => {
   const restaurantContext = useContext(RestaurantContext);
   const { loadMyRestaurants } = restaurantContext;
+  const user = navigation.state.params;
 
   useEffect(() => {
     //loadMyRestaurants();
@@ -12,7 +13,7 @@ const MyRestaurants = ({ user }) => {
 
   return (
     <View style={styles.viewBody}>
-      {user && <Text> {user.name} </Text>}
+      {user && <Text>{user.name}</Text>}
       <Text>Mis restaurantes</Text>
     </View>
   );

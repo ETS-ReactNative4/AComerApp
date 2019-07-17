@@ -17,7 +17,7 @@ import SearchScreen from "../screens/Search";
 import MyAccountScreen from "../screens/MyAccount/MyAccount";
 import RegisterScreen from "../screens/MyAccount/Register";
 import LoginScreen from "../screens/MyAccount/Login";
-import MyRestaurantsScreen from "../screens/MyAccount/MyRestaurants";
+import MyRestaurantsScreen from "../components/MyAccount/MyAccountUser/MyRestaurants";
 
 const RestaurantsScreenStack = createStackNavigator({
   Restaurants: {
