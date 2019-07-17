@@ -9,12 +9,19 @@ import {
   SET_ERROR,
   REMOVE_ERROR,
   UPDATE_USER,
-  LOADING
+  LOADING,
+  LOAD_MY_RESTAURANTS
 } from "../types";
 import { AsyncStorage } from "react-native";
 
 export default (state, action) => {
   switch (action.type) {
+    case LOAD_MY_RESTAURANTS: {
+      return {
+        ...state,
+        myRestaurants: action.payload
+      };
+    }
     case USER_LOADED:
       return {
         ...state,

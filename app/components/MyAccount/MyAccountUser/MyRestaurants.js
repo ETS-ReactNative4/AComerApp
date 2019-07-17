@@ -4,7 +4,7 @@ import AuthContext from "../../../context/auth/authContext";
 
 const MyRestaurants = ({ navigation }) => {
   const authContext = useContext(AuthContext);
-  const { loadMyRestaurants } = authContext;
+  const { loadMyRestaurants, myRestaurants } = authContext;
   const user = navigation.state.params;
 
   useEffect(() => {
@@ -13,7 +13,7 @@ const MyRestaurants = ({ navigation }) => {
 
   return (
     <View style={styles.viewBody}>
-      {user && <Text>{user.name}</Text>}
+      {myRestaurants && <Text>{myRestaurants.length}</Text>}
       <Text>Mis restaurantes</Text>
     </View>
   );

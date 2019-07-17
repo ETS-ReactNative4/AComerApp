@@ -12,7 +12,8 @@ import {
   SET_ERROR,
   REMOVE_ERROR,
   UPDATE_USER,
-  LOADING
+  LOADING,
+  LOAD_MY_RESTAURANTS
 } from "../types";
 import { AsyncStorage } from "react-native";
 import api from "../../utils/ApiConnection";
@@ -110,7 +111,7 @@ const AuthState = props => {
   const loadMyRestaurants = async user => {
     try {
       const res = await api.get(`/api/users/${user.id}/restaurants`);
-      console.log(res.data);
+      dispatch({ type: LOAD_MY_RESTAURANTS, payload: res.data });
     } catch (err) {}
   };
 

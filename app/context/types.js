@@ -9,6 +9,7 @@ export const SET_ERROR = "SET_ERROR";
 export const REMOVE_ERROR = "REMOVE_ERROR";
 export const UPDATE_USER = "UPDATE_USER";
 export const LOADING = "LOADING";
+export const LOAD_MY_RESTAURANTS = "LOAD_MY_RESTAURANTS";
 
 export const SET_RESTAURANT_PHOTO = "SET_RESTAURANT_PHOTO";
 export const ADD_RESTAURANT = "ADD_RESTAURANT";
