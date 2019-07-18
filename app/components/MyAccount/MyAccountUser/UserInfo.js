@@ -91,6 +91,12 @@ const UserInfo = ({ goToScreen }) => {
             goToScreen={goToScreen}
           />
           <Button
+            title="¡Escríbenos tu comentario!"
+            onPress={() => console.log("Enviar mensaje")}
+            buttonStyle={styles.buttonSendMessage}
+            titleStyle={styles.buttonSendMessageText}
+          />
+          <Button
             title="Cerrar Sesión"
             onPress={logout}
             buttonStyle={styles.buttonCloseSession}
@@ -130,7 +136,7 @@ const styles = StyleSheet.create({
     marginRight: 20
   },
   buttonCloseSession: {
-    marginTop: 30,
+    marginTop: 0,
     borderRadius: 0,
     backgroundColor: "#fff",
     borderTopWidth: 1,
@@ -141,6 +147,20 @@ const styles = StyleSheet.create({
     paddingBottom: 10
   },
   buttonCloseSessionText: {
+    color: "black"
+  },
+  buttonSendMessage: {
+    marginTop: 30,
+    borderRadius: 0,
+    backgroundColor: "#fff",
+    borderTopWidth: 1,
+    borderTopColor: "#e3e3e3",
+    borderBottomWidth: 1,
+    borderBottomColor: "#e3e3e3",
+    paddingTop: 10,
+    paddingBottom: 10
+  },
+  buttonSendMessageText: {
     color: "#ffc107"
   }
 });

@@ -150,7 +150,7 @@ const RootStack = createBottomTabNavigator(
     }
   },
   {
-    initialRouteName: "Restaurants",
+    initialRouteName: "MyAccount",
     order: ["Restaurants", "TopFive", "Search", "MyAccount"],
     tabBarOptions: {
       inactiveTintColor: "#646464",
