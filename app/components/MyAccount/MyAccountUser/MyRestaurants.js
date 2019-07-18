@@ -75,6 +75,11 @@ const MyRestaurants = ({ navigation }) => {
 
   return (
     <View style={styles.viewBody}>
+      {myRestaurants && myRestaurants.length < 1 && (
+        <View style={styles.noFoundRestaurants}>
+          <Text>No has agregado restaurantes</Text>
+        </View>
+      )}
       <FlatList
         data={myRestaurants}
         renderItem={renderRow}
@@ -123,6 +128,11 @@ const styles = StyleSheet.create({
   },
   rejectedRestaurantState: {
     color: "red"
+  },
+  noFoundRestaurants: {
+    marginTop: 20,
+    marginBottom: 20,
+    alignItems: "center"
   }
 });
 
