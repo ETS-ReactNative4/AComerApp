@@ -20,7 +20,21 @@ const MyRestaurants = ({ navigation }) => {
   }, []);
 
   const renderRow = restaurant => {
-    const { name, city, description, address, image } = restaurant.item;
+    const {
+      name,
+      city,
+      description,
+      address,
+      image,
+      created_at,
+      status
+    } = restaurant.item;
+
+    const createRestaurant = created_at
+      .replace("T", " ")
+      .replace("Z", " ")
+      .substring(0, created_at.length - 5);
+
     return (
       <TouchableOpacity onPress={() => goToRestaurant(restaurant.item)}>
         <View style={styles.viewRestaurant}>
@@ -40,10 +54,23 @@ const MyRestaurants = ({ navigation }) => {
             <Text style={styles.flatlistRestaurantDescription}>
               {description.substr(0, 60)} ...
             </Text>
+            {status === "approved" && (
+              <Text style={styles.approvedRestaurantState}>Aprobado</Text>
+            )}
+            {status === "pending" && (
+              <Text style={styles.pendingRestaurantState}>Pendiente</Text>
+            )}
+            {status === "rejected" && (
+              <Text style={styles.rejectedRestaurantState}>Rechazado</Text>
+            )}
           </View>
         </View>
       </TouchableOpacity>
     );
+  };
+
+  const goToRestaurant = restaurant => {
+    navigation.navigate("Restaurant", restaurant);
   };
 
   return (
@@ -87,6 +114,15 @@ const styles = StyleSheet.create({
     paddingTop: 2,
     color: "grey",
     width: 300
+  },
+  approvedRestaurantState: {
+    color: "green"
+  },
+  pendingRestaurantState: {
+    color: "#ffc107"
+  },
+  rejectedRestaurantState: {
+    color: "red"
   }
 });
 
