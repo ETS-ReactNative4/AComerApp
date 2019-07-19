@@ -7,7 +7,8 @@ import {
   Text,
   FlatList,
   ActivityIndicator,
-  TouchableOpacity
+  TouchableOpacity,
+  RefreshControl
 } from "react-native";
 import { Image } from "react-native-elements";
 import ActionButton from "react-native-action-button";
@@ -94,7 +95,7 @@ const Restaurants = ({ navigation }) => {
   return (
     <View style={styles.viewBody}>
       {restaurants ? (
-        <View>
+        <View style={{ flex: 1 }}>
           <FlatList
             data={restaurants}
             renderItem={renderRow}
@@ -102,6 +103,12 @@ const Restaurants = ({ navigation }) => {
             onEndReached={handleLoadMore}
             onEndReachedThreshold={0}
             ListFooterComponent={renderFooter}
+            refreshControl={
+              <RefreshControl
+                refreshing={loadingRestaurants}
+                onRefresh={console.log("Get RESTAURANTS")}
+              />
+            }
           />
         </View>
       ) : (
