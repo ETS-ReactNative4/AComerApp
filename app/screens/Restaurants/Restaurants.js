@@ -95,7 +95,7 @@ const Restaurants = ({ navigation }) => {
   return (
     <View style={styles.viewBody}>
       {restaurants ? (
-        <View style={{ flex: 1 }}>
+        <View style={styles.viewFlatlist}>
           <FlatList
             data={restaurants}
             renderItem={renderRow}
@@ -103,12 +103,6 @@ const Restaurants = ({ navigation }) => {
             onEndReached={handleLoadMore}
             onEndReachedThreshold={0}
             ListFooterComponent={renderFooter}
-            refreshControl={
-              <RefreshControl
-                refreshing={loadingRestaurants}
-                onRefresh={console.log("Get RESTAURANTS")}
-              />
-            }
           />
         </View>
       ) : (
@@ -141,6 +135,9 @@ const Restaurants = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   viewBody: {
+    flex: 1
+  },
+  viewFlatlist: {
     flex: 1
   },
   startLoadRestaurants: {
