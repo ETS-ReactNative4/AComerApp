@@ -154,6 +154,7 @@ const Restaurants = ({ navigation }) => {
       </ActionButton>
 
       {overlayComponent}
+
       <Toast
         ref={toast}
         position="bottom"

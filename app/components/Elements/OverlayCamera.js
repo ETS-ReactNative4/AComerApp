@@ -27,13 +27,23 @@ const OverlayCamera = ({}) => {
 
 const styles = StyleSheet.create({
   overlayStyle: {
-    flex: 1
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center"
   },
   viewCamera: {
-    flex: 1
+    width: "100%",
+    height: "50%",
+    borderColor: "#ffc107",
+    borderLeftWidth: 2,
+    borderRightWidth: 2,
+    borderTopWidth: 2,
+    borderBottomWidth: 2
   },
   camera: {
-    flex: 1
+    flex: 1,
+    width: "auto",
+    height: "auto"
   }
 });
 
