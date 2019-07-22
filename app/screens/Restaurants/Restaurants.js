@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import AuthContext from "../../context/auth/authContext";
 import RestaurantContext from "../../context/restaurant/restaurantContext";
 import {
@@ -15,9 +15,11 @@ import ActionButton from "react-native-action-button";
 import Icon from "react-native-vector-icons/Ionicons";
 import Toast from "react-native-easy-toast";
 import * as Permissions from "expo-permissions";
+import OverlayCamera from "../../components/Elements/OverlayCamera";
 
 const Restaurants = ({ navigation }) => {
   const toast = useRef(null);
+  const [overlayComponent, setOverlayComponent] = useState(null);
   const authContext = useContext(AuthContext);
   const { loadUser, isAuthenticated } = authContext;
 
@@ -102,7 +104,7 @@ const Restaurants = ({ navigation }) => {
     if (status === "denied") {
       toast.current.show("Es necesario aceptar los permisos de la cámara");
     } else {
-      console.log("ABRIR OVERLAY DE CÁMARA");
+      setOverlayComponent(<OverlayCamera />);
     }
   };
 
@@ -131,8 +133,9 @@ const Restaurants = ({ navigation }) => {
           <Text>Cargando restaurants</Text>
         </View>
       )}
-      {isAuthenticated && (
-        <ActionButton buttonColor="#ffc107">
+
+      <ActionButton buttonColor="#ffc107">
+        {isAuthenticated && (
           <ActionButton.Item
             buttonColor="#ffc107"
             title="Nuevo Restaurant"
@@ -140,15 +143,17 @@ const Restaurants = ({ navigation }) => {
           >
             <Icon name="md-create" style={styles.actionButtonIcon} />
           </ActionButton.Item>
-          <ActionButton.Item
-            buttonColor="black"
-            title="Escanear QR"
-            onPress={() => getCameraPermissions()}
-          >
-            <Icon name="md-qr-scanner" style={styles.actionButtonIcon} />
-          </ActionButton.Item>
-        </ActionButton>
-      )}
+        )}
+        <ActionButton.Item
+          buttonColor="black"
+          title="Escanear QR"
+          onPress={() => getCameraPermissions()}
+        >
+          <Icon name="md-qr-scanner" style={styles.actionButtonIcon} />
+        </ActionButton.Item>
+      </ActionButton>
+
+      {overlayComponent}
       <Toast
         ref={toast}
         position="bottom"

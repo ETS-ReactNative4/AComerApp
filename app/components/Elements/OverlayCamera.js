@@ -1,13 +1,17 @@
-import React from "react";
+import React, { useRef } from "react";
 import { StyleSheet, View } from "react-native";
 import { Overlay } from "react-native-elements";
 import { Camera } from "expo-camera";
 
 const OverlayCamera = ({}) => {
+  const camera = useRef(null);
+
   return (
     <Overlay
-      isVisible={true}
+      width="100%"
+      height="100%"
       overlayBackgroundColor="transparent"
+      isVisible={true}
       overlayStyle={styles.overlayStyle}
     >
       <View style={styles.viewCamera}>
