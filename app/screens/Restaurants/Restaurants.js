@@ -102,7 +102,7 @@ const Restaurants = ({ navigation }) => {
     if (status === "denied") {
       toast.current.show("Es necesario aceptar los permisos de la cámara");
     } else {
-      navigation.navigate("MyCamera");
+      console.log("ABRIR OVERLAY DE CÁMARA");
     }
   };
 
