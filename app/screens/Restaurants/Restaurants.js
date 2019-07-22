@@ -14,6 +14,10 @@ import { Image } from "react-native-elements";
 import ActionButton from "react-native-action-button";
 import Icon from "react-native-vector-icons/Ionicons";
 
+import Constants from "expo-constants";
+import * as Permissions from "expo-permissions";
+import { BarCodeScanner } from "expo-barcode-scanner";
+
 const Restaurants = ({ navigation }) => {
   const authContext = useContext(AuthContext);
   const { loadUser, isAuthenticated } = authContext;
@@ -94,6 +98,12 @@ const Restaurants = ({ navigation }) => {
     }
   };
 
+  const scanQRCode = async () => {
+    console.log("SCAN QR CODE");
+    const resultPermissions = await Permissions.askAsync(Permissions.CAMERA);
+    console.log(resultPermissions);
+  };
+
   return (
     <View style={styles.viewBody}>
       {restaurants ? (
@@ -130,10 +140,10 @@ const Restaurants = ({ navigation }) => {
           </ActionButton.Item>
           <ActionButton.Item
             buttonColor="black"
-            title="Actualizar"
-            onPress={() => getRestaurants()}
+            title="Escanear QR"
+            onPress={() => scanQRCode()}
           >
-            <Icon name="md-refresh-circle" style={styles.actionButtonIcon} />
+            <Icon name="md-qr-scanner" style={styles.actionButtonIcon} />
           </ActionButton.Item>
         </ActionButton>
       )}
