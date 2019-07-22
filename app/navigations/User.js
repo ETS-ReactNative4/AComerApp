@@ -12,8 +12,8 @@ import RestaurantScreen from "../screens/Restaurants/Restaurant";
 import AddReviewRestaurantScreen from "../screens/Restaurants/AddReviewRestaurant";
 
 import TopFiveScreen from "../screens/TopFive";
+
 import SearchScreen from "../screens/Search";
-import MyCameraScreen from "../screens/MyCamera";
 
 import MyAccountScreen from "../screens/MyAccount/MyAccount";
 import RegisterScreen from "../screens/MyAccount/Register";
@@ -88,12 +88,6 @@ const MyAccountScreenStack = createStackNavigator({
     screen: MyRestaurantsScreen,
     navigationOptions: ({ navigation }) => ({
       title: "Mis Restaurantes"
-    })
-  },
-  MyCamera: {
-    screen: MyCameraScreen,
-    navigationOptions: ({ navigation }) => ({
-      title: "Mi Cámara"
     })
   }
 });
