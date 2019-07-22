@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 import AuthContext from "../../context/auth/authContext";
 import RestaurantContext from "../../context/restaurant/restaurantContext";
 import {
@@ -13,12 +13,15 @@ import {
 import { Image } from "react-native-elements";
 import ActionButton from "react-native-action-button";
 import Icon from "react-native-vector-icons/Ionicons";
+import Toast from "react-native-easy-toast";
 
-import Constants from "expo-constants";
 import * as Permissions from "expo-permissions";
 import { BarCodeScanner } from "expo-barcode-scanner";
+import { Camera } from "expo-camera";
 
 const Restaurants = ({ navigation }) => {
+  const toast = useRef(null);
+  const camera = useRef(null);
   const authContext = useContext(AuthContext);
   const { loadUser, isAuthenticated } = authContext;
 
@@ -98,10 +101,14 @@ const Restaurants = ({ navigation }) => {
     }
   };
 
-  const scanQRCode = async () => {
-    console.log("SCAN QR CODE");
-    const resultPermissions = await Permissions.askAsync(Permissions.CAMERA);
-    console.log(resultPermissions);
+  const getCameraPermissions = async () => {
+    const { status } = await Permissions.askAsync(Permissions.CAMERA);
+    if (status === "denied") {
+      toast.current.show("Es necesario aceptar los permisos de la cámara");
+    } else {
+      const codeScanner = await camera.current.takePictureAsync();
+      console.log(codeScanner);
+    }
   };
 
   return (
@@ -141,12 +148,22 @@ const Restaurants = ({ navigation }) => {
           <ActionButton.Item
             buttonColor="black"
             title="Escanear QR"
-            onPress={() => scanQRCode()}
+            onPress={() => getCameraPermissions()}
           >
             <Icon name="md-qr-scanner" style={styles.actionButtonIcon} />
           </ActionButton.Item>
         </ActionButton>
       )}
+      <Camera ref={camera} />
+      <Toast
+        ref={toast}
+        position="bottom"
+        positionValue={250}
+        fadeInDuration={750}
+        fadeOutDuration={1000}
+        opacity={0.8}
+        textStyle={{ color: "#fff" }}
+      />
     </View>
   );
 };
