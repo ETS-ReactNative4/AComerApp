@@ -1,9 +1,9 @@
 import React, { useRef } from "react";
 import { StyleSheet, View } from "react-native";
-import { Overlay } from "react-native-elements";
+import { Overlay, Icon } from "react-native-elements";
 import { Camera } from "expo-camera";
 
-const OverlayCamera = ({}) => {
+const OverlayCamera = ({ closeFunction }) => {
   const camera = useRef(null);
 
   return (
@@ -19,6 +19,14 @@ const OverlayCamera = ({}) => {
           style={styles.camera}
           ref={camera}
           type={Camera.Constants.Type.back}
+        />
+        <Icon
+          containerStyle={styles.containerIconClose}
+          type="material-community"
+          name="close-circle-outline"
+          size={30}
+          color="#ffc107"
+          onPress={closeFunction}
         />
       </View>
     </Overlay>
@@ -44,6 +52,11 @@ const styles = StyleSheet.create({
     flex: 1,
     width: "auto",
     height: "auto"
+  },
+  containerIconClose: {
+    position: "absolute",
+    right: -15,
+    top: -16
   }
 });
 

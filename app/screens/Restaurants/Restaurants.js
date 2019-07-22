@@ -104,8 +104,12 @@ const Restaurants = ({ navigation }) => {
     if (status === "denied") {
       toast.current.show("Es necesario aceptar los permisos de la cámara");
     } else {
-      setOverlayComponent(<OverlayCamera />);
+      setOverlayComponent(<OverlayCamera closeFunction={closeOverlayCamera} />);
     }
+  };
+
+  const closeOverlayCamera = () => {
+    setOverlayComponent(null);
   };
 
   return (
