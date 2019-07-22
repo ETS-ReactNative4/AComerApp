@@ -102,8 +102,7 @@ const Restaurants = ({ navigation }) => {
     if (status === "denied") {
       toast.current.show("Es necesario aceptar los permisos de la cámara");
     } else {
-      console.log("Permisos de cámara aceptados");
-      console.log("Navegar hasta componente de cámara");
+      navigation.navigate("MyCamera");
     }
   };
 
