@@ -1,10 +1,22 @@
 import React, { useRef } from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, Vibration, Linking } from "react-native";
 import { Overlay, Icon } from "react-native-elements";
 import { Camera } from "expo-camera";
 
-const OverlayCamera = ({ closeFunction }) => {
+const OverlayCamera = ({ closeFunction, toast }) => {
   const camera = useRef(null);
+
+  const onBarCodeScanned = ({ type, data }) => {
+    if (type !== "org.iso.QRCode") {
+      toast.show("Solo se permiten códigos QR");
+    } else {
+      Vibration.vibrate();
+      closeFunction();
+      toast.show("Abriendo navegador...", 1000, () => {
+        Linking.openURL(data);
+      });
+    }
+  };
 
   return (
     <Overlay
@@ -19,6 +31,7 @@ const OverlayCamera = ({ closeFunction }) => {
           style={styles.camera}
           ref={camera}
           type={Camera.Constants.Type.back}
+          onBarCodeScanned={onBarCodeScanned}
         />
         <Icon
           containerStyle={styles.containerIconClose}

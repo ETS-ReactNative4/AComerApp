@@ -18,6 +18,7 @@
   - [TUTORIAL](https://www.youtube.com/watch?v=FXG3AJ6OJCk)
 - [REACT NATIVE ACTION BUTTON](https://yarnpkg.com/en/package/react-native-action-button)
 - [EXPO BAR CODE SCANNER](https://docs.expo.io/versions/latest/sdk/bar-code-scanner/)
+- [EXPO CAMERA](https://docs.expo.io/versions/latest/sdk/camera/)
 
 ### How to generate Android APK
 
