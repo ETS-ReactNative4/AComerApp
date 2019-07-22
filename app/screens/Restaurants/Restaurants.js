@@ -23,7 +23,9 @@ const Restaurants = ({ navigation }) => {
     getRestaurants,
     restaurants,
     setStartRestaurants,
-    loadingRestaurants
+    loadingRestaurants,
+    refreshRestaurants,
+    loading
   } = restaurantContext;
 
   useEffect(() => {
@@ -103,6 +105,12 @@ const Restaurants = ({ navigation }) => {
             onEndReached={handleLoadMore}
             onEndReachedThreshold={0}
             ListFooterComponent={renderFooter}
+            refreshControl={
+              <RefreshControl
+                refreshing={loading}
+                onRefresh={refreshRestaurants}
+              />
+            }
           />
         </View>
       ) : (

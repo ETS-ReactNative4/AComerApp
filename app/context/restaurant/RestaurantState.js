@@ -88,6 +88,14 @@ const AuthState = props => {
     }
   };
 
+  // REFRESH_RESTAURANTS
+  const refreshRestaurants = async () => {
+    try {
+      const res = await api.get(`/api/restaurants/8/0`);
+      dispatch({ type: GET_RESTAURANTS, payload: res.data });
+    } catch (err) {}
+  };
+
   // GET_RESTAURANTS
   const getRestaurants = async () => {
     try {
@@ -217,7 +225,8 @@ const AuthState = props => {
         getReviews,
         loadTopFiveRestaurants,
         filterRestaurants,
-        clearFilter
+        clearFilter,
+        refreshRestaurants
       }}
     >
       {props.children}
