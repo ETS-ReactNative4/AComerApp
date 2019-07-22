@@ -14,14 +14,10 @@ import { Image } from "react-native-elements";
 import ActionButton from "react-native-action-button";
 import Icon from "react-native-vector-icons/Ionicons";
 import Toast from "react-native-easy-toast";
-
 import * as Permissions from "expo-permissions";
-import { BarCodeScanner } from "expo-barcode-scanner";
-import { Camera } from "expo-camera";
 
 const Restaurants = ({ navigation }) => {
   const toast = useRef(null);
-  const camera = useRef(null);
   const authContext = useContext(AuthContext);
   const { loadUser, isAuthenticated } = authContext;
 
@@ -106,8 +102,8 @@ const Restaurants = ({ navigation }) => {
     if (status === "denied") {
       toast.current.show("Es necesario aceptar los permisos de la cámara");
     } else {
-      const codeScanner = await camera.current.takePictureAsync();
-      console.log(codeScanner);
+      console.log("Permisos de cámara aceptados");
+      console.log("Navegar hasta componente de cámara");
     }
   };
 
@@ -154,7 +150,6 @@ const Restaurants = ({ navigation }) => {
           </ActionButton.Item>
         </ActionButton>
       )}
-      <Camera ref={camera} />
       <Toast
         ref={toast}
         position="bottom"
