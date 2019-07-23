@@ -15,6 +15,7 @@ import ActionButton from "react-native-action-button";
 import Icon from "react-native-vector-icons/Ionicons";
 import Toast from "react-native-easy-toast";
 import * as Permissions from "expo-permissions";
+import * as Location from "expo-location";
 import OverlayCamera from "../../components/Elements/OverlayCamera";
 
 const Restaurants = ({ navigation }) => {
@@ -102,7 +103,7 @@ const Restaurants = ({ navigation }) => {
   const getCameraPermissions = async () => {
     const { status } = await Permissions.askAsync(Permissions.CAMERA);
     if (status === "denied") {
-      toast.current.show("Es necesario aceptar los permisos de la cámara");
+      toast.current.show("Es necesario aceptar los permisos cámara");
     } else {
       setOverlayComponent(
         <OverlayCamera
@@ -115,6 +116,16 @@ const Restaurants = ({ navigation }) => {
 
   const closeOverlayCamera = () => {
     setOverlayComponent(null);
+  };
+
+  const getLocalization = async () => {
+    let { status } = await Permissions.askAsync(Permissions.LOCATION);
+    if (status === "denied") {
+      toast.current.show("Es necesario aceptar los permisos de ubicación");
+    } else {
+      const location = await Location.getCurrentPositionAsync({});
+      console.log(location);
+    }
   };
 
   return (
@@ -153,6 +164,13 @@ const Restaurants = ({ navigation }) => {
             <Icon name="md-create" style={styles.actionButtonIcon} />
           </ActionButton.Item>
         )}
+        <ActionButton.Item
+          buttonColor="#ffc107"
+          title="Buscar"
+          onPress={() => getLocalization()}
+        >
+          <Icon name="md-compass" style={styles.actionButtonIcon} />
+        </ActionButton.Item>
         <ActionButton.Item
           buttonColor="black"
           title="Escanear QR"

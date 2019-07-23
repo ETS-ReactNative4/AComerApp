@@ -23,7 +23,7 @@
     },
     "android": {
       "package": "com.alejandrohernandezlara.acomer",
-      "permissions": ["CAMERA_ROLL", "CAMERA"]
+      "permissions": ["CAMERA_ROLL", "CAMERA", "LOCATION"]
     }
   }
 }
