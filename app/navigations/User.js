@@ -10,6 +10,7 @@ import RestaurantsScreen from "../screens/Restaurants/Restaurants";
 import AddRestaurantScreen from "../screens/Restaurants/AddRestaurant";
 import RestaurantScreen from "../screens/Restaurants/Restaurant";
 import AddReviewRestaurantScreen from "../screens/Restaurants/AddReviewRestaurant";
+import MapRestaurantsScreen from "../screens/Restaurants/MapRestaurants";
 
 import TopFiveScreen from "../screens/TopFive";
 
@@ -43,6 +44,12 @@ const RestaurantsScreenStack = createStackNavigator({
     screen: AddReviewRestaurantScreen,
     navigationOptions: ({ navigation }) => ({
       title: navigation.state.params.name
+    })
+  },
+  MapRestaurants: {
+    screen: MapRestaurantsScreen,
+    navigationOptions: ({ navigation }) => ({
+      title: "Buscando locales cercanos"
     })
   }
 });

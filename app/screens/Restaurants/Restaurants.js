@@ -125,6 +125,7 @@ const Restaurants = ({ navigation }) => {
     } else {
       const location = await Location.getCurrentPositionAsync({});
       console.log(location);
+      navigation.navigate("MapRestaurants");
     }
   };
 
