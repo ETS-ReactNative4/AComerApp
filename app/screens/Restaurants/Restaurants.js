@@ -123,9 +123,14 @@ const Restaurants = ({ navigation }) => {
     if (status === "denied") {
       toast.current.show("Es necesario aceptar los permisos de ubicación");
     } else {
-      const location = await Location.getCurrentPositionAsync({});
-      console.log(location);
-      navigation.navigate("MapRestaurants");
+      const res = await Location.getCurrentPositionAsync({});
+      const params = {
+        latitude: res.coords.latitude,
+        longitude: res.coords.longitude
+      };
+      const location = await Location.reverseGeocodeAsync(params);
+
+      navigation.navigate("MapRestaurants", params);
     }
   };
 
