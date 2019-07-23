@@ -9,30 +9,17 @@ const MapRestaurants = ({ navigation }) => {
   }, []);
 
   return (
-    <View style={styles.viewBody}>
-      {location && (
-        <View>
-          <Text>
-            {location.latitude}
-            {location.longitude}
-          </Text>
-          <MapView
-            initialRegion={{
-              latitude: 37.78825,
-              longitude: -122.4324,
-              latitudeDelta: 0.0922,
-              longitudeDelta: 0.0421
-            }}
-          />
-        </View>
-      )}
-    </View>
+    <MapView
+      style={StyleSheet.absoluteFillObject}
+      region={{
+        latitude: 37.78825,
+        longitude: -122.4324,
+        latitudeDelta: 0.0922,
+        longitudeDelta: 0.0421
+      }}
+    />
   );
 };
 
-const styles = StyleSheet.create({
-  viewBody: {
-    flex: 1
-  }
-});
+const styles = StyleSheet.create({});
 export default MapRestaurants;
