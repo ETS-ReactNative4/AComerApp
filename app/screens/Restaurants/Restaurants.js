@@ -126,10 +126,14 @@ const Restaurants = ({ navigation }) => {
       const res = await Location.getCurrentPositionAsync({});
       const params = {
         latitude: res.coords.latitude,
-        longitude: res.coords.longitude
+        longitude: res.coords.longitude,
+        latitudeDelta: 0.0922,
+        longitudeDelta: 0.0421
       };
       const location = await Location.reverseGeocodeAsync(params);
-
+      console.log("RES", res);
+      console.log("PArams", params);
+      console.log("Location", location);
       navigation.navigate("MapRestaurants", params);
     }
   };
